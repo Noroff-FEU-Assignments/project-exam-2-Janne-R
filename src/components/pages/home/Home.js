@@ -1,8 +1,12 @@
-
+import Section from "../../common.styles/Section";
 
 const Home = () => {
   return (
-    <h1>Home</h1>
+    <main>
+      <Section backgroundColorLight>
+        <h1>Visit Bergen</h1>
+      </Section>
+    </main>
   )
 }
 

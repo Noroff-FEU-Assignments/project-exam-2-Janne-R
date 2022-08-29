@@ -6,7 +6,14 @@ import { FiMenu } from "react-icons/fi";
 const Flex = styled.div`
   display: flex;
   justify-content: space-between;
-  margin-top: 10px;
+  align-items: center;
+  margin: 16px 0;
+  
+  @media ${({ theme }) => theme.devices.tabletS} { 
+    padding: 10px;
+    max-width: 1200px;
+    margin: 0px auto;
+  }
 `;
 
 const BurgerMenu = styled(FiMenu)`
@@ -15,32 +22,44 @@ const BurgerMenu = styled(FiMenu)`
   }
 `;
 
-const StyledNavLink = styled(NavLink)`
-  &.active {
-    border-top: 3px solid  ${({ theme }) => theme.colors.primaryColor};;
-  }
-`;
-
 const Ul = styled.ul`
   display: ${(props) => props.showMenu ? "flex" : "none"};
   background-color: ${({ theme }) => theme.colors.backgroundColorDark};
-  flex-direction: column;
-  list-style-type: none;
   position: absolute;
-  right: 0;
-  width: 100%;
+  flex-direction: column;
   align-items: center;
-  a{
+  list-style-type: none;
+  right: 0;
+  width:100% ;
+  
+  li {
+    margin-bottom:20px;
+    margin-top:10px;
+  }
+
+  a {
     text-decoration: none;
-    text-transform: uppercase;
+    font-size: 21px;
     color: ${({ theme }) => theme.colors.textColorDark};
   }
-  li{
-    margin-bottom: 20px;
-  }
+
   @media ${({ theme }) => theme.devices.tabletS} { 
     display: flex;
     flex-direction: row;
+    position: unset;
+    li:not(:last-child) {
+    margin-right: 50px;
+    }
+    li {
+    margin-bottom:0;
+    margin-top:0;
+  }
+  }
+`;
+
+const StyledNavLink = styled(NavLink)`
+  &.active {
+    border-top: 3px solid  ${({ theme }) => theme.colors.primaryColor};
   }
 `;
 

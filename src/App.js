@@ -6,7 +6,7 @@ import {
   Routes,
   Route
 } from 'react-router-dom';
-import Header from "./components/common/Header";
+import Header from "./components/header/Header";
 import Home from "./components/pages/home/Home";
 import Hotels from "./components/pages/hotels/Hotels";
 import Details from "./components/pages/details/Details";
