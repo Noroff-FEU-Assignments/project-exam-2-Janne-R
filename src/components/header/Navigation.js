@@ -7,7 +7,7 @@ const Flex = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 16px 0;
+  margin: 20px 10px;
   
   @media ${({ theme }) => theme.devices.tabletS} { 
     padding: 10px;

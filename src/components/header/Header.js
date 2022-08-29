@@ -1,3 +1,4 @@
+import styled from "styled-components"
 import Navigation from "./Navigation";
 import HeroImage from "./HeroImage";
 
