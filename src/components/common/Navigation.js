@@ -4,13 +4,20 @@ import styled from "styled-components";
 import { FiMenu } from "react-icons/fi";
 
 const Flex = styled.div`
-  display:flex;
+  display: flex;
   justify-content: space-between;
+  margin-top: 10px;
 `;
 
 const BurgerMenu = styled(FiMenu)`
   @media ${({ theme }) => theme.devices.tabletS} { 
     display: none;
+  }
+`;
+
+const StyledNavLink = styled(NavLink)`
+  &.active {
+    border-top: 3px solid  ${({ theme }) => theme.colors.primaryColor};;
   }
 `;
 
@@ -26,6 +33,10 @@ const Ul = styled.ul`
   a{
     text-decoration: none;
     text-transform: uppercase;
+    color: ${({ theme }) => theme.colors.textColorDark};
+  }
+  li{
+    margin-bottom: 20px;
   }
   @media ${({ theme }) => theme.devices.tabletS} { 
     display: flex;
@@ -44,24 +55,24 @@ const Navigation = () => {
         <BurgerMenu aria-label="Open the menu" aria-hidden="true" color="black" size="2rem" onClick={() => setToogleShowMenu(!toogleShowMenu)} />
         <Ul showMenu={toogleShowMenu}>
           <li>
-            <NavLink to="/">
+            <StyledNavLink to="/">
               Home
-            </NavLink>
+            </StyledNavLink>
           </li>
           <li>
-            <NavLink to="/hotels">
+            <StyledNavLink to="/hotels">
               Hotels
-            </NavLink>
+            </StyledNavLink>
           </li>
           <li>
-            <NavLink to="/contact">
+            <StyledNavLink to="/contact">
               Contact
-            </NavLink>
+            </StyledNavLink>
           </li>
           <li>
-            <NavLink to="/login">
+            <StyledNavLink to="/login">
               Login
-            </NavLink>
+            </StyledNavLink>
           </li>
         </Ul>
       </nav>
