@@ -1,16 +1,23 @@
 import styled from "styled-components";
 import BackgroundImage from "../common.styles/BackgroundImage";
 
-const StyledBackgroundImage = styled(BackgroundImage)`
+const HeaderImage = styled(BackgroundImage)`
 @media ${({ theme }) => theme.devices.tabletS} { 
     max-width: 1200px;
     margin: 0px auto;
+    height: 460px;
+  }
+  @media ${({ theme }) => theme.devices.tabletL}{
+    height: 560px;
+  }
+  @media ${({ theme }) => theme.devices.laptopS}{
+    height: 660px;
   }
 `;
 
 const HeroImage = () => {
   return (
-    <StyledBackgroundImage img={"/images/bergenSmall.webp"} height={"460px"} />
+    <HeaderImage img={"/images/bergenSmall.webp"} height={"360px"} />
   );
 };
 
