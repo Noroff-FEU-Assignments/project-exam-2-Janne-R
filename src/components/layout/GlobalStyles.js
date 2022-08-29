@@ -51,9 +51,9 @@ p {
 }
 
 a {  
-  font-size: 16px;
+  font-size: 18px;
   @media ${({ theme }) => theme.devices.tabletS} { 
-    font-size: 18px;
+    font-size: 21px;
   }
 }
 `

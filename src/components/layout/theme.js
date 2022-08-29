@@ -26,6 +26,8 @@ const colors = {
   backgroundColorLight: "#FCFBF9",
   errorColor: "#B30D00",
   successColor: "#3B8519",
+  textColorDark: "#000000",
+  textColorLight: "#FFFFFF"
 };
 
 const theme = {
