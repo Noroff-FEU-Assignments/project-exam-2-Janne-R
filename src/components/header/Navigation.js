@@ -2,18 +2,13 @@ import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 import { FiMenu } from "react-icons/fi";
+import Container from "../common.styles/Container";
 
 const Flex = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin: 20px 10px;
-  
-  @media ${({ theme }) => theme.devices.tabletS} { 
-    padding: 10px;
-    max-width: 1200px;
-    margin: 0px auto;
-  }
 `;
 
 const BurgerMenu = styled(FiMenu)`
@@ -59,43 +54,46 @@ const Ul = styled.ul`
 
 const StyledNavLink = styled(NavLink)`
   &.active {
-    border-top: 3px solid  ${({ theme }) => theme.colors.primaryColor};
+    border-top: solid  ${({ theme }) => theme.colors.primaryColor};
+    border-top-width: thick;
   }
 `;
 
 const Navigation = () => {
   const [toogleShowMenu, setToogleShowMenu] = useState(false);
   return (
-    <Flex>
-      <NavLink to="/">
-        Logo
-      </NavLink>
-      <nav>
-        <BurgerMenu aria-label="Open the menu" aria-hidden="true" color="black" size="2rem" onClick={() => setToogleShowMenu(!toogleShowMenu)} />
-        <Ul showMenu={toogleShowMenu}>
-          <li>
-            <StyledNavLink to="/">
-              Home
-            </StyledNavLink>
-          </li>
-          <li>
-            <StyledNavLink to="/hotels">
-              Hotels
-            </StyledNavLink>
-          </li>
-          <li>
-            <StyledNavLink to="/contact">
-              Contact
-            </StyledNavLink>
-          </li>
-          <li>
-            <StyledNavLink to="/login">
-              Login
-            </StyledNavLink>
-          </li>
-        </Ul>
-      </nav>
-    </Flex>
+    <Container>
+      <Flex>
+        <NavLink to="/">
+          Logo
+        </NavLink>
+        <nav>
+          <BurgerMenu aria-label="Open the menu" aria-hidden="true" color="black" size="2rem" onClick={() => setToogleShowMenu(!toogleShowMenu)} />
+          <Ul showMenu={toogleShowMenu}>
+            <li>
+              <StyledNavLink to="/">
+                Home
+              </StyledNavLink>
+            </li>
+            <li>
+              <StyledNavLink to="/hotels">
+                Hotels
+              </StyledNavLink>
+            </li>
+            <li>
+              <StyledNavLink to="/contact">
+                Contact
+              </StyledNavLink>
+            </li>
+            <li>
+              <StyledNavLink to="/login">
+                Login
+              </StyledNavLink>
+            </li>
+          </Ul>
+        </nav>
+      </Flex>
+    </Container>
   )
 }
 

@@ -1,10 +1,5 @@
 import styled from "styled-components";
-
-const Div = styled.div`
-  padding: 10px;
-  max-width: 1200px;
-  margin: 0px auto;
-`;
+import Container from "./Container";
 
 const StyledSection = styled.section`
 background-color: ${({ backgroundColorLight, theme }) => backgroundColorLight ? theme.colors.backgroundColorLight : theme.colors.backgroundColorDark};
@@ -13,9 +8,9 @@ background-color: ${({ backgroundColorLight, theme }) => backgroundColorLight ? 
 const Section = ({ children, backgroundColorLight }) => {
   return (
     <StyledSection backgroundColorLight={backgroundColorLight} >
-      <Div>
+      <Container>
         {children}
-      </Div>
+      </Container>
     </StyledSection>
   )
 }

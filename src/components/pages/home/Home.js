@@ -1,10 +1,13 @@
 import Section from "../../common.styles/Section";
+import Reservation from "./Reservation";
+import { H1 } from "../../common.styles/DisplayText";
 
 const Home = () => {
   return (
     <main>
       <Section backgroundColorLight>
-        <h1>Visit Bergen</h1>
+        <Reservation />
+        <H1 title="Visit Bergen" uppercase />
       </Section>
     </main>
   )
