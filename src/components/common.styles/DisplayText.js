@@ -10,6 +10,10 @@ const StyledH1 = styled.h1`
 `;
 
 const StyledH2 = styled.h2`
+  border-top: solid  ${({ lightColor, theme }) => lightColor ? theme.colors.textColorLight : theme.colors.primaryColor};
+  border-top-width: thick;
+  max-inline-size: fit-content;
+  font-weight: bold;
   color: ${({ lightColor, theme }) => lightColor ? theme.colors.textColorLight : theme.colors.textColorDark};
   text-transform: ${props => props.uppercase ? "uppercase" : "initial"};
 `;
