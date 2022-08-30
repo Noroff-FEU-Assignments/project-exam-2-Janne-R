@@ -5,6 +5,7 @@ import { H1, H2, P } from "../../common.styles/DisplayText";
 import BackgroundImage from "../../common.styles/BackgroundImage";
 import Button from "../../common.styles/Button";
 import { FaStarOfLife } from 'react-icons/fa';
+import FeaturedHotels from "./FeaturedHotels";
 
 
 const Grid = styled.div`
@@ -92,6 +93,32 @@ const Home = () => {
         </Grid>
         <Button text="Explore our hotels" />
       </Section>
+      <Section>
+        <BackgroundImageBleed img={"/images/bergenSmall.webp"} height={"260px"} />
+        <WhyChooseUs>
+          <H2 title="Why choose us" lightColor uppercase />
+          <P lightColor paragraph="We have a wide range of hotels that offers a lot." />
+          <div>
+            <Flex>
+              <StarIcon size="1.5rem" color="white" />
+              <P lightColor paragraph="Easy booking" />
+            </Flex>
+            <Flex>
+              <StarIcon size="1.5rem" color="white" />
+              <P lightColor paragraph="Easy booking" />
+            </Flex>
+            <Flex>
+              <StarIcon size="1.5rem" color="white" />
+              <P lightColor paragraph="Easy booking" />
+            </Flex>
+            <Flex>
+              <StarIcon size="1.5rem" color="white" />
+              <P lightColor paragraph="Easy booking" />
+            </Flex>
+          </div>
+        </WhyChooseUs>
+      </Section>
+      <FeaturedHotels />
       <Section>
         <BackgroundImageBleed img={"/images/bergenSmall.webp"} height={"260px"} />
         <WhyChooseUs>
