@@ -8,7 +8,6 @@ const Flex = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 20px 10px;
 `;
 
 const BurgerMenu = styled(FiMenu)`
@@ -25,7 +24,8 @@ const Ul = styled.ul`
   align-items: center;
   list-style-type: none;
   right: 0;
-  width:100% ;
+  width:100%;
+  margin: 10px 0;
   
   li {
     margin-bottom:20px;
