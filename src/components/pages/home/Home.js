@@ -7,6 +7,8 @@ const Home = () => {
     <main>
       <Section backgroundColorLight>
         <Reservation />
+      </Section>
+      <Section backgroundColorLight>
         <H1 title="Visit Bergen" uppercase />
       </Section>
     </main>
