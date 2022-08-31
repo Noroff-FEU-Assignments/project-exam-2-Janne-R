@@ -7,11 +7,11 @@ import styled from "styled-components";
 const Grid = styled.div`
 @media ${({ theme }) => theme.devices.tabletS} { 
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: repeat(3, 1fr);
   grid-column-gap: 20px;
 }
 @media ${({ theme }) => theme.devices.laptopS} { 
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-columns: repeat(4, 1fr);;
 }
 `;
 
