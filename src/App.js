@@ -13,6 +13,7 @@ import Details from "./components/pages/details/Details";
 import Contact from "./components/pages/contact/Contact";
 import Login from "./components/pages/login/Login";
 import Admin from "./components/pages/admin/Admin";
+import Footer from "./components/footer/Footer";
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
           <Route path="/login" exact element={<Login />} />
           <Route path="/admin" exact element={<Admin />} />
         </Routes>
+        <Footer />
       </Router>
     </ThemeProvider>
 
