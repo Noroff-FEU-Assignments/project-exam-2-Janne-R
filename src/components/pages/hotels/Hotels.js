@@ -28,7 +28,7 @@ const StyledLink = styled(Link)`
 const url = `${BASE_URL}/api/hotels`;
 
 const Hotels = () => {
-  const { data, isLoading, isError } = useApi(url, null);
+  const { data, isLoading, isError } = useApi(url);
 
   if (isLoading) {
     return <Loader />;

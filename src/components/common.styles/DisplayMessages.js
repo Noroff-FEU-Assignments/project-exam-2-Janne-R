@@ -14,8 +14,10 @@ export const Message = styled.p`
 
 export const ErrorMessage = styled(Message)`
   background-color: ${({ theme }) => theme.colors.errorColor};
+  color: ${({ theme }) => theme.colors.textColorLight};
 `;
 
 export const SuccessMessage = styled(Message)`
   background-color: ${({ theme }) => theme.colors.successColor};
+  color: ${({ theme }) => theme.colors.textColorLight};
 `;
