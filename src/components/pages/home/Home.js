@@ -21,7 +21,7 @@ const Home = () => {
         <FeaturedHotels />
       </Section>
       <Section>
-        <Review img={"/images/bergenSmall.webp"} title="What people say" paragraph="Many our customers" liste={["item 1", "janneghlømmer", "item 1", "item 1"]} />
+        <Review img={"/images/bergenSmall.webp"} roundImg={"/images/bergenSmall.webp"} title="What people say" paragraph="Many our customers" liste={["item 1", "janneghlømmer", "item 1", "item 1"]} />
       </Section>
     </main>
   )
