@@ -1,6 +1,7 @@
 import styled from "styled-components";
-import BackgroundImage from "../../common.styles/BackgroundImage";
-import { H2, P } from "../../common.styles/DisplayText";
+import BackgroundImage from "./BackgroundImage";
+import { H2, P } from "./DisplayText";
+import { FaStarOfLife } from 'react-icons/fa';
 
 const GridContainer = styled.div`
 
@@ -29,23 +30,47 @@ const Box = styled.div`
 
  @media ${({ theme }) => theme.devices.tabletS} { 
     opacity: 94%;
-    grid-area: 1 / 6 / 13 / 2;
+    grid-area: 1 / 12 / 13 / 8;
  }
 `;
 
-const Review = ({ title, paragraph, img }) => {
+const Ul = styled.ul`
+  padding: 0;
+  list-style-type: none;
+
+  li{
+    color: ${({ theme }) => theme.colors.textColorLight};
+  }
+`;
+
+const Flex = styled.div`
+  display: Flex;
+  align-items: center;
+  margin-bottom:20px ;
+`;
+
+const StarIcon = styled(FaStarOfLife)`
+  margin-right: 20px;
+`;
+
+const InfoBox = ({ title, paragraph, liste, img }) => {
   return (
     <GridContainer>
       <BackgroundImageBleed img={img} height={"260px"} />
       <Box>
         <H2 title={title} lightColor uppercase />
         <P lightColor paragraph={paragraph} />
-        <div>
-
-        </div>
+        <Ul>
+          {liste.map((item) => (
+            <Flex>
+              <StarIcon size="1.5rem" color="white" />
+              <li>{item}</li>
+            </Flex>
+          ))}
+        </Ul>
       </Box>
     </GridContainer>
   )
 }
 
-export default Review;
+export default InfoBox;

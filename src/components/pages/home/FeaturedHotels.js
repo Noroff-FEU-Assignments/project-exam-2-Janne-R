@@ -17,7 +17,7 @@ const Grid = styled.div`
 
 const FeaturedHotels = () => {
   return (
-    <Section backgroundColorLight>
+    <>
       <H2 title="Featured hotels" uppercase />
       <P paragraph="Some of our most popular hotels at the moment." />
       <Grid>
@@ -46,7 +46,7 @@ const FeaturedHotels = () => {
           <Button text="View" />
         </div>
       </Grid>
-    </Section>
+    </>
   )
 }
 
