@@ -1,15 +1,14 @@
 import Section from "../../common.styles/Section";
-import Reservation from "./Reservation";
+import Welcome from "./Welcome";
 import InfoBox from "../../common.styles/InfoBox";
 import FeaturedHotels from "./FeaturedHotels";
 import VisitBergen from "./VisitBergen";
-import Review from "./Review";
 
 const Home = () => {
   return (
     <main>
       <Section backgroundColorLight>
-        <Reservation />
+        <Welcome />
       </Section>
       <Section backgroundColorLight>
         <VisitBergen />

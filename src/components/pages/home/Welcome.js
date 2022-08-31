@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import { P } from "../../common.styles/DisplayText";
-import Search from "../../common.styles/Search";
 
 const Div = styled.div`
   background-color: ${({ theme }) => theme.colors.primaryColor};
@@ -16,16 +15,12 @@ const Div = styled.div`
 `;
 
 
-const Reservation = () => {
+const Welcome = () => {
   return (
     <Div>
-      <div>
-        <P paragraph="Reservation" uppercase lightColor />
-        <P paragraph="Find your next hotel in Bergen" lightColor />
-      </div>
-      <Search />
+      <P paragraph="Welcome to Holidaze" uppercase lightColor />
     </Div>
   )
 }
 
-export default Reservation;
+export default Welcome;

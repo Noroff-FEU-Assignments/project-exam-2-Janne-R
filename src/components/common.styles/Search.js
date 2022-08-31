@@ -5,7 +5,7 @@ const Form = styled.form`
   margin-top: 40px;
   margin-bottom: 20px;
   display: flex;
-  justify-content: center;
+
   align-items: center;  
   @media ${({ theme }) => theme.devices.tabletS} { 
     width: 60%;
@@ -17,7 +17,7 @@ const Input = styled.input`
   padding: 10px;
   width: 80%;
   background-color: ${({ theme }) => theme.colors.backgroundColorDark};
-  border: none;
+  border: 1px solid ${({ theme }) => theme.colors.buttonColor};
   border-radius: 3px;
 `;
 

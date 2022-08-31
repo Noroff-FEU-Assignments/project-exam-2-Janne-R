@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 const StyledH1 = styled.h1`
   border-top: 5px solid ${({ theme }) => theme.colors.primaryColor};
+  padding-top:10px;
   max-inline-size: fit-content;
   font-weight: bold;
   color: ${({ lightColor, theme }) => lightColor ? theme.colors.textColorLight : theme.colors.textColorDark};
@@ -9,8 +10,6 @@ const StyledH1 = styled.h1`
 `;
 
 const StyledH2 = styled.h2`
-  border-top: 5px solid ${({ theme }) => theme.colors.primaryColor};
-  max-inline-size: fit-content;
   font-weight: bold;
   color: ${({ lightColor, theme }) => lightColor ? theme.colors.textColorLight : theme.colors.textColorDark};
   text-transform: ${props => props.uppercase ? "uppercase" : "initial"};
