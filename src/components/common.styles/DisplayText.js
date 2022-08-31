@@ -1,8 +1,7 @@
 import styled from "styled-components";
 
 const StyledH1 = styled.h1`
-  border-top: solid  ${({ theme }) => theme.colors.primaryColor};
-  border-top-width: thick;
+  border-top: 5px solid ${({ theme }) => theme.colors.primaryColor};
   max-inline-size: fit-content;
   font-weight: bold;
   color: ${({ lightColor, theme }) => lightColor ? theme.colors.textColorLight : theme.colors.textColorDark};
@@ -10,8 +9,7 @@ const StyledH1 = styled.h1`
 `;
 
 const StyledH2 = styled.h2`
-  border-top: solid  ${({ lightColor, theme }) => lightColor ? theme.colors.textColorLight : theme.colors.primaryColor};
-  border-top-width: thick;
+  border-top: 5px solid ${({ theme }) => theme.colors.primaryColor};
   max-inline-size: fit-content;
   font-weight: bold;
   color: ${({ lightColor, theme }) => lightColor ? theme.colors.textColorLight : theme.colors.textColorDark};
@@ -39,9 +37,9 @@ export const H1 = ({ title, lightColor, uppercase }) => {
   );
 };
 
-export const H2 = ({ title, lightColor, uppercase }) => {
+export const H2 = ({ title, lightColor, uppercase, borderTop }) => {
   return (
-    <StyledH2 lightColor={lightColor} uppercase={uppercase}>{title} </StyledH2>
+    <StyledH2 lightColor={lightColor} uppercase={uppercase} borderTop={borderTop}>{title} </StyledH2>
   );
 };
 

@@ -15,13 +15,10 @@ const Home = () => {
         <VisitBergen />
       </Section>
       <Section>
-        <InfoBox img={"/images/bergenSmall.webp"} title="What people say" paragraph="Many our customers" liste={["item 1", "janneghlømmer", "item 1", "item 1"]} />
+        <InfoBox img={"/images/bergenSmall.webp"} title="Why choose us" paragraph="Many our customers" liste={["item 1", "janneghlømmer", "item 1", "item 1"]} />
       </Section>
       <Section backgroundColorLight>
         <FeaturedHotels />
-      </Section>
-      <Section>
-        <Review img={"/images/bergenSmall.webp"} roundImg={"/images/bergenSmall.webp"} title="What people say" paragraph="Many our customers" liste={["item 1", "janneghlømmer", "item 1", "item 1"]} />
       </Section>
     </main>
   )

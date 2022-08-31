@@ -54,8 +54,7 @@ const Ul = styled.ul`
 
 const StyledNavLink = styled(NavLink)`
   &.active {
-    border-top: solid  ${({ theme }) => theme.colors.primaryColor};
-    border-top-width: thick;
+    border-top: 5px solid  ${({ theme }) => theme.colors.primaryColor};
   }
 `;
 
