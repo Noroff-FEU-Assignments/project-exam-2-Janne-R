@@ -10,7 +10,6 @@ import { BASE_URL } from "../../../constants/api";
 import { ErrorMessage } from "../../common.styles/DisplayMessages";
 import Loader from "../../common.styles/Loader";
 import { useState } from "react";
-import SearchAutoComplete from "./SearchAutoComplete";
 
 const Grid = styled.div`
 @media ${({ theme }) => theme.devices.tabletS} { 
@@ -49,7 +48,6 @@ const Hotels = () => {
         <Section backgroundColorLight>
           <H1 title="All hotels" uppercase />
           <FilterHotels filterList={hotelList} filterResultUpdated={setFilterResult} />
-          <SearchAutoComplete searchList={hotelList} />
         </Section>
         <Section>
           <Grid>
