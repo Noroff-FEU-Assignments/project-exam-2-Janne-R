@@ -1,6 +1,6 @@
 import Section from "../../common.styles/Section";
 import { H1, H2, P } from "../../common.styles/DisplayText";
-import Search from "../../common.styles/Search";
+import Search from "./Search";
 import styled from "styled-components";
 import BackgroundImage from "../../common.styles/BackgroundImage";
 import Button from "../../common.styles/Button";
@@ -9,6 +9,8 @@ import { Link } from "react-router-dom";
 import { BASE_URL } from "../../../constants/api";
 import { ErrorMessage } from "../../common.styles/DisplayMessages";
 import Loader from "../../common.styles/Loader";
+import { useState } from "react";
+import SearchAutoComplete from "./SearchAutoComplete";
 
 const Grid = styled.div`
 @media ${({ theme }) => theme.devices.tabletS} { 
@@ -28,7 +30,8 @@ const StyledLink = styled(Link)`
 const url = `${BASE_URL}/api/hotels`;
 
 const Hotels = () => {
-  const { data, isLoading, isError } = useApi(url);
+  const { data: hotelList, isLoading, isError } = useApi(url);
+  const [searchResult, setSearchResult] = useState(null);
 
   if (isLoading) {
     return <Loader />;
@@ -38,16 +41,18 @@ const Hotels = () => {
     return <ErrorMessage>A error has occurred</ErrorMessage>;
   }
 
-  if (data) {
+
+  if (hotelList) {
     return (
       <>
         <Section backgroundColorLight>
           <H1 title="All hotels" uppercase />
-          <Search />
+          <Search searchList={hotelList} searchResultUpdated={setSearchResult} />
+          <SearchAutoComplete searchList={hotelList} />
         </Section>
         <Section>
           <Grid>
-            {data.map((hotel) => (
+            {searchResult.map((hotel) => (
               <StyledLink to={`/details/${hotel.id}`}>
                 <BackgroundImage img={"/images/bergenSmall.webp"} height={"260px"} />
                 <H2 title={hotel.attributes.hotelName} uppercase />
@@ -56,7 +61,10 @@ const Hotels = () => {
                 <Button text="View" />
               </StyledLink>
             ))}
+
           </Grid>
+          {searchResult && searchResult.length === 0 && hotelList.length > 0 && <ErrorMessage>No hotels matching your search</ErrorMessage>}
+          {hotelList.length === 0 && <ErrorMessage>Sorry we have no hotels</ErrorMessage>}
         </Section>
       </>
     )

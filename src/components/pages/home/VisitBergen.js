@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { H1, H2, P } from "../../common.styles/DisplayText";
 import Button from "../../common.styles/Button";
 import BackgroundImage from "../../common.styles/BackgroundImage";
+import { NavLink } from "react-router-dom";
 
 const Grid = styled.div`
 @media ${({ theme }) => theme.devices.tabletS} { 
@@ -47,7 +48,10 @@ const VisitBergen = () => {
           <P paragraph="Experience deep fjords, steep mountains, fresh waterfalls and strong currents - all year round! The tour starts from Zachariasbryggen, close to the famous Fish Market in Bergen. On the departure from Bergen, you will get a good view of the famous Bryggen, Gamle Bergen and the rest of the harbor area. " />
         </div>
       </Grid>
-      <Button text="Explore our hotels" />
+      <NavLink to="/hotels">
+        <Button text="Explore our hotels" />
+      </NavLink>
+
     </>
   )
 }
