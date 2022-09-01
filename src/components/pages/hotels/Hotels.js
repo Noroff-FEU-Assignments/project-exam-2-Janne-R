@@ -41,6 +41,7 @@ const Hotels = () => {
     return <ErrorMessage>A error has occurred</ErrorMessage>;
   }
 
+  const postsToPresent = searchResult ? searchResult : hotelList;
 
   if (hotelList) {
     return (
@@ -52,7 +53,7 @@ const Hotels = () => {
         </Section>
         <Section>
           <Grid>
-            {searchResult.map((hotel) => (
+            {postsToPresent.map((hotel) => (
               <StyledLink to={`/details/${hotel.id}`}>
                 <BackgroundImage img={"/images/bergenSmall.webp"} height={"260px"} />
                 <H2 title={hotel.attributes.hotelName} uppercase />
