@@ -1,6 +1,6 @@
 import Section from "../../common.styles/Section";
 import { H1, H2, P } from "../../common.styles/DisplayText";
-import Search from "./Search";
+import FilterHotels from "./FilterHotels";
 import styled from "styled-components";
 import BackgroundImage from "../../common.styles/BackgroundImage";
 import Button from "../../common.styles/Button";
@@ -31,7 +31,7 @@ const url = `${BASE_URL}/api/hotels`;
 
 const Hotels = () => {
   const { data: hotelList, isLoading, isError } = useApi(url);
-  const [searchResult, setSearchResult] = useState(null);
+  const [filterResult, setFilterResult] = useState(null);
 
   if (isLoading) {
     return <Loader />;
@@ -41,19 +41,19 @@ const Hotels = () => {
     return <ErrorMessage>A error has occurred</ErrorMessage>;
   }
 
-  const postsToPresent = searchResult ? searchResult : hotelList;
+  const hotelsToPresent = filterResult ? filterResult : hotelList;
 
   if (hotelList) {
     return (
       <>
         <Section backgroundColorLight>
           <H1 title="All hotels" uppercase />
-          <Search searchList={hotelList} searchResultUpdated={setSearchResult} />
+          <FilterHotels filterList={hotelList} filterResultUpdated={setFilterResult} />
           <SearchAutoComplete searchList={hotelList} />
         </Section>
         <Section>
           <Grid>
-            {postsToPresent.map((hotel) => (
+            {hotelsToPresent.map((hotel) => (
               <StyledLink to={`/details/${hotel.id}`}>
                 <BackgroundImage img={"/images/bergenSmall.webp"} height={"260px"} />
                 <H2 title={hotel.attributes.hotelName} uppercase />
@@ -64,7 +64,7 @@ const Hotels = () => {
             ))}
 
           </Grid>
-          {searchResult && searchResult.length === 0 && hotelList.length > 0 && <ErrorMessage>No hotels matching your search</ErrorMessage>}
+          {filterResult && filterResult.length === 0 && hotelList.length > 0 && <ErrorMessage>No hotels matching your search</ErrorMessage>}
           {hotelList.length === 0 && <ErrorMessage>Sorry we have no hotels</ErrorMessage>}
         </Section>
       </>

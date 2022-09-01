@@ -26,24 +26,24 @@ const SearchIcon = styled(BiSearchAlt2)`
   margin-left: -30px;
 `;
 
-const Search = (props) => {
+const FilterHotels = (props) => {
   const onKeyUp = (event) => {
-    const searchValue = event.target.value.trim().toLowerCase();
+    const filterValue = event.target.value.trim().toLowerCase();
 
-    const filteredHotels = props.searchList.filter((hotel) => {
-      if (hotel.attributes.hotelName.toLowerCase().startsWith(searchValue)) {
+    const filteredHotels = props.filterList.filter((hotel) => {
+      if (hotel.attributes.hotelName.toLowerCase().startsWith(filterValue)) {
         return true;
       }
 
       return false;
     });
 
-    props.searchResultUpdated(filteredHotels);
+    props.filterResultUpdated(filteredHotels);
   }
   return (
     <>
       <Form>
-        <Input onChange={onKeyUp} placeholder="Search hotels here..." />
+        <Input onChange={onKeyUp} placeholder="Filter by hotel name here..." />
         <SearchIcon size="1.5rem" />
       </Form>
     </>
@@ -51,4 +51,4 @@ const Search = (props) => {
   )
 }
 
-export default Search;
+export default FilterHotels;
