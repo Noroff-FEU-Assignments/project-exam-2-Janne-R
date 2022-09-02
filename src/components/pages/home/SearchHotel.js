@@ -60,9 +60,13 @@ const Welcome = () => {
       name: hotel.attributes.hotelName,
     }));
 
+
     return (
       <Div>
-        <P paragraph="Welcome to Holidaze" uppercase lightColor />
+        <div>
+          <P paragraph="Reservation" uppercase lightColor />
+          <P paragraph="Find your next hotel in Bergen here." lightColor />
+        </div>
         <SearchContainer>
           <ReactSearchAutocomplete styling={{ borderRadius: "3x", backgroundColor: "#F8F4F0", fontFamily: "Open sans", fontSize: "18px", }}
             items={mapped}

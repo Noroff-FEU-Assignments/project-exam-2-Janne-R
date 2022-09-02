@@ -3,14 +3,7 @@ import { H1, H2, P } from "../../common.styles/DisplayText";
 import Button from "../../common.styles/Button";
 import BackgroundImage from "../../common.styles/BackgroundImage";
 import { NavLink } from "react-router-dom";
-
-const Grid = styled.div`
-@media ${({ theme }) => theme.devices.tabletS} { 
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-column-gap: 20px;
-}
-`;
+import Grid from "../../common.styles/Grid";
 
 const Ribbon = styled.div`
   background-color: ${({ theme }) => theme.colors.highlightColor} ;
@@ -21,6 +14,7 @@ const Ribbon = styled.div`
 `;
 
 const VisitBergen = () => {
+
   return (
     <>
       <H1 title="Visit Bergen" uppercase />
@@ -52,8 +46,10 @@ const VisitBergen = () => {
         <Button text="Explore our hotels" />
       </NavLink>
 
+
+
     </>
   )
 }
 
-export default VisitBergen
+export default VisitBergen;

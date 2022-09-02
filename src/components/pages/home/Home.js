@@ -1,5 +1,5 @@
 import Section from "../../common.styles/Section";
-import Welcome from "./Welcome2";
+import SearchHotel from "./SearchHotel";
 import InfoBox from "../../common.styles/InfoBox";
 import FeaturedHotels from "./FeaturedHotels";
 import VisitBergen from "./VisitBergen";
@@ -8,7 +8,7 @@ const Home = () => {
   return (
     <main>
       <Section backgroundColorLight>
-        <Welcome />
+        <SearchHotel />
       </Section>
       <Section backgroundColorLight>
         <VisitBergen />

@@ -10,17 +10,7 @@ import { BASE_URL } from "../../../constants/api";
 import { ErrorMessage } from "../../common.styles/DisplayMessages";
 import Loader from "../../common.styles/Loader";
 import { useState } from "react";
-
-const Grid = styled.div`
-@media ${({ theme }) => theme.devices.tabletS} { 
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-column-gap: 20px;
-}
-@media ${({ theme }) => theme.devices.laptopS} { 
-  grid-template-columns: repeat(4, 1fr);;
-}
-`;
+import Grid from "../../common.styles/Grid";
 
 const StyledLink = styled(Link)`
   text-decoration: none;
@@ -60,7 +50,6 @@ const Hotels = () => {
                 <Button text="View" />
               </StyledLink>
             ))}
-
           </Grid>
           {filterResult && filterResult.length === 0 && hotelList.length > 0 && <ErrorMessage>No hotels matching your search</ErrorMessage>}
           {hotelList.length === 0 && <ErrorMessage>Sorry we have no hotels</ErrorMessage>}
