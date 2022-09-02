@@ -1,5 +1,5 @@
 import Section from "../../common.styles/Section";
-import Welcome from "./Welcome";
+import Welcome from "./Welcome2";
 import InfoBox from "../../common.styles/InfoBox";
 import FeaturedHotels from "./FeaturedHotels";
 import VisitBergen from "./VisitBergen";
