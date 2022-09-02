@@ -65,6 +65,13 @@ span{
   }
 }
 
+li{
+  font-size: 18px;
+  @media ${({ theme }) => theme.devices.tabletS} { 
+    font-size: 21px;
+  }
+}
+
 a {  
   font-size: 18px;
   @media ${({ theme }) => theme.devices.tabletS} { 

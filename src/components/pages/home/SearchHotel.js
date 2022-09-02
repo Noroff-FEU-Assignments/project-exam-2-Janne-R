@@ -44,7 +44,7 @@ const Welcome = () => {
   const formatResult = (item) => {
     return (
       <>
-        <span style={{ display: 'block', textAlign: 'left' }}>{item.hotelName}</span>
+        <span style={{ display: 'block', textAlign: 'left', cursor: "pointer" }}>{item.hotelName}</span>
       </>
     )
   }
