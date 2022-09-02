@@ -57,6 +57,14 @@ p {
   }
 }
 
+span{
+  font-family: 'Open Sans', sans-serif;
+  font-size: 18px;
+  @media ${({ theme }) => theme.devices.tabletS} { 
+    font-size: 21px;
+  }
+}
+
 a {  
   font-size: 18px;
   @media ${({ theme }) => theme.devices.tabletS} { 

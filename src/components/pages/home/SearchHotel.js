@@ -4,6 +4,7 @@ import useApi from '../../../hooks/useApi';
 import { BASE_URL } from "../../../constants/api";
 import { ReactSearchAutocomplete } from 'react-search-autocomplete'
 import { useNavigate } from "react-router-dom";
+import { useTheme } from 'styled-components'
 
 const Div = styled.div`
   background-color: ${({ theme }) => theme.colors.primaryColor};
@@ -37,6 +38,8 @@ const url = `${BASE_URL}/api/hotels`;
 
 const Welcome = () => {
   const { data: hotelList } = useApi(url);
+  const theme = useTheme();
+  const navigate = useNavigate();
 
   const formatResult = (item) => {
     return (
@@ -45,8 +48,6 @@ const Welcome = () => {
       </>
     )
   }
-
-  const navigate = useNavigate();
 
   const handleOnSelect = (item) => {
     navigate(`/details/${item.id}`);
@@ -60,6 +61,11 @@ const Welcome = () => {
       name: hotel.attributes.hotelName,
     }));
 
+    const style = {
+      borderRadius: "3x",
+      backgroundColor: theme.colors.backgroundColorDark,
+    };
+
 
     return (
       <Div>
@@ -68,7 +74,7 @@ const Welcome = () => {
           <P paragraph="Find your next hotel in Bergen here." lightColor />
         </div>
         <SearchContainer>
-          <ReactSearchAutocomplete styling={{ borderRadius: "3x", backgroundColor: "#F8F4F0", fontFamily: "Open sans", fontSize: "18px", }}
+          <ReactSearchAutocomplete styling={style}
             items={mapped}
             onSelect={handleOnSelect}
             formatResult={formatResult}
