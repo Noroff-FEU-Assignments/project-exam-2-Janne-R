@@ -7,27 +7,19 @@ import { ErrorMessage } from "../../common.styles/DisplayMessages";
 import styled from "styled-components";
 import Section from "../../common.styles/Section";
 import Button from "../../common.styles/Button";
-import EnquryModal from "./EnquryModal";
+import EnquiryModal from "./EnquiryModal";
 import { useState } from "react";
 
 
 const Details = () => {
   let { id } = useParams();
   const url = `${BASE_URL}/api/hotels/${id}`;
-  const [openEnquryModal, setOpenEnquryModal] = useState(false);
-
+  const [openEnquiryModal, setOpenEnquiryModal] = useState(false);
   const { data: hotel, isLoading, isError } = useApi(url);
 
-  const openModal = () => {
-    setOpenEnquryModal(true);
-  }
-
-  const closeModal = () => {
-    setOpenEnquryModal(false);
-  }
-
-  console.log(closeModal);
-
+  const toggleModal = () => {
+    setOpenEnquiryModal(!openEnquiryModal);
+  };
 
   if (isLoading) {
     return <Loader />;
@@ -51,8 +43,8 @@ const Details = () => {
             {hotel.attributes.longDescription}
           </P>
           <P paragraph={`Price: $${hotel.attributes.price} per/night`} />
-          <Button text="Booking" onClick={openModal} />
-          {openEnquryModal && <EnquryModal closeModal={closeModal} />}
+          <Button text="Booking" onClick={toggleModal} />
+          {openEnquiryModal && <EnquiryModal closeModal={toggleModal} />}
         </Section>
 
       </>
