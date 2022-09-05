@@ -39,7 +39,7 @@ const EnquryModal = ({ closeModal }) => {
     <Overlay>
       <ModalContent>
         <Flex>
-          <H1 title="Booking enqury" />
+          <H1 title="Booking enquiry" />
           <CloseModalButton aria-label="Close modal" onClick={closeModal}> <MdClose /></CloseModalButton>
         </Flex>
         <BookingEnquiry />
