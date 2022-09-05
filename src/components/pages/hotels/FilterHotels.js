@@ -18,7 +18,7 @@ const Input = styled.input`
   padding: 10px;
   width: 80%;
   background-color: ${({ theme }) => theme.colors.backgroundColorDark};
-  border: 1px solid ${({ theme }) => theme.colors.buttonColor};
+  border: 1px solid ${({ theme }) => theme.colors.primaryColor};
   border-radius: 3px;
 `;
 

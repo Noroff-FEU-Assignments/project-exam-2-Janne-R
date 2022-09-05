@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import { H1, H2, P } from "../../common.styles/DisplayText";
-import Button from "../../common.styles/Button";
 import BackgroundImage from "../../common.styles/BackgroundImage";
 import { Link } from "react-router-dom";
 import Grid from "../../common.styles/Grid";

@@ -25,9 +25,9 @@ const Arrow = styled(MdKeyboardArrowRight)`
 margin-left:20px;
 `;
 
-const Button = ({ text }) => {
+const Button = ({ text, onClick }) => {
   return (
-    <ButtonStyle >{text}<Arrow size="2rem" /> </ButtonStyle>
+    <ButtonStyle onClick={onClick}>{text}<Arrow size="2rem" /> </ButtonStyle>
   );
 };
 

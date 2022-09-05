@@ -46,7 +46,7 @@ const Hotels = () => {
                 <BackgroundImage img={"/images/bergenSmall.webp"} height={"260px"} />
                 <H2 title={hotel.attributes.hotelName} uppercase />
                 <P paragraph={hotel.attributes.shortDescription} />
-                <P paragraph={hotel.attributes.price} />
+                <P paragraph={`Price: $${hotel.attributes.price} per/night`} />
                 <Button text="View" />
               </StyledLink>
             ))}

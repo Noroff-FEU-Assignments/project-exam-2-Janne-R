@@ -54,8 +54,8 @@ export const H4 = ({ title, lightColor, uppercase }) => {
   );
 };
 
-export const P = ({ paragraph, lightColor, uppercase }) => {
+export const P = ({ paragraph, lightColor, uppercase, children }) => {
   return (
-    <StyledP lightColor={lightColor} uppercase={uppercase}>{paragraph}</StyledP>
+    <StyledP lightColor={lightColor} uppercase={uppercase}>{paragraph || children}</StyledP>
   );
 };
