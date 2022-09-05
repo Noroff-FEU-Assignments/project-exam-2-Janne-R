@@ -19,8 +19,15 @@ const Details = () => {
   const { data: hotel, isLoading, isError } = useApi(url);
 
   const openModal = () => {
-    setOpenEnquryModal(!openEnquryModal);
+    setOpenEnquryModal(true);
   }
+
+  const closeModal = () => {
+    setOpenEnquryModal(false);
+  }
+
+  console.log(closeModal);
+
 
   if (isLoading) {
     return <Loader />;
@@ -45,7 +52,7 @@ const Details = () => {
           </P>
           <P paragraph={`Price: $${hotel.attributes.price} per/night`} />
           <Button text="Booking" onClick={openModal} />
-          {openEnquryModal && <EnquryModal />}
+          {openEnquryModal && <EnquryModal closeModal={closeModal} />}
         </Section>
 
       </>

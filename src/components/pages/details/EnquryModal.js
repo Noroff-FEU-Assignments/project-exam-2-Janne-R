@@ -27,13 +27,13 @@ const CloseModalButton = styled.button`
 `;
 
 
-const EnquryModal = () => {
+const EnquryModal = ({ closeModal }) => {
   return (
 
     <Overlay>
       <ModalContent>
         <h3>Modal</h3>
-        <CloseModalButton aria-label="Close modal"> <MdClose /></CloseModalButton>
+        <CloseModalButton aria-label="Close modal" onClick={closeModal}> <MdClose /></CloseModalButton>
       </ModalContent>
     </Overlay>
 
