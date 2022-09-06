@@ -4,9 +4,41 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import styled from "styled-components";
 import Button from "../../common.styles/Button";
 
-const FormContainer = styled.form`
+const Flex = styled.form`
   display: flex;
   flex-direction: column;
+`;
+
+const Input = styled.input`
+  border-radius: 3px;
+  border: 1px solid ${({ theme }) => theme.colors.primaryColor};
+  background-color: ${({ theme }) => theme.colors.backgroundColorDark}; ;
+  padding: 10px;
+  margin-bottom: 20px;
+`;
+
+const Textarea = styled.textarea`
+  border-radius: 3px;
+  border: 1px solid ${({ theme }) => theme.colors.primaryColor};
+  background-color: ${({ theme }) => theme.colors.backgroundColorDark}; ;
+  padding: 10px;
+  margin-bottom: 20px;
+`;
+
+
+const Label = styled.label`
+   margin-top: 10px;
+  margin-bottom: 10px;
+`;
+
+const StyledButton = styled(Button)`
+  align-self: baseline;
+`;
+
+const Span = styled.span`
+  color: ${({ theme }) => theme.colors.errorColor};
+  margin-bottom: 20px;
+  margin-top: -20px;
 `;
 
 const schema = yup.object().shape({
@@ -29,25 +61,29 @@ const BookingEnquiry = () => {
   console.log(errors);
 
   return (
-    <FormContainer onSubmit={handleSubmit(onSubmit)}>
-      <label htmlFor="firstName">First name</label>
-      <input {...register("firstName")} />
-      {errors.firstName && <span>{errors.firstName.message}</span>}
+    <>
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <Flex>
+          <Label htmlFor="firstName">First name</Label>
+          <Input {...register("firstName")} />
+          {errors.firstName && <Span>{errors.firstName.message}</Span>}
 
-      <label htmlFor="lastname">Last name</label>
-      <input {...register("lastName")} />
-      {errors.lastName && <span>{errors.lastName.message}</span>}
+          <Label htmlFor="lastname">Last name</Label>
+          <Input {...register("lastName")} />
+          {errors.lastName && <Span>{errors.lastName.message}</Span>}
 
-      <label htmlFor="email"> Email</label>
-      <input {...register("email")} />
-      {errors.email && <span>{errors.email.message}</span>}
+          <Label htmlFor="email"> Email</Label>
+          <Input {...register("email")} />
+          {errors.email && <Span>{errors.email.message}</Span>}
 
-      <label htmlFor="message">Message</label>
-      <textarea rows="7"{...register("message")} />
-      {errors.message && <span>{errors.message.message}</span>}
+          <Label htmlFor="message">Message</Label>
+          <Textarea rows="7"{...register("message")} />
+          {errors.message && <Span>{errors.message.message}</Span>}
+        </Flex>
+        <StyledButton text="Send" />
 
-      <Button text="Send" />
-    </FormContainer>
+      </form>
+    </>
   )
 }
 
