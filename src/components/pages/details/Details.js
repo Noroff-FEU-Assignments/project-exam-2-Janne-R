@@ -9,7 +9,12 @@ import Section from "../../common.styles/Section";
 import Button from "../../common.styles/Button";
 import EnquiryModal from "./EnquiryModal";
 import { useState } from "react";
+import InfoBox from "../../common.styles/InfoBox";
 
+const Div = styled.div`
+  background-color: ${({ theme }) => theme.colors.primaryColor};
+  margin: 0 -10px 0 -10px;
+`;
 
 const Details = () => {
   let { id } = useParams();
@@ -45,6 +50,20 @@ const Details = () => {
           <P paragraph={`Price: $${hotel.attributes.price} per/night`} />
           <Button text="Booking" onClick={toggleModal} />
           {openEnquiryModal && <EnquiryModal closeModal={toggleModal} />}
+        </Section>
+        <Section backgroundColorLight>
+          <Div>
+            <P lightColor uppercase paragraph="Contact information" />
+            <P lightColor>
+              {hotel.attributes.adress}
+            </P>
+            <P lightColor>
+              {hotel.attributes.phone}
+            </P>
+            <P lightColor>
+              {hotel.attributes.email}
+            </P>
+          </Div>
         </Section>
 
       </>
