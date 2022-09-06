@@ -29,7 +29,6 @@ const Box = styled.div`
   margin: 0 -10px 0 -10px;
 
  @media ${({ theme }) => theme.devices.tabletS} { 
-    opacity: 94%;
     grid-area: 1 / 12 / 13 / 8;
  }
 `;

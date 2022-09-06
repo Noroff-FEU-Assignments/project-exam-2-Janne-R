@@ -12,16 +12,15 @@ import { useState } from "react";
 import InfoBox from "../../common.styles/InfoBox";
 import Grid from "../../common.styles/Grid";
 import BackgroundImage from "../../common.styles/BackgroundImage";
+import { RiStarSFill, RiStarSLine } from 'react-icons/ri';
 
+const Flex = styled.div`
+    display: flex;
+    align-items: baseline;
+`;
 
-const Information = styled.div`
-  
-  @media ${({ theme }) => theme.devices.tabletS} { 
-
-    margin: 0;
-    height: 360px;
-    grid-area: 2 / 1 / 12 / 13;
-  }
+const LeftAlign = styled.div`
+margin-left: 20px;
 `;
 
 const Details = () => {
@@ -46,10 +45,19 @@ const Details = () => {
     return (
       <>
         <Section backgroundColorLight>
-          <H1 title={hotel.attributes.hotelName} uppercase />
+          <Flex>
+            <H1 title={hotel.attributes.hotelName} uppercase />
+            <LeftAlign>
+              <RiStarSFill size="2rem" color="#375D71" />
+              <RiStarSFill size="2rem" color="#375D71" />
+              <RiStarSFill size="2rem" color="#375D71" />
+              <RiStarSFill size="2rem" color="#375D71" />
+              <RiStarSLine size="2rem" color="#375D71" />
+            </LeftAlign>
+          </Flex>
         </Section>
         <Section>
-          <Information>
+          <div>
             <P uppercase>
               Welcome to {hotel.attributes.hotelName}
             </P>
@@ -59,7 +67,8 @@ const Details = () => {
             <P paragraph={`Price: $${hotel.attributes.price} per/night`} />
             <Button text="Booking" onClick={toggleModal} />
             {openEnquiryModal && <EnquiryModal closeModal={toggleModal} />}
-          </Information>
+          </div>
+
         </Section>
         <Section backgroundColorLight>
           <InfoBox img={"/images/bergenSmall.webp"} title="We offer" paragraph="At our hotel you will always get:" liste={["Breakfast", "Free wifi", "Free parking", "Daily cleaning", "Laundry service"]} />
