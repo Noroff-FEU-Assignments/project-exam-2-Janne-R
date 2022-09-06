@@ -13,14 +13,31 @@ import InfoBox from "../../common.styles/InfoBox";
 import Grid from "../../common.styles/Grid";
 import BackgroundImage from "../../common.styles/BackgroundImage";
 import { RiStarSFill, RiStarSLine } from 'react-icons/ri';
+import { FaMapMarker } from 'react-icons/fa';
+
+
+const FlexContainer = styled.div`
+@media ${({ theme }) => theme.devices.tabletS} { 
+  display: flex;
+  justify-content:space-between;
+  align-items:center;
+}
+`;
 
 const Flex = styled.div`
     display: flex;
-    align-items: baseline;
+  align-items:center;
 `;
 
-const LeftAlign = styled.div`
-margin-left: 20px;
+const MapIcon = styled(FaMapMarker)`
+margin-right: 10px;
+`;
+
+const Div = styled.div`
+background-color: ${({ theme }) => theme.colors.primaryColor};
+margin: 0 -10px 0 -10px;
+padding:40px 10px;
+text-align:center;
 `;
 
 const Details = () => {
@@ -45,16 +62,9 @@ const Details = () => {
     return (
       <>
         <Section backgroundColorLight>
-          <Flex>
+          <FlexContainer>
             <H1 title={hotel.attributes.hotelName} uppercase />
-            <LeftAlign>
-              <RiStarSFill size="2rem" color="#375D71" />
-              <RiStarSFill size="2rem" color="#375D71" />
-              <RiStarSFill size="2rem" color="#375D71" />
-              <RiStarSFill size="2rem" color="#375D71" />
-              <RiStarSLine size="2rem" color="#375D71" />
-            </LeftAlign>
-          </Flex>
+          </FlexContainer>
         </Section>
         <Section>
           <div>
@@ -68,12 +78,23 @@ const Details = () => {
             <Button text="Booking" onClick={toggleModal} />
             {openEnquiryModal && <EnquiryModal closeModal={toggleModal} />}
           </div>
+          <Div>
+            <Flex>
+              <MapIcon color="white" size="2rem" />
+              <P lightColor paragraph={`${hotel.attributes.adress}`} />
+            </Flex>
+            <Flex>
+              <MapIcon color="white" size="2rem" />
+              <P lightColor paragraph={`${hotel.attributes.adress}`} />
+            </Flex>
+            <Flex>
+              <MapIcon color="white" size="2rem" />
+              <P lightColor paragraph={`${hotel.attributes.adress}`} />
+            </Flex>
+          </Div>
+        </Section>
 
-        </Section>
         <Section backgroundColorLight>
-          <InfoBox img={"/images/bergenSmall.webp"} title="We offer" paragraph="At our hotel you will always get:" liste={["Breakfast", "Free wifi", "Free parking", "Daily cleaning", "Laundry service"]} />
-        </Section>
-        <Section>
           <H2 title="Our rooms" />
           <Grid>
             <div>
@@ -93,7 +114,6 @@ const Details = () => {
             </div>
           </Grid>
         </Section>
-
       </>
     );
   };
