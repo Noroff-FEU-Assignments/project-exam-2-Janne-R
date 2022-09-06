@@ -25,7 +25,7 @@ const BackgroundImageBleed = styled(BackgroundImage)`
 
 const Box = styled.div`
   background-color: ${({ theme }) => theme.colors.primaryColor};
-  padding: 20px;
+  padding: 10px;
   margin: 0 -10px 0 -10px;
 
  @media ${({ theme }) => theme.devices.tabletS} { 
