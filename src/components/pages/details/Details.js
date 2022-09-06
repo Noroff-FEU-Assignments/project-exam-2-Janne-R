@@ -1,4 +1,4 @@
-import { H1, P } from "../../common.styles/DisplayText";
+import { H1, H2, P } from "../../common.styles/DisplayText";
 import useApi from "../../../hooks/useApi";
 import { useParams } from "react-router-dom";
 import { BASE_URL } from "../../../constants/api";
@@ -10,10 +10,18 @@ import Button from "../../common.styles/Button";
 import EnquiryModal from "./EnquiryModal";
 import { useState } from "react";
 import InfoBox from "../../common.styles/InfoBox";
+import Grid from "../../common.styles/Grid";
+import BackgroundImage from "../../common.styles/BackgroundImage";
 
-const Div = styled.div`
-  background-color: ${({ theme }) => theme.colors.primaryColor};
-  margin: 0 -10px 0 -10px;
+
+const Information = styled.div`
+  
+  @media ${({ theme }) => theme.devices.tabletS} { 
+
+    margin: 0;
+    height: 360px;
+    grid-area: 2 / 1 / 12 / 13;
+  }
 `;
 
 const Details = () => {
@@ -41,29 +49,40 @@ const Details = () => {
           <H1 title={hotel.attributes.hotelName} uppercase />
         </Section>
         <Section>
-          <P uppercase>
-            Welcome to {hotel.attributes.hotelName}
-          </P>
-          <P >
-            {hotel.attributes.longDescription}
-          </P>
-          <P paragraph={`Price: $${hotel.attributes.price} per/night`} />
-          <Button text="Booking" onClick={toggleModal} />
-          {openEnquiryModal && <EnquiryModal closeModal={toggleModal} />}
+          <Information>
+            <P uppercase>
+              Welcome to {hotel.attributes.hotelName}
+            </P>
+            <P >
+              {hotel.attributes.longDescription}
+            </P>
+            <P paragraph={`Price: $${hotel.attributes.price} per/night`} />
+            <Button text="Booking" onClick={toggleModal} />
+            {openEnquiryModal && <EnquiryModal closeModal={toggleModal} />}
+          </Information>
         </Section>
         <Section backgroundColorLight>
-          <Div>
-            <P lightColor uppercase paragraph="Contact information" />
-            <P lightColor>
-              {hotel.attributes.adress}
-            </P>
-            <P lightColor>
-              {hotel.attributes.phone}
-            </P>
-            <P lightColor>
-              {hotel.attributes.email}
-            </P>
-          </Div>
+          <InfoBox img={"/images/bergenSmall.webp"} title="We offer" paragraph="At our hotel you will always get:" liste={["Breakfast", "Free wifi", "Free parking", "Daily cleaning", "Laundry service"]} />
+        </Section>
+        <Section>
+          <H2 title="Our rooms" />
+          <Grid>
+            <div>
+              <BackgroundImage img={"/images/bergenSmall.webp"} height={"260px"} />
+              <P uppercase paragraph="Standard room" />
+              <P paragraph="Two single beds." />
+            </div>
+            <div>
+              <BackgroundImage img={"/images/bergenSmall.webp"} height={"260px"} />
+              <P uppercase paragraph="Family room" />
+              <P paragraph="One dobbel bed and one bunk bed." />
+            </div>
+            <div>
+              <BackgroundImage img={"/images/bergenSmall.webp"} height={"260px"} />
+              <P uppercase paragraph="Premium room" />
+              <P paragraph="King size dobble bed." />
+            </div>
+          </Grid>
         </Section>
 
       </>
