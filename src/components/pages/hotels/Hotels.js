@@ -19,44 +19,36 @@ const StyledLink = styled(Link)`
 const url = `${BASE_URL}/api/hotels`;
 
 const Hotels = () => {
-  const { data: hotelList, isLoading, isError } = useApi(url);
+  const { data: hotelList, isLoading, isError } = useApi(url, []);
   const [filterResult, setFilterResult] = useState(null);
-
-  if (isLoading) {
-    return <Loader />;
-  }
-
-  if (isError) {
-    return <ErrorMessage>A error has occurred</ErrorMessage>;
-  }
 
   const hotelsToPresent = filterResult ? filterResult : hotelList;
 
-  if (hotelList) {
-    return (
-      <>
-        <Section backgroundColorLight>
-          <H1 title="All hotels" uppercase />
-          <FilterHotels filterList={hotelList} filterResultUpdated={setFilterResult} />
-        </Section>
-        <Section>
-          <Grid>
-            {hotelsToPresent.map((hotel) => (
-              <StyledLink to={`/details/${hotel.id}`}>
-                <BackgroundImage img={"/images/bergenSmall.webp"} height={"260px"} />
-                <H2 title={hotel.attributes.hotelName} uppercase />
-                <P paragraph={hotel.attributes.shortDescription} />
-                <P paragraph={`Price: $${hotel.attributes.price} per/night`} />
-                <Button text="View" />
-              </StyledLink>
-            ))}
-          </Grid>
-          {filterResult && filterResult.length === 0 && hotelList.length > 0 && <ErrorMessage>No hotels matching your search</ErrorMessage>}
-          {hotelList.length === 0 && <ErrorMessage>Sorry we have no hotels</ErrorMessage>}
-        </Section>
-      </>
-    )
-  }
+  return (
+    <>
+      <Section backgroundColorLight>
+        {isLoading && <Loader />}
+        {isError && <ErrorMessage>A error has occurred</ErrorMessage>}
+        <H1 title="All hotels" uppercase />
+        <FilterHotels filterList={hotelList} filterResultUpdated={setFilterResult} />
+      </Section>
+      <Section>
+        <Grid>
+          {hotelsToPresent.map((hotel) => (
+            <StyledLink key={hotel.id} to={`/details/${hotel.id}`}>
+              <BackgroundImage img={"/images/bergenSmall.webp"} height={"260px"} />
+              <H2 title={hotel.attributes.hotelName} uppercase />
+              <P paragraph={hotel.attributes.shortDescription} />
+              <P paragraph={`Price: $${hotel.attributes.price} per/night`} />
+              <Button text="View" />
+            </StyledLink>
+          ))}
+        </Grid>
+        {filterResult && filterResult.length === 0 && hotelList.length > 0 && <ErrorMessage>No hotels matching your search</ErrorMessage>}
+        {hotelList.length === 0 && !isLoading && <ErrorMessage>Sorry we have no hotels</ErrorMessage>}
+      </Section>
+    </>
+  )
 }
 
 export default Hotels;

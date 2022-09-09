@@ -71,7 +71,7 @@ const ContactForm = () => {
       <Form onSubmit={handleSubmit(onSubmit)}>
         <Flex>
           <Label htmlFor="firstName">First name</Label>
-          <Input {...register("firstName")} />
+          <Input {...register("firstName")} placeholder="First name" />
           {errors.firstName && <Span>{errors.firstName.message}</Span>}
 
           <Label htmlFor="lastname">Last name</Label>

@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 const Loader = styled.div`
-  border: 16px solid ${({ theme }) => theme.colors.primaryColor};; 
+  border: 16px solid ${({ theme }) => theme.colors.primaryColor};
   border-top: 16px solid ${({ theme }) => theme.colors.buttonColor}; 
   border-radius: 50%;
   width: 120px;

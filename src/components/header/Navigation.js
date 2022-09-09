@@ -17,7 +17,7 @@ const BurgerMenu = styled(FiMenu)`
 `;
 
 const Ul = styled.ul`
-  display: ${(props) => props.showMenu ? "flex" : "none"};
+  display: ${({ showMenu }) => showMenu ? "flex" : "none"};
   background-color: ${({ theme }) => theme.colors.backgroundColorDark};
   position: absolute;
   flex-direction: column;
@@ -60,6 +60,7 @@ const StyledNavLink = styled(NavLink)`
 
 const Navigation = () => {
   const [toogleShowMenu, setToogleShowMenu] = useState(false);
+
   return (
     <Container>
       <Flex>
