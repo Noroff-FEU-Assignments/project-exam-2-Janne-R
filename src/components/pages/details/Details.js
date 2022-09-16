@@ -45,6 +45,7 @@ const Details = () => {
   const url = `${BASE_URL}/api/hotels/${id}`;
   const [openEnquiryModal, setOpenEnquiryModal] = useState(false);
   const { data: hotel, isLoading, isError } = useApi(url, null);
+  console.log(hotel);
 
   const toggleModal = () => {
     setOpenEnquiryModal(!openEnquiryModal);
