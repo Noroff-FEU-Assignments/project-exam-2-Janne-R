@@ -21,6 +21,7 @@ const url = `${BASE_URL}/api/hotels`;
 const Hotels = () => {
   const { data: hotelList, isLoading, isError } = useApi(url, []);
   const [filterResult, setFilterResult] = useState(null);
+  console.log(hotelList);
 
   const hotelsToPresent = filterResult ? filterResult : hotelList;
 

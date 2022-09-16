@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
 
-function useApi(url) {
+function useApi(url, defaultValue) {
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
-  const [data, setData] = useState();
+  const [data, setData] = useState(defaultValue);
 
   useEffect(() => {
     async function doFetch() {
@@ -13,6 +13,7 @@ function useApi(url) {
 
         const fetchedData = await fetch(url);
         const json = await fetchedData.json();
+        console.log(json);
 
         setData(json.data);
       } catch (error) {

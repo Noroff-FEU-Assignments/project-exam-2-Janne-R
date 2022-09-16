@@ -44,28 +44,24 @@ const Details = () => {
   let { id } = useParams();
   const url = `${BASE_URL}/api/hotels/${id}`;
   const [openEnquiryModal, setOpenEnquiryModal] = useState(false);
-  const { data: hotel, isLoading, isError } = useApi(url);
+  const { data: hotel, isLoading, isError } = useApi(url, null);
 
   const toggleModal = () => {
     setOpenEnquiryModal(!openEnquiryModal);
   };
 
-  if (isLoading) {
-    return <Loader />;
-  }
-
-  if (isError) {
-    return <ErrorMessage>A error has occurred</ErrorMessage>;
-  }
-
-  if (hotel) {
-    return (
-      <>
-        <Section backgroundColorLight>
+  return (
+    <>
+      <Section backgroundColorLight>
+        {isLoading && <Loader />}
+        {isError && <ErrorMessage>A error has occurred</ErrorMessage>}
+        {hotel &&
           <FlexContainer>
             <H1 title={hotel.attributes.hotelName} uppercase />
           </FlexContainer>
-        </Section>
+        }
+      </Section>
+      {hotel &&
         <Section>
           <div>
             <P uppercase>
@@ -93,30 +89,30 @@ const Details = () => {
             </Flex>
           </Div>
         </Section>
+      }
 
-        <Section backgroundColorLight>
-          <H2 title="Our rooms" />
-          <Grid>
-            <div>
-              <BackgroundImage img={"/images/bergenSmall.webp"} height={"260px"} />
-              <P uppercase paragraph="Standard room" />
-              <P paragraph="Two single beds." />
-            </div>
-            <div>
-              <BackgroundImage img={"/images/bergenSmall.webp"} height={"260px"} />
-              <P uppercase paragraph="Family room" />
-              <P paragraph="One dobbel bed and one bunk bed." />
-            </div>
-            <div>
-              <BackgroundImage img={"/images/bergenSmall.webp"} height={"260px"} />
-              <P uppercase paragraph="Premium room" />
-              <P paragraph="King size dobble bed." />
-            </div>
-          </Grid>
-        </Section>
-      </>
-    );
-  };
+
+      <Section backgroundColorLight>
+        <H2 title="Our rooms" />
+        <Grid>
+          <div>
+            <BackgroundImage img={"/images/bergenSmall.webp"} height={"260px"} />
+            <P uppercase paragraph="Standard room" />
+            <P paragraph="Two single beds." />
+          </div>
+          <div>
+            <BackgroundImage img={"/images/bergenSmall.webp"} height={"260px"} />
+            <P uppercase paragraph="Family room" />
+            <P paragraph="One dobbel bed and one bunk bed." />
+          </div>
+          <div>
+            <BackgroundImage img={"/images/bergenSmall.webp"} height={"260px"} />
+            <P uppercase paragraph="Premium room" />
+            <P paragraph="King size dobble bed." />
+          </div>
+        </Grid>
+      </Section>
+    </>
+  );
 };
-
 export default Details;

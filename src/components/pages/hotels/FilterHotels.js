@@ -26,11 +26,11 @@ const SearchIcon = styled(BiSearchAlt2)`
   margin-left: -30px;
 `;
 
-const FilterHotels = (props) => {
+const FilterHotels = ({ filterList, filterResultUpdated }) => {
   const onKeyUp = (event) => {
     const filterValue = event.target.value.trim().toLowerCase();
 
-    const filteredHotels = props.filterList.filter((hotel) => {
+    const filteredHotels = filterList.filter((hotel) => {
       if (hotel.attributes.hotelName.toLowerCase().startsWith(filterValue)) {
         return true;
       }
@@ -38,7 +38,7 @@ const FilterHotels = (props) => {
       return false;
     });
 
-    props.filterResultUpdated(filteredHotels);
+    filterResultUpdated(filteredHotels);
   }
   return (
     <>
