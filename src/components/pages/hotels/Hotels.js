@@ -16,14 +16,14 @@ const StyledLink = styled(Link)`
   text-decoration: none;
 `;
 
-const url = `${BASE_URL}/api/hotels`;
+const url = `${BASE_URL}/api/hotels?populate=*`;
 
 const Hotels = () => {
   const { data: hotelList, isLoading, isError } = useApi(url, []);
   const [filterResult, setFilterResult] = useState(null);
-  console.log(hotelList);
 
   const hotelsToPresent = filterResult ? filterResult : hotelList;
+  console.log(hotelsToPresent);
 
   return (
     <>
@@ -37,7 +37,7 @@ const Hotels = () => {
         <Grid>
           {hotelsToPresent.map((hotel) => (
             <StyledLink key={hotel.id} to={`/details/${hotel.id}`}>
-              <BackgroundImage img={"/images/bergenSmall.webp"} height={"260px"} />
+              <BackgroundImage img={hotel.attributes.coverImage.data?.attributes.formats.small?.url} height={"260px"} />
               <H2 title={hotel.attributes.hotelName} uppercase />
               <P paragraph={hotel.attributes.shortDescription} />
               <P paragraph={`Price: $${hotel.attributes.price} per/night`} />
@@ -45,6 +45,7 @@ const Hotels = () => {
             </StyledLink>
           ))}
         </Grid>
+
         {filterResult && filterResult.length === 0 && hotelList.length > 0 && <ErrorMessage>No hotels matching your search</ErrorMessage>}
         {hotelList.length === 0 && !isLoading && <ErrorMessage>Sorry we have no hotels</ErrorMessage>}
       </Section>

@@ -31,7 +31,7 @@ const FilterHotels = ({ filterList, filterResultUpdated }) => {
     const filterValue = event.target.value.trim().toLowerCase();
 
     const filteredHotels = filterList.filter((hotel) => {
-      if (hotel.attributes.hotelName.toLowerCase().startsWith(filterValue)) {
+      if (hotel.attributes.hotelName.toLowerCase().includes(filterValue)) {
         return true;
       }
 
