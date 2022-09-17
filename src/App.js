@@ -14,25 +14,27 @@ import Contact from "./components/pages/contact/Contact";
 import Login from "./components/pages/login/Login";
 import Admin from "./components/pages/admin/Admin";
 import Footer from "./components/footer/Footer";
+import { AuthProvider } from "./context/AuthContext";
 
 function App() {
   return (
-    <ThemeProvider theme={theme}>
-      <GlobalStyle />
-      <Router>
-        <Header />
-        <Routes>
-          <Route path="/" exact element={<Home />} />
-          <Route path="/hotels" exact element={<Hotels />} />
-          <Route path="/details/:id" exact element={<Details />} />
-          <Route path="/contact" exact element={<Contact />} />
-          <Route path="/login" exact element={<Login />} />
-          <Route path="/admin" exact element={<Admin />} />
-        </Routes>
-        <Footer />
-      </Router>
-    </ThemeProvider>
-
+    <AuthProvider>
+      <ThemeProvider theme={theme}>
+        <GlobalStyle />
+        <Router>
+          <Header />
+          <Routes>
+            <Route path="/" exact element={<Home />} />
+            <Route path="/hotels" exact element={<Hotels />} />
+            <Route path="/details/:id" exact element={<Details />} />
+            <Route path="/contact" exact element={<Contact />} />
+            <Route path="/login" exact element={<Login />} />
+            <Route path="/admin" exact element={<Admin />} />
+          </Routes>
+          <Footer />
+        </Router>
+      </ThemeProvider>
+    </AuthProvider>
 
   );
 }

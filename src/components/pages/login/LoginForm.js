@@ -3,6 +3,12 @@ import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import styled from "styled-components";
 import Button from "../../common.styles/Button";
+import postRequest from "../../../lib/postRequest";
+import { BASE_URL } from "../../../constants/api";
+import AuthContext from "../../../context/AuthContext";
+import { ErrorMessage } from "../../common.styles/DisplayMessages";
+import { useNavigate } from "react-router-dom";
+import { useState, useContext } from 'react';
 
 const Form = styled.form`
 background-color:${({ theme }) => theme.colors.backgroundColorLight};
@@ -54,21 +60,33 @@ const schema = yup.object().shape({
 
 
 const LoginForm = () => {
+  const [loginError, setLoginError] = useState(null);
+  const navigate = useNavigate();
+
   const { register, handleSubmit, formState: { errors } } = useForm({
     resolver: yupResolver(schema),
   });
 
+  const [, setAuth] = useContext(AuthContext);
 
   const onSubmit = async (data) => {
-    console.log(data);
-  }
+    setLoginError(null);
+    try {
+      const response = await postRequest(`${BASE_URL}/api/auth/local`, data);
+      setAuth(response);
+      navigate("/admin");
+    } catch (error) {
+      setLoginError("Wrong username or password!");
+    }
+    return false;
+  };
 
   console.log(errors);
   return (
     <>
       <Form onSubmit={handleSubmit(onSubmit)}>
         <Flex>
-
+          {loginError && <ErrorMessage>{loginError}</ErrorMessage>}
           <Label htmlFor="identifier">Username/Email</Label>
           <Input {...register("identifier")} />
           {errors.identifier && <Span>{errors.identifier.message}</Span>}
@@ -76,7 +94,6 @@ const LoginForm = () => {
           <Label htmlFor="password">Password</Label>
           <Input {...register("password")} type="password" />
           {errors.password && <Span>{errors.password.message}</Span>}
-
 
         </Flex>
         <StyledButton text="Send" />
