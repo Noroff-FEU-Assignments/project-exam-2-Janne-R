@@ -3,6 +3,10 @@ import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import styled from "styled-components";
 import Button from "../../common.styles/Button";
+import { useState } from "react";
+import postRequest from "../../../lib/postRequest";
+import { BASE_URL } from "../../../constants/api";
+import { SuccessMessage } from "../../common.styles/DisplayMessages";
 
 const Form = styled.form`
 background-color:${({ theme }) => theme.colors.backgroundColorLight};
@@ -56,19 +60,30 @@ const schema = yup.object().shape({
 });
 
 const ContactForm = () => {
+  const [contactSuccess, setContactSuccess] = useState(null);
+
   const { register, handleSubmit, control, formState: { errors } } = useForm({
     resolver: yupResolver(schema),
   });
 
-  function onSubmit(data) {
-    console.log(data);
-  }
+  const addNewContact = async (data) => {
+    setContactSuccess(null);
+    try {
+      const addedContact = await postRequest(`${BASE_URL}/api/contacts`, { data });
+      console.log(addedContact);
+      setContactSuccess("Contact form successfully sent!");
+
+    } catch (error) {
+      console.log("error", error);
+    }
+    return false;
+  };
 
   console.log(errors);
 
   return (
     <>
-      <Form onSubmit={handleSubmit(onSubmit)}>
+      <Form onSubmit={handleSubmit(addNewContact)}>
         <Flex>
           <Label htmlFor="firstName">First name</Label>
           <Input {...register("firstName")} placeholder="First name" />
@@ -87,6 +102,7 @@ const ContactForm = () => {
           {errors.message && <Span>{errors.message.message}</Span>}
         </Flex>
         <StyledButton text="Send" />
+        {contactSuccess && <SuccessMessage>{contactSuccess}</SuccessMessage>}
       </Form>
     </>
   )
