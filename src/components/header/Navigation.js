@@ -1,8 +1,10 @@
 import { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { FiMenu } from "react-icons/fi";
 import Container from "../common.styles/Container";
+import { useContext } from "react";
+import AuthContext from "../../context/AuthContext";
 
 const Flex = styled.div`
   display: flex;
@@ -60,6 +62,17 @@ const StyledNavLink = styled(NavLink)`
 
 const Navigation = () => {
   const [toogleShowMenu, setToogleShowMenu] = useState(false);
+  const [auth, setAuth] = useContext(AuthContext);
+
+  const navigate = useNavigate();
+
+  const logout = () => {
+    const dologOut = window.confirm("Are you sure you want to logout?");
+    if (dologOut) {
+      setAuth(null);
+      navigate("/");
+    }
+  };
 
   return (
     <Container>
@@ -85,11 +98,26 @@ const Navigation = () => {
                 Contact
               </StyledNavLink>
             </li>
-            <li>
-              <StyledNavLink to="/login">
-                Login
-              </StyledNavLink>
-            </li>
+            {auth ? (
+              <>
+                <li>
+                  <StyledNavLink to="/admin">
+                    Admin
+                  </StyledNavLink>
+                </li>
+                <li>
+                  <StyledNavLink to="/login" onClick={logout}>
+                    Logout
+                  </StyledNavLink>
+                </li>
+              </>
+            ) :
+              <li>
+                <StyledNavLink to="/login">
+                  Login
+                </StyledNavLink>
+              </li>
+            }
           </Ul>
         </nav>
       </Flex>
