@@ -42,7 +42,7 @@ text-align:center;
 
 const Details = () => {
   let { id } = useParams();
-  const url = `${BASE_URL}/api/hotels/${id}`;
+  const url = `${BASE_URL}/api/hotels/${id}?populate=*`;
   const [openEnquiryModal, setOpenEnquiryModal] = useState(false);
   const { data: hotel, isLoading, isError } = useApi(url, null);
   console.log(hotel);
@@ -62,38 +62,31 @@ const Details = () => {
           </FlexContainer>
         }
       </Section>
+
       {hotel &&
-        <Section>
-          <div>
-            <P uppercase>
-              Welcome to {hotel.attributes.hotelName}
-            </P>
-            <P >
-              {hotel.attributes.longDescription}
-            </P>
-            <P paragraph={`Price: $${hotel.attributes.price} per/night`} />
-            <Button text="Booking" onClick={toggleModal} />
-            {openEnquiryModal && <EnquiryModal closeModal={toggleModal} />}
-          </div>
-          <Div>
-            <Flex>
-              <MapIcon color="white" size="2rem" />
-              <P lightColor paragraph={`${hotel.attributes.adress}`} />
-            </Flex>
-            <Flex>
-              <MapIcon color="white" size="2rem" />
-              <P lightColor paragraph={`${hotel.attributes.adress}`} />
-            </Flex>
-            <Flex>
-              <MapIcon color="white" size="2rem" />
-              <P lightColor paragraph={`${hotel.attributes.adress}`} />
-            </Flex>
-          </Div>
-        </Section>
+        <>
+          <Section>
+            <div>
+              <P uppercase>
+                Welcome to {hotel.attributes.hotelName}
+              </P>
+              <P >
+                {hotel.attributes.shortDescription}
+              </P>
+              <P >
+                {hotel.attributes.longDescription}
+              </P>
+              <P paragraph={`Price: $${hotel.attributes.price} per/night`} />
+              <Button text="Booking" onClick={toggleModal} />
+              {openEnquiryModal && <EnquiryModal closeModal={toggleModal} />}
+            </div>
+          </Section>
+          <Section backgroundColorLight>
+            <InfoBox img={hotel.attributes.coverImage.data?.attributes.formats.medium?.url} title="Contact us" liste={[`${hotel.attributes.adress}`, `${hotel.attributes.phone}`, `${hotel.attributes.email}`]} />
+          </Section>
+        </>
       }
-
-
-      <Section backgroundColorLight>
+      <Section>
         <H2 title="Our rooms" />
         <Grid>
           <div>
@@ -112,6 +105,9 @@ const Details = () => {
             <P paragraph="King size dobble bed." />
           </div>
         </Grid>
+      </Section>
+      <Section>
+
       </Section>
     </>
   );

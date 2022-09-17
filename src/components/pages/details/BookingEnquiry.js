@@ -3,6 +3,11 @@ import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import styled from "styled-components";
 import Button from "../../common.styles/Button";
+import postRequest from "../../../lib/postRequest";
+import { BASE_URL } from "../../../constants/api";
+import { SuccessMessage } from "../../common.styles/DisplayMessages";
+import { useState } from "react";
+import { useParams } from "react-router-dom";
 
 const Flex = styled.form`
   display: flex;
@@ -50,19 +55,38 @@ const schema = yup.object().shape({
 });
 
 const BookingEnquiry = () => {
+  let { id } = useParams();
+
+  const [enquirySuccess, setEnquirySuccess] = useState(null);
+
   const { register, handleSubmit, control, formState: { errors } } = useForm({
     resolver: yupResolver(schema),
   });
 
-  function onSubmit(data) {
-    console.log(data);
-  }
+  const addNewEnquiry = async (data) => {
 
-  console.log(errors);
+    const enquiryData = {
+      ...data,
+      hotel: id,
+    };
+    console.log(enquiryData);
+
+
+    setEnquirySuccess(null);
+    try {
+      const addedEnqury = await postRequest(`${BASE_URL}/api/enquiries`, { data: enquiryData });
+      console.log(addedEnqury);
+      setEnquirySuccess("Enquiry successfully sent!");
+
+    } catch (error) {
+      console.log("error", error);
+    }
+    return false;
+  };
 
   return (
     <>
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <form onSubmit={handleSubmit(addNewEnquiry)}>
         <Flex>
           <Label htmlFor="firstName">First name</Label>
           <Input {...register("firstName")} />
@@ -79,9 +103,10 @@ const BookingEnquiry = () => {
           <Label htmlFor="message">Message</Label>
           <Textarea rows="7"{...register("message")} />
           {errors.message && <Span>{errors.message.message}</Span>}
+
         </Flex>
         <StyledButton text="Send" />
-
+        {enquirySuccess && <SuccessMessage>{enquirySuccess}</SuccessMessage>}
       </form>
     </>
   )

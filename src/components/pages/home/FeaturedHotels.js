@@ -14,7 +14,7 @@ const StyledLink = styled(Link)`
   text-decoration: none;
 `;
 
-const url = `${BASE_URL}/api/hotels`;
+const url = `${BASE_URL}/api/hotels?populate=*`;
 
 const FeaturedHotels = () => {
   const { data: featuredList, isLoading, isError } = useApi(url, []);
@@ -36,7 +36,7 @@ const FeaturedHotels = () => {
       <Grid>
         {featuredHotels.map((featuredHotel) => (
           <StyledLink key={featuredHotel.id} to={`/details/${featuredHotel.id}`}>
-            <BackgroundImage img={"/images/bergenSmall.webp"} height={"260px"} />
+            <BackgroundImage img={featuredHotel.attributes.coverImage.data?.attributes.formats.small?.url} height={"260px"} />
             <H2 title={featuredHotel.attributes.hotelName} uppercase />
             <P paragraph={featuredHotel.attributes.shortDescription} />
             <P paragraph={`Price: $${featuredHotel.attributes.price} per/night`} />
