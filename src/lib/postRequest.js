@@ -11,6 +11,7 @@ const postRequest = async (url, data, headers = {}) => {
   const response = await fetch(url, options);
   if (response.ok) {
     const json = await response.json();
+    console.log(json);
     return json;
 
   }

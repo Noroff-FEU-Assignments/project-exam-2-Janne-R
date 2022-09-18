@@ -3,7 +3,13 @@ import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import styled from "styled-components";
 import Button from "../../common.styles/Button";
-
+import postRequest from "../../../lib/postRequest";
+import { BASE_URL } from "../../../constants/api";
+import { SuccessMessage } from "../../common.styles/DisplayMessages";
+import { useState } from "react";
+import AuthContext from "../../../context/AuthContext";
+import { useContext } from "react";
+import { H2 } from "../../common.styles/DisplayText";
 
 const Form = styled.form`
 background-color:${({ theme }) => theme.colors.backgroundColorLight};
@@ -33,8 +39,14 @@ const Textarea = styled.textarea`
 
 
 const Label = styled.label`
-   margin-top: 10px;
+  margin-top: 10px;
   margin-bottom: 10px;
+`;
+
+const Checkbox = styled.input`
+  width: 40px;
+  height: 40px;
+  accent-color: ${({ theme }) => theme.colors.primaryColor};
 `;
 
 const StyledButton = styled(Button)`
@@ -46,7 +58,7 @@ const Span = styled.span`
   margin-bottom: 20px;
   margin-top: -20px;
 `;
-const phoneRegExp = /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/
+
 const phoneRegExp2 = /^[0-9]{8}$/;
 
 const schema = yup.object().shape({
@@ -59,9 +71,11 @@ const schema = yup.object().shape({
   phone: yup.string().required("Please enter a phone number").matches(phoneRegExp2, 'Phone number must contain only numbers and be exact 8 digits'),
 });
 
-
-
 const AddNewHotel = () => {
+
+  const [addNewSuccess, setAddNewSuccess] = useState(null);
+  const [auth] = useContext(AuthContext);
+  const [files, setFiles] = useState()
 
 
   const { register, handleSubmit, formState: { errors } } = useForm({
@@ -69,12 +83,21 @@ const AddNewHotel = () => {
   });
 
   const onSubmit = async (data) => {
-    console.log(data);
+    setAddNewSuccess(null);
+    try {
+      const addedHotel = await postRequest(`${BASE_URL}/api/hotels`, { data }, { Authorization: `Bearer ${auth.jwt}` });
+      console.log(addedHotel);
+      setAddNewSuccess("New hotel added")
+    } catch (error) {
+      console.log("error", error);
+    }
+    return false;
   };
 
-  console.log(errors);
   return (
+
     <>
+      <H2 title="Create new" uppercase />
       <Form onSubmit={handleSubmit(onSubmit)}>
         <Flex>
           <Label htmlFor="hotelName">Hotel Name</Label>
@@ -82,11 +105,11 @@ const AddNewHotel = () => {
           {errors.hotelName && <Span>{errors.hotelName.message}</Span>}
 
           <Label htmlFor="shortDescription">Short description</Label>
-          <Input {...register("shortDescription")} />
+          <Textarea rows="6"{...register("shortDescription")} />
           {errors.shortDescription && <Span>{errors.shortDescription.message}</Span>}
 
           <Label htmlFor="longDescription">Long description</Label>
-          <Input {...register("longDescription")} />
+          <Textarea rows="12"{...register("longDescription")} />
           {errors.longDescription && <Span>{errors.longDescription.message}</Span>}
 
           <Label htmlFor="price">Price</Label>
@@ -105,7 +128,17 @@ const AddNewHotel = () => {
           <Input {...register("phone")} />
           {errors.phone && <Span>{errors.phone.message}</Span>}
 
+          <Label htmlFor="image">Image</Label>
+          <input
+            type="file"
+            onChange={(e) => setFiles(e.target.files)}
+          />
+
+          <Label htmlFor="isFeatured">Is featured?</Label>
+          <Checkbox type="checkbox" {...register("isFeatured")} />
+
         </Flex>
+        {addNewSuccess && <SuccessMessage>{addNewSuccess}</SuccessMessage>}
         <StyledButton text="Send" />
       </Form>
     </>

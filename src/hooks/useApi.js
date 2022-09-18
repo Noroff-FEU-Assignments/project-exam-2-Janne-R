@@ -1,6 +1,13 @@
 import { useState, useEffect } from 'react';
 
-function useApi(url, defaultValue) {
+function useApi(url, defaultValue, headers) {
+  const options = {
+    headers: {
+      "Content-type": "application/json",
+      ...headers
+    }
+  };
+
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
   const [data, setData] = useState(defaultValue);
@@ -11,7 +18,7 @@ function useApi(url, defaultValue) {
         setIsLoading(true);
         setIsError(false);
 
-        const fetchedData = await fetch(url);
+        const fetchedData = await fetch(url, options);
         const json = await fetchedData.json();
         console.log(json);
 

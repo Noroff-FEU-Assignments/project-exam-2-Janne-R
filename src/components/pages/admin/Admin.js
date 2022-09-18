@@ -6,6 +6,8 @@ import Section from "../../common.styles/Section";
 import NavButton from "../../common.styles/NavButton";
 import styled from "styled-components";
 import AddNewHotel from "./AddNewHotel";
+import ListOfEnquires from "./ListOfEnquires";
+import ListOfMessages from "./ListOfMessages";
 
 const Flex = styled.div`
 display: flex;
@@ -30,7 +32,7 @@ const Admin = () => {
   return (
     <>
       <Section backgroundColorLight>
-        <H1 title="Admin" />
+        <H1 title="Admin" uppercase />
         <P paragraph="Welcome to your admin page" />
       </Section>
       <Section >
@@ -40,6 +42,12 @@ const Admin = () => {
           <NavButton text="List of messages" />
         </Flex>
         <AddNewHotel />
+      </Section>
+      <Section backgroundColorLight>
+        <ListOfEnquires />
+      </Section>
+      <Section>
+        <ListOfMessages />
       </Section>
     </>
   )

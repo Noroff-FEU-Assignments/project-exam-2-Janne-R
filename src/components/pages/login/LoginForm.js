@@ -73,6 +73,7 @@ const LoginForm = () => {
     setLoginError(null);
     try {
       const response = await postRequest(`${BASE_URL}/api/auth/local`, data);
+      console.log("heisann", response);
       setAuth(response);
       navigate("/admin");
     } catch (error) {
