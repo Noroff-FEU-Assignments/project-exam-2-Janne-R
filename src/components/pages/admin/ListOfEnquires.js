@@ -5,6 +5,11 @@ import { ErrorMessage } from "../../common.styles/DisplayMessages";
 import Loader from "../../common.styles/Loader";
 import AuthContext from "../../../context/AuthContext";
 import { useContext } from "react";
+import styled from "styled-components";
+
+const Div = styled.div`
+border: 1px solid black;
+`;
 
 const url = `${BASE_URL}/api/enquiries`;
 
@@ -19,7 +24,13 @@ const ListOfEnquires = () => {
       {isLoading && <Loader />}
       {isError && <ErrorMessage>A error has occurred</ErrorMessage>}
       {enquiresList.map((enquire) => (
-        <P paragraph={enquire.attributes.firstName} />
+        <Div>
+          <P paragraph={enquire.attributes.firstName} />
+          <P paragraph={enquire.attributes.lastName} />
+          <P paragraph={enquire.attributes.email} />
+          <P paragraph={enquire.attributes.message} />
+          <P paragraph={enquire.attributes.roomType} />
+        </Div>
 
       ))}
     </>
