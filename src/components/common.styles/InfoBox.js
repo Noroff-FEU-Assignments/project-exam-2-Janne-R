@@ -6,7 +6,6 @@ import { FaStarOfLife } from 'react-icons/fa';
 const GridContainer = styled.div`
 
  @media ${({ theme }) => theme.devices.tabletS} { 
-  height: 430px;
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   grid-template-rows: repeat(12, 1fr);
@@ -17,9 +16,20 @@ const BackgroundImageBleed = styled(BackgroundImage)`
   margin: 0 -10px 0 -10px;
   
   @media ${({ theme }) => theme.devices.tabletS} { 
+    height: 460px ;
     margin: 0;
-    height: 360px;
     grid-area: 2 / 1 / 12 / 13;
+  }
+
+  @media ${({ theme }) => theme.devices.laptopS} { 
+    height: 560px ;
+    grid-area: 2 / 1 / 12 / 13;
+   
+  }
+
+  @media ${({ theme }) => theme.devices.laptopL} { 
+    height: 660px ;
+   
   }
 `;
 
@@ -45,7 +55,7 @@ const Ul = styled.ul`
 const Flex = styled.div`
   display: Flex;
   align-items: center;
-  margin-bottom:20px ;
+  margin-bottom:40px ;
 `;
 
 const StarIcon = styled(FaStarOfLife)`
@@ -55,7 +65,7 @@ const StarIcon = styled(FaStarOfLife)`
 const InfoBox = ({ title, paragraph, liste, img }) => {
   return (
     <GridContainer>
-      <BackgroundImageBleed img={img} height={"260px"} />
+      <BackgroundImageBleed img={img} height={"360px"} />
       <Box>
         <H2 title={title} lightColor uppercase />
         <P lightColor paragraph={paragraph} />

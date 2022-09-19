@@ -2,10 +2,15 @@ import { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { FiMenu } from "react-icons/fi";
-import Container from "../common.styles/Container";
+import Section from "../common.styles/Section";
 import { useContext } from "react";
 import AuthContext from "../../context/AuthContext";
 
+const StickyNav = styled.div`
+    position: fixed;
+    width: 100%;
+    z-index: 1;
+`;
 const Flex = styled.div`
   display: flex;
   justify-content: space-between;
@@ -75,7 +80,7 @@ const Navigation = () => {
   };
 
   return (
-    <Container>
+    <Section>
       <Flex>
         <NavLink to="/">
           Logo
@@ -121,7 +126,7 @@ const Navigation = () => {
           </Ul>
         </nav>
       </Flex>
-    </Container>
+    </Section>
   )
 }
 

@@ -50,21 +50,21 @@ const VisitBergen = () => {
           <Ribbon>
             FLØIBANEN
           </Ribbon>
-          <BackgroundImage img={"/images/bergenSmall.webp"} height={"260px"} />
+          <BackgroundImage img={"/images/fløibanen.webp"} height={"360px"} />
           <P paragraph="Fløibanen is a rail-running cable car between the city center and the Fløyen viewpoint located at 320 meters above sea level. The Fløibanen and Fløyen are an iconic feature of Bergen and at the same time one of Norway's most visited and largest tourist attractions." />
         </div>
         <div>
           <Ribbon>
             ULRIKSBANEN
           </Ribbon>
-          <BackgroundImage img={"/images/bergenSmall.webp"} height={"260px"} />
+          <BackgroundImage img={"/images/ulriksbanen.webp"} height={"360px"} />
           <P paragraph="Ulriksbanen is a double ropeway that runs up to the city's highest mountain, Ulriken. The cable car has a length of 1,120 meters and the trip takes six minutes. The view along the way and from the top is formidable." />
         </div>
         <div>
           <Ribbon>
             FJORD CRUISE
           </Ribbon>
-          <BackgroundImage img={"/images/bergenSmall.webp"} height={"260px"} />
+          <BackgroundImage img={"/images/fjordcruise.webp"} height={"360px"} />
           <P paragraph="Experience deep fjords, steep mountains, fresh waterfalls and strong currents - all year round! The tour starts from Zachariasbryggen, close to the famous Fish Market in Bergen. On the departure from Bergen, you will get a good view of the famous Bryggen, Gamle Bergen and the rest of the harbor area. " />
         </div>
       </Grid>

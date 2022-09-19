@@ -14,9 +14,10 @@ border: 1px solid black;
 const url = `${BASE_URL}/api/enquiries`;
 
 const ListOfEnquires = () => {
+
   const [auth] = useContext(AuthContext);
   const { data: enquiresList, isLoading, isError } = useApi(url, [], { Authorization: `Bearer ${auth.jwt}` });
-
+  console.log(enquiresList);
 
   return (
     <>

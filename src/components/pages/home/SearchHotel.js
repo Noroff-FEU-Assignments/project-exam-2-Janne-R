@@ -14,7 +14,7 @@ const Div = styled.div`
   text-align: center;
   padding: 20px;
   margin: -65px -10px 0 -10px;
-  @media ${({ theme }) => theme.devices.tabletS} { 
+  @media ${({ theme }) => theme.devices.laptopS} { 
     flex-direction: row;
     text-align: left;
     display: flex;
@@ -29,7 +29,7 @@ const SearchContainer = styled.div`
   @media ${({ theme }) => theme.devices.mobileL} { 
     width:80% ;
   }
-  @media ${({ theme }) => theme.devices.tabletS} { 
+  @media ${({ theme }) => theme.devices.laptopS} { 
   width:50%;
   }
 `;
@@ -70,8 +70,7 @@ const Welcome = () => {
     return (
       <Div>
         <div>
-          <P paragraph="Reservation" uppercase lightColor />
-          <P paragraph="Find your next hotel in Bergen here." lightColor />
+          <P paragraph="Search for your next hotel in Bergen here." lightColor />
         </div>
         <SearchContainer>
           <ReactSearchAutocomplete styling={style}

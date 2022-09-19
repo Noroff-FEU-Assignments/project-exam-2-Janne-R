@@ -36,7 +36,7 @@ const FeaturedHotels = () => {
       <Grid>
         {featuredHotels.map((featuredHotel) => (
           <StyledLink key={featuredHotel.id} to={`/details/${featuredHotel.id}`}>
-            <BackgroundImage img={featuredHotel.attributes.coverImage.data?.attributes.formats.small?.url} height={"260px"} />
+            <BackgroundImage img={featuredHotel.attributes.coverImage.data?.attributes.formats.small?.url} height={"360px"} />
             <H2 title={featuredHotel.attributes.hotelName} uppercase />
             <P paragraph={featuredHotel.attributes.shortDescription} />
             <P paragraph={`Price: $${featuredHotel.attributes.price} per/night`} />

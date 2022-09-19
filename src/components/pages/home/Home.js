@@ -14,7 +14,7 @@ const Home = () => {
         <VisitBergen />
       </Section>
       <Section>
-        <InfoBox img={"/images/bergenSmall.webp"} title="Why choose us" paragraph="Some of the feedbacks we get from our lovely customers:" liste={["Easy booking", "Great customer service", "Quality hotels", "Best city in Norway"]} />
+        <InfoBox img={"/images/hotelroom.webp"} title="Why choose us" paragraph="All hotels in the Holidaze family offers:" liste={["Easy booking", "Great customer service", "Quality hotels", "Best city in Norway", "Free breakfast", "Free wifi", "Free parking", "Wakeup service"]} />
       </Section>
       <Section backgroundColorLight>
         <FeaturedHotels />
