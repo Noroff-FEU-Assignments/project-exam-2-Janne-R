@@ -14,35 +14,20 @@ import Grid from "../../common.styles/Grid";
 import BackgroundImage from "../../common.styles/BackgroundImage";
 import { RiStarSFill, RiStarSLine } from 'react-icons/ri';
 import { FaMapMarker } from 'react-icons/fa';
+import Box from "../../common.styles/Box";
+import GridContainer from "../../common.styles/GridContainer";
 
-const GridContainer = styled.div`
-
+const StyledBox = styled(Box)`
  @media ${({ theme }) => theme.devices.tabletS} { 
-  display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  grid-template-rows: repeat(12, 1fr);
-  }
+margin-top: -70px;
+margin-bottom: -70px;
+ }
 `;
 
 const InfoText = styled.div`
   grid-area: 2 / 1 / 12 / 8;
   margin-right: 20px;
   `;
-
-
-const Box = styled.div`
-background-color: ${({ theme }) => theme.colors.primaryColor};
-padding: 10px;
-margin: 0 -10px 0 -10px;
-
-
-@media ${({ theme }) => theme.devices.tabletS} { 
-  grid-area: 1 / 12 / 13 / 8;
-  margin-top: -40px;
-    margin-bottom: -40px;
-    z-index: 1;
-}
-`;
 
 const FlexContainer = styled.div`
 @media ${({ theme }) => theme.devices.tabletS} { 
@@ -52,21 +37,6 @@ const FlexContainer = styled.div`
 }
 `;
 
-const Flex = styled.div`
-    display: flex;
-  align-items:center;
-`;
-
-const MapIcon = styled(FaMapMarker)`
-margin-right: 10px;
-`;
-
-const Div = styled.div`
-background-color: ${({ theme }) => theme.colors.primaryColor};
-margin: 0 -10px 0 -10px;
-padding:40px 10px;
-text-align:center;
-`;
 
 const Details = () => {
   let { id } = useParams();
@@ -90,34 +60,28 @@ const Details = () => {
           </FlexContainer>
         }
       </Section>
-
       {hotel &&
-        <>
-          <Section>
-
-            <GridContainer>
-              <InfoText>
-                <P uppercase>
-                  Welcome to {hotel.attributes.hotelName}
-                </P>
-                <P >
-                  {hotel.attributes.shortDescription}
-                </P>
-                <P >
-                  {hotel.attributes.longDescription}
-                </P>
-                <P paragraph={`Price: $${hotel.attributes.price} per/night`} />
-                <Button text="Booking" onClick={toggleModal} />
-                {openEnquiryModal && <EnquiryModal closeModal={toggleModal} />}
-              </InfoText>
-              <Box>
-                <p>Contact us</p>
-              </Box>
-            </GridContainer>
-
-          </Section>
-
-        </>
+        <Section>
+          <GridContainer>
+            <InfoText>
+              <P uppercase>
+                Welcome to {hotel.attributes.hotelName}
+              </P>
+              <P >
+                {hotel.attributes.shortDescription}
+              </P>
+              <P >
+                {hotel.attributes.longDescription}
+              </P>
+              <P paragraph={`Price: $${hotel.attributes.price} per/night`} />
+              <Button text="Booking" onClick={toggleModal} />
+              {openEnquiryModal && <EnquiryModal closeModal={toggleModal} />}
+            </InfoText>
+            <StyledBox>
+              <p>Contact us</p>
+            </StyledBox>
+          </GridContainer>
+        </Section>
       }
       <Section backgroundColorLight>
         <H2 title="Our rooms" uppercase />
