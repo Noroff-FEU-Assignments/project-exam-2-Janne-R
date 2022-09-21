@@ -22,6 +22,14 @@ const Input = styled.input`
   margin-bottom: 20px;
 `;
 
+const Select = styled.select`
+ border-radius: 3px;
+  border: 1px solid ${({ theme }) => theme.colors.primaryColor};
+  background-color: ${({ theme }) => theme.colors.backgroundColorDark}; ;
+  padding: 10px;
+  margin-bottom: 20px;
+`;
+
 const Textarea = styled.textarea`
   border-radius: 3px;
   border: 1px solid ${({ theme }) => theme.colors.primaryColor};
@@ -88,6 +96,14 @@ const BookingEnquiry = () => {
     <>
       <form onSubmit={handleSubmit(addNewEnquiry)}>
         <Flex>
+
+          <Label for="roomType">Choose a room type:</Label>
+          <Select name="roomType" id="roomType" {...register("roomType")} >
+            <option name="Standard" value="Standard">Standard room</option>
+            <option name="Family" value="Family">Family Room</option>
+            <option name="Premium" value="Premium">Premium Room</option>
+          </Select>
+
           <Label htmlFor="firstName">First name</Label>
           <Input {...register("firstName")} />
           {errors.firstName && <Span>{errors.firstName.message}</Span>}
