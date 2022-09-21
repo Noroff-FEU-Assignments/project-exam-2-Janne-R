@@ -71,7 +71,7 @@ const InfoBox = ({ title, paragraph, liste, img }) => {
         <P lightColor paragraph={paragraph} />
         <Ul>
           {liste.map((item) => (
-            <Flex>
+            <Flex key={item.id}>
               <StarIcon size="1.5rem" color="white" />
               <li>{item}</li>
             </Flex>

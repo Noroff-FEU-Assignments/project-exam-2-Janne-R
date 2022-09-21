@@ -82,7 +82,7 @@ const Details = () => {
             </div>
           </Section>
           <Section backgroundColorLight>
-            <InfoBox img={hotel.attributes.coverImage.data?.attributes.formats.medium?.url} title="Contact us" liste={[`${hotel.attributes.adress}`, `${hotel.attributes.phone}`, `${hotel.attributes.email}`]} />
+            <InfoBox img={hotel.attributes.coverImage.data?.attributes.formats.medium?.url} title="Contact us" paragraph="text" liste={[`${hotel.attributes.adress}`, `${hotel.attributes.phone}`, `${hotel.attributes.email}`]} />
           </Section>
         </>
       }

@@ -14,6 +14,7 @@ const Div = styled.div`
   text-align: center;
   padding: 20px;
   margin: -65px -10px 0 -10px;
+  border-radius: 3px;
   @media ${({ theme }) => theme.devices.laptopS} { 
     flex-direction: row;
     text-align: left;
@@ -62,7 +63,7 @@ const Welcome = () => {
     }));
 
     const style = {
-      borderRadius: "3x",
+      borderRadius: "3px",
       backgroundColor: theme.colors.backgroundColorDark,
     };
 
