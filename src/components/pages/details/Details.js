@@ -80,7 +80,7 @@ const Details = () => {
   };
 
   return (
-    <>
+    <main>
       <Section backgroundColorLight>
         {isLoading && <Loader />}
         {isError && <ErrorMessage>A error has occurred</ErrorMessage>}
@@ -144,7 +144,7 @@ const Details = () => {
           <BackgroundImage img={hotel.attributes.coverImage.data?.attributes.formats.large?.url} height={"560px"} />
         }
       </Section>
-    </>
+    </main>
   );
 };
 export default Details;

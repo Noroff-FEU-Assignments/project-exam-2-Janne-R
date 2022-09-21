@@ -26,7 +26,7 @@ const Hotels = () => {
   console.log(hotelsToPresent);
 
   return (
-    <>
+    <main>
       <Section backgroundColorLight>
         {isLoading && <Loader />}
         {isError && <ErrorMessage>A error has occurred</ErrorMessage>}
@@ -49,7 +49,7 @@ const Hotels = () => {
         {filterResult && filterResult.length === 0 && hotelList.length > 0 && <ErrorMessage>No hotels matching your search</ErrorMessage>}
         {hotelList.length === 0 && !isLoading && <ErrorMessage>Sorry we have no hotels</ErrorMessage>}
       </Section>
-    </>
+    </main>
   )
 }
 

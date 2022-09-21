@@ -30,7 +30,7 @@ const Admin = () => {
   }, [auth, navigate]);
 
   return (
-    <>
+    <main>
       <Section backgroundColorLight>
         <H1 title="Admin" uppercase />
         <P paragraph="Welcome to your admin page" />
@@ -49,7 +49,7 @@ const Admin = () => {
       <Section>
         <ListOfMessages />
       </Section>
-    </>
+    </main>
   )
 }
 

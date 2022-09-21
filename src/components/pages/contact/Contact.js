@@ -4,7 +4,7 @@ import Section from "../../common.styles/Section";
 
 const Contact = () => {
   return (
-    <>
+    <main>
       <Section backgroundColorLight>
         <H1 title="Contact us" />
         <P paragraph="If you have any questions or want to be 
@@ -15,7 +15,7 @@ form on this page or send us an email."/>
       <Section>
         <ContactForm />
       </Section>
-    </>
+    </main>
   )
 }
 

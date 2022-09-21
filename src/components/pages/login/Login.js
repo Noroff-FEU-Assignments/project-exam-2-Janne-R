@@ -13,7 +13,7 @@ text-align:center;
 
 const Login = () => {
   return (
-    <>
+    <main>
       <Section backgroundColorLight>
         <H1 title="Login" />
         <P paragraph="Login for admins of Holidaze and hotel owners." />
@@ -29,7 +29,7 @@ account to lorem ipusm.  "/>
       <Section>
         <LoginForm />
       </Section>
-    </>
+    </main>
   )
 }
 
