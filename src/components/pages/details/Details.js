@@ -15,6 +15,34 @@ import BackgroundImage from "../../common.styles/BackgroundImage";
 import { RiStarSFill, RiStarSLine } from 'react-icons/ri';
 import { FaMapMarker } from 'react-icons/fa';
 
+const GridContainer = styled.div`
+
+ @media ${({ theme }) => theme.devices.tabletS} { 
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: repeat(12, 1fr);
+  }
+`;
+
+const InfoText = styled.div`
+  grid-area: 2 / 1 / 12 / 8;
+  margin-right: 20px;
+  `;
+
+
+const Box = styled.div`
+background-color: ${({ theme }) => theme.colors.primaryColor};
+padding: 10px;
+margin: 0 -10px 0 -10px;
+
+
+@media ${({ theme }) => theme.devices.tabletS} { 
+  grid-area: 1 / 12 / 13 / 8;
+  margin-top: -40px;
+    margin-bottom: -40px;
+    z-index: 1;
+}
+`;
 
 const FlexContainer = styled.div`
 @media ${({ theme }) => theme.devices.tabletS} { 
@@ -66,48 +94,55 @@ const Details = () => {
       {hotel &&
         <>
           <Section>
-            <div>
-              <P uppercase>
-                Welcome to {hotel.attributes.hotelName}
-              </P>
-              <P >
-                {hotel.attributes.shortDescription}
-              </P>
-              <P >
-                {hotel.attributes.longDescription}
-              </P>
-              <P paragraph={`Price: $${hotel.attributes.price} per/night`} />
-              <Button text="Booking" onClick={toggleModal} />
-              {openEnquiryModal && <EnquiryModal closeModal={toggleModal} />}
-            </div>
+
+            <GridContainer>
+              <InfoText>
+                <P uppercase>
+                  Welcome to {hotel.attributes.hotelName}
+                </P>
+                <P >
+                  {hotel.attributes.shortDescription}
+                </P>
+                <P >
+                  {hotel.attributes.longDescription}
+                </P>
+                <P paragraph={`Price: $${hotel.attributes.price} per/night`} />
+                <Button text="Booking" onClick={toggleModal} />
+                {openEnquiryModal && <EnquiryModal closeModal={toggleModal} />}
+              </InfoText>
+              <Box>
+                <p>Contact us</p>
+              </Box>
+            </GridContainer>
+
           </Section>
-          <Section backgroundColorLight>
-            <InfoBox img={hotel.attributes.coverImage.data?.attributes.formats.medium?.url} title="Contact us" paragraph="text" liste={[`${hotel.attributes.adress}`, `${hotel.attributes.phone}`, `${hotel.attributes.email}`]} />
-          </Section>
+
         </>
       }
-      <Section>
-        <H2 title="Our rooms" />
+      <Section backgroundColorLight>
+        <H2 title="Our rooms" uppercase />
         <Grid>
           <div>
-            <BackgroundImage img={"/images/bergenSmall.webp"} height={"260px"} />
+            <BackgroundImage img={"/images/standardRoom.webp"} height={"360px"} />
             <P uppercase paragraph="Standard room" />
             <P paragraph="Two single beds." />
           </div>
           <div>
-            <BackgroundImage img={"/images/bergenSmall.webp"} height={"260px"} />
+            <BackgroundImage img={"/images/familyRoom.webp"} height={"360px"} />
             <P uppercase paragraph="Family room" />
             <P paragraph="One dobbel bed and one bunk bed." />
           </div>
           <div>
-            <BackgroundImage img={"/images/bergenSmall.webp"} height={"260px"} />
+            <BackgroundImage img={"/images/premiumRoom.webp"} height={"360px"} />
             <P uppercase paragraph="Premium room" />
             <P paragraph="King size dobble bed." />
           </div>
         </Grid>
       </Section>
-      <Section>
-
+      <Section >
+        {hotel &&
+          <BackgroundImage img={hotel.attributes.coverImage.data?.attributes.formats.large?.url} height={"560px"} />
+        }
       </Section>
     </>
   );
