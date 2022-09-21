@@ -78,7 +78,10 @@ const Details = () => {
               {openEnquiryModal && <EnquiryModal closeModal={toggleModal} />}
             </InfoText>
             <StyledBox>
-              <p>Contact us</p>
+              <H2 title="Contact us" uppercase lightColor />
+              <P paragraph={`Phone: ${hotel.attributes.phone}`} lightColor />
+              <P paragraph={`Mail: ${hotel.attributes.email}`} lightColor />
+              <P paragraph={`Adress: ${hotel.attributes.adress}`} lightColor />
             </StyledBox>
           </GridContainer>
         </Section>
