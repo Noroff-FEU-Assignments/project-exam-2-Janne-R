@@ -69,18 +69,30 @@ const schema = yup.object().shape({
   adress: yup.string().required("Please enter a hotel adress").min(1, "The hotel adress must be at least one character"),
   email: yup.string().required("Please enter a email adress").email("Must be a valid email"),
   phone: yup.string().required("Please enter a phone number").matches(phoneRegExp2, 'Phone number must contain only numbers and be exact 8 digits'),
+  /*image: yup.mixed(value => {
+    console.log("god dag", value, value instanceof File);
+    return value instanceof File;
+  }).required("LOL"),*/
+  image: yup.mixed().nullable().required("FYFAEN")
+    .test("File type", "Please select a file", value => {
+      console.log("HOHOHHOH", value, value instanceof File);
+
+      return value instanceof File;
+    })
+
 });
 
 const AddNewHotel = () => {
 
   const [addNewSuccess, setAddNewSuccess] = useState(null);
   const [auth] = useContext(AuthContext);
-  const [files, setFiles] = useState()
 
 
-  const { register, handleSubmit, formState: { errors } } = useForm({
+  const { register, watch, setValue, handleSubmit, formState: { errors } } = useForm({
     resolver: yupResolver(schema),
   });
+
+
 
   const onSubmit = async (data) => {
     setAddNewSuccess(null);
@@ -98,6 +110,13 @@ const AddNewHotel = () => {
 
     <>
       <H2 title="Create new" uppercase />
+      <input
+        onChange={e => {
+          console.log("fikk de heheheh");
+          //setValue('image', e.target.files[0], { shouldValidate: true });
+        }}
+        type="file"
+      />
       <Form onSubmit={handleSubmit(onSubmit)}>
         <Flex>
           <Label htmlFor="hotelName">Hotel Name</Label>
@@ -130,9 +149,14 @@ const AddNewHotel = () => {
 
           <Label htmlFor="image">Image</Label>
           <input
+            {...register("image")}
+            onChange={e => {
+              console.log("fikk de heheheh", e.target.files[0], e.target.files[0] instanceof File);
+              setValue('image', e.target.files[0], { shouldValidate: true });
+            }}
             type="file"
-            onChange={(e) => setFiles(e.target.files)}
           />
+          {errors.image && <Span>{errors.image.message}</Span>}
 
           <Label htmlFor="isFeatured">Is featured?</Label>
           <Checkbox type="checkbox" {...register("isFeatured")} />

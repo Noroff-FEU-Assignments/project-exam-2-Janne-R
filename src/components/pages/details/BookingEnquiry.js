@@ -8,6 +8,9 @@ import { BASE_URL } from "../../../constants/api";
 import { SuccessMessage } from "../../common.styles/DisplayMessages";
 import { useState } from "react";
 import { useParams } from "react-router-dom";
+import Calendar from 'react-calendar';
+import 'react-calendar/dist/Calendar.css';
+import moment from 'moment'
 
 const Flex = styled.form`
   display: flex;
@@ -64,8 +67,17 @@ const schema = yup.object().shape({
 
 const BookingEnquiry = () => {
   let { id } = useParams();
-
+  const [startDate, setStartDate] = useState(new Date())
+  const [endDate, setEndDate] = useState(new Date())
   const [enquirySuccess, setEnquirySuccess] = useState(null);
+
+  const changeStartDate = (e) => {
+    setStartDate(e)
+  }
+
+  const changeEndDate = (e) => {
+    setEndDate(e)
+  }
 
   const { register, handleSubmit, control, formState: { errors } } = useForm({
     resolver: yupResolver(schema),
@@ -92,6 +104,7 @@ const BookingEnquiry = () => {
     return false;
   };
 
+
   return (
     <>
       <form onSubmit={handleSubmit(addNewEnquiry)}>
@@ -115,6 +128,15 @@ const BookingEnquiry = () => {
           <Label htmlFor="email"> Email</Label>
           <Input {...register("email")} />
           {errors.email && <Span>{errors.email.message}</Span>}
+
+
+          <Label htmlFor="startDate"> Start Date:</Label>
+          <Calendar {...register("startDate")} onChange={changeStartDate} value={startDate} />
+          <p>Current selected start date is: <b>{moment(startDate).format('MMMM Do YYYY')}</b></p>
+
+          <Label htmlFor="startDate"> End Date:</Label>
+          <Calendar {...register("endDate")} onChange={changeEndDate} value={endDate} />
+          <p>Current selected end date is: <b>{moment(endDate).format('MMMM Do YYYY')}</b></p>
 
           <Label htmlFor="message">Message</Label>
           <Textarea rows="7"{...register("message")} />
