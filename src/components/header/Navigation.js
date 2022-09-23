@@ -90,36 +90,36 @@ const Navigation = () => {
           <Ul showMenu={toogleShowMenu}>
             <li>
               <StyledNavLink to="/">
-                Home
+                HOME
               </StyledNavLink>
             </li>
             <li>
               <StyledNavLink to="/hotels">
-                Hotels
+                HOTELS
               </StyledNavLink>
             </li>
             <li>
               <StyledNavLink to="/contact">
-                Contact
+                CONTACT
               </StyledNavLink>
             </li>
             {auth ? (
               <>
                 <li>
                   <StyledNavLink to="/admin">
-                    Admin
+                    ADMIN
                   </StyledNavLink>
                 </li>
                 <li>
                   <StyledNavLink to="/login" onClick={logout}>
-                    Logout
+                    LOGOUT
                   </StyledNavLink>
                 </li>
               </>
             ) :
               <li>
                 <StyledNavLink to="/login">
-                  Login
+                  LOGIN
                 </StyledNavLink>
               </li>
             }

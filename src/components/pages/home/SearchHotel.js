@@ -6,8 +6,9 @@ import { ReactSearchAutocomplete } from 'react-search-autocomplete'
 import { useNavigate } from "react-router-dom";
 import { useTheme } from 'styled-components'
 
-const Div = styled.div`
+const Flex = styled.div`
   background-color: ${({ theme }) => theme.colors.primaryColor};
+  height: 150px ;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -16,12 +17,13 @@ const Div = styled.div`
   margin: -65px -10px 0 -10px;
   border-radius: 3px;
   @media ${({ theme }) => theme.devices.laptopS} { 
-    flex-direction: row;
-    text-align: left;
-    display: flex;
-    justify-content: space-around;
+
     margin: -65px 30px 0 30px;
   }
+`;
+
+const Div = styled.div`
+  margin-bottom: 20px;
 `;
 
 
@@ -69,19 +71,18 @@ const Welcome = () => {
 
 
     return (
-      <Div>
-        <div>
-          <P paragraph="Search for your next hotel in Bergen here." lightColor />
-        </div>
+      <Flex>
+        <Div>
+          <P paragraph="Find your next hotel in Bergen here." lightColor uppercase />
+        </Div>
         <SearchContainer>
-          <ReactSearchAutocomplete styling={style}
+          <ReactSearchAutocomplete styling={style} placeholder="Search hotel..."
             items={mapped}
             onSelect={handleOnSelect}
             formatResult={formatResult}
           />
         </SearchContainer>
-
-      </Div>
+      </Flex>
     )
   }
 }

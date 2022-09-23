@@ -19,6 +19,8 @@ const StyledH2 = styled.h2`
 `;
 
 const StyledH3 = styled.h3`
+
+  
   color: ${({ lightColor, theme }) => lightColor ? theme.colors.textColorLight : theme.colors.textColorDark};
   text-transform: ${props => props.uppercase ? "uppercase" : "initial"};
 `;

@@ -1,8 +1,8 @@
 import styled from "styled-components";
 import { MdKeyboardArrowRight } from 'react-icons/md';
 
-
 const ButtonStyle = styled.button`
+ width: fit-content;
   display: flex;
   align-items: center;
   text-transform: uppercase;

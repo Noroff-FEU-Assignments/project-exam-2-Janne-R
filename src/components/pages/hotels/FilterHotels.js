@@ -24,6 +24,9 @@ const Input = styled.input`
 
 const SearchIcon = styled(BiSearchAlt2)`
   margin-left: -30px;
+  fill: grey;
+  width: 20px;
+    height: 20px;
 `;
 
 const FilterHotels = ({ filterList, filterResultUpdated }) => {
@@ -43,7 +46,7 @@ const FilterHotels = ({ filterList, filterResultUpdated }) => {
   return (
     <>
       <Form>
-        <Input onChange={onKeyUp} placeholder="Filter by hotel name here..." />
+        <Input onChange={onKeyUp} placeholder="Filter hotel..." />
         <SearchIcon size="1.5rem" />
       </Form>
     </>

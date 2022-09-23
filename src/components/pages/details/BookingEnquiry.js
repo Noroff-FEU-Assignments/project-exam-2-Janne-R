@@ -10,7 +10,7 @@ import { useState } from "react";
 import { useParams } from "react-router-dom";
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
-import moment from 'moment'
+import moment from 'moment';
 
 const Flex = styled.form`
   display: flex;
@@ -63,6 +63,8 @@ const schema = yup.object().shape({
   lastName: yup.string().required("Please enter your last name").min(1, "Your name must be at least one character"),
   email: yup.string().required("Please enter a email adress").email("Please enter a valid email address"),
   message: yup.string().required("Please enter your message").min(10, "The message must be at least 10 characters"),
+  startDate: yup.date().required(),
+  endDate: yup.date().required(),
 });
 
 const BookingEnquiry = () => {
@@ -71,13 +73,9 @@ const BookingEnquiry = () => {
   const [endDate, setEndDate] = useState(new Date())
   const [enquirySuccess, setEnquirySuccess] = useState(null);
 
-  const changeStartDate = (e) => {
-    setStartDate(e)
-  }
+  console.log("startDate:", startDate);
+  console.log("endDate:", endDate);
 
-  const changeEndDate = (e) => {
-    setEndDate(e)
-  }
 
   const { register, handleSubmit, control, formState: { errors } } = useForm({
     resolver: yupResolver(schema),
@@ -131,12 +129,13 @@ const BookingEnquiry = () => {
 
 
           <Label htmlFor="startDate"> Start Date:</Label>
-          <Calendar {...register("startDate")} onChange={changeStartDate} value={startDate} />
+          <Calendar name="startDate" {...register("startDate")} onChange={setStartDate} value={startDate} minDate={new Date()} />
           <p>Current selected start date is: <b>{moment(startDate).format('MMMM Do YYYY')}</b></p>
 
-          <Label htmlFor="startDate"> End Date:</Label>
-          <Calendar {...register("endDate")} onChange={changeEndDate} value={endDate} />
+          <Label htmlFor="endDate"> End Date:</Label>
+          <Calendar name="endDate" {...register("endDate")} onChange={setEndDate} value={endDate} minDate={new Date()} />
           <p>Current selected end date is: <b>{moment(endDate).format('MMMM Do YYYY')}</b></p>
+
 
           <Label htmlFor="message">Message</Label>
           <Textarea rows="7"{...register("message")} />

@@ -1,5 +1,5 @@
 import Section from "../../common.styles/Section";
-import { H1, H2, P } from "../../common.styles/DisplayText";
+import { H1, H2, H3, P } from "../../common.styles/DisplayText";
 import FilterHotels from "./FilterHotels";
 import styled from "styled-components";
 import BackgroundImage from "../../common.styles/BackgroundImage";
@@ -14,6 +14,12 @@ import Grid from "../../common.styles/Grid";
 
 const StyledLink = styled(Link)`
   text-decoration: none;
+  display: flex;
+  flex-direction: column;
+`;
+
+const Div = styled.div`
+    margin-top:auto;
 `;
 
 const url = `${BASE_URL}/api/hotels?populate=*`;
@@ -37,11 +43,13 @@ const Hotels = () => {
         <Grid>
           {hotelsToPresent.map((hotel) => (
             <StyledLink key={hotel.id} to={`/details/${hotel.id}`}>
-              <BackgroundImage img={hotel.attributes.coverImage.data?.attributes.formats.small?.url} height={"260px"} />
-              <H2 title={hotel.attributes.hotelName} uppercase />
+              <BackgroundImage img={hotel.attributes.coverImage.data?.attributes.formats.small?.url} height={"360px"} />
+              <H3 title={hotel.attributes.hotelName} uppercase />
               <P paragraph={hotel.attributes.shortDescription} />
               <P paragraph={`Price: $${hotel.attributes.price} per/night`} />
-              <Button text="View" />
+              <Div>
+                <Button text="View" />
+              </Div>
             </StyledLink>
           ))}
         </Grid>

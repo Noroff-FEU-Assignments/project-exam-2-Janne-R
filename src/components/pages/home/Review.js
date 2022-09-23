@@ -2,16 +2,9 @@ import styled from "styled-components";
 import BackgroundImage from "../../common.styles/BackgroundImage";
 import { H2, P } from "../../common.styles/DisplayText";
 import RoundedImage from "../../common.styles/RoundedImage";
+import GridContainer from "../../common.styles/GridContainer";
+import Box from "../../common.styles/Box";
 
-const GridContainer = styled.div`
-
- @media ${({ theme }) => theme.devices.tabletS} { 
-  height: 430px;
-  display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  grid-template-rows: repeat(12, 1fr);
-  }
-`;
 
 const BackgroundImageBleed = styled(BackgroundImage)`
   margin: 0 -10px 0 -10px;
@@ -21,17 +14,6 @@ const BackgroundImageBleed = styled(BackgroundImage)`
     height: 360px;
     grid-area: 2 / 1 / 12 / 13;
   }
-`;
-
-const Box = styled.div`
-  background-color: ${({ theme }) => theme.colors.primaryColor};
-  padding: 20px;
-  margin: 0 -10px 0 -10px;
-
- @media ${({ theme }) => theme.devices.tabletS} { 
-    opacity: 94%;
-    grid-area: 1 / 6 / 13 / 2;
- }
 `;
 
 const Flex = styled.div`

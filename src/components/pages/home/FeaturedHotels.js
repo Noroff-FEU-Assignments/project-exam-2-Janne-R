@@ -12,6 +12,12 @@ import { ErrorMessage } from "../../common.styles/DisplayMessages";
 
 const StyledLink = styled(Link)`
   text-decoration: none;
+  display: flex;
+  flex-direction: column;
+`;
+
+const Div = styled.div`
+    margin-top:auto;
 `;
 
 const url = `${BASE_URL}/api/hotels?populate=*`;
@@ -36,11 +42,15 @@ const FeaturedHotels = () => {
       <Grid>
         {featuredHotels.map((featuredHotel) => (
           <StyledLink key={featuredHotel.id} to={`/details/${featuredHotel.id}`}>
+
             <BackgroundImage img={featuredHotel.attributes.coverImage.data?.attributes.formats.small?.url} height={"360px"} />
-            <H2 title={featuredHotel.attributes.hotelName} uppercase />
+            <H3 title={featuredHotel.attributes.hotelName} uppercase />
             <P paragraph={featuredHotel.attributes.shortDescription} />
+
             <P paragraph={`Price: $${featuredHotel.attributes.price} per/night`} />
-            <Button text="View" />
+            <Div>
+              <Button text="View" />
+            </Div>
           </StyledLink>
         ))}
       </Grid>

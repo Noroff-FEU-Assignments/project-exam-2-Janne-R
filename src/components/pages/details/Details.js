@@ -1,4 +1,4 @@
-import { H1, H2, P } from "../../common.styles/DisplayText";
+import { H1, H2, H3, P } from "../../common.styles/DisplayText";
 import useApi from "../../../hooks/useApi";
 import { useParams } from "react-router-dom";
 import { BASE_URL } from "../../../constants/api";
@@ -13,9 +13,11 @@ import InfoBox from "../../common.styles/InfoBox";
 import Grid from "../../common.styles/Grid";
 import BackgroundImage from "../../common.styles/BackgroundImage";
 import { RiStarSFill, RiStarSLine } from 'react-icons/ri';
-import { FaMapMarker } from 'react-icons/fa';
 import Box from "../../common.styles/Box";
 import GridContainer from "../../common.styles/GridContainer";
+import { AiTwotonePhone } from 'react-icons/ai';
+import { MdEmail } from 'react-icons/md';
+import { FaMapMarker } from 'react-icons/fa';
 
 const StyledBox = styled(Box)`
  @media ${({ theme }) => theme.devices.tabletS} { 
@@ -32,9 +34,47 @@ const InfoText = styled.div`
 const FlexContainer = styled.div`
 @media ${({ theme }) => theme.devices.tabletS} { 
   display: flex;
-  justify-content:space-between;
   align-items:center;
 }
+`;
+
+const Div = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-left: 30px;
+`;
+
+const Flex = styled.div`
+display: flex;
+align-items: center;
+`;
+
+const Phone = styled(AiTwotonePhone)`
+margin-right: 20px;
+color: white;
+`;
+
+const Mail = styled(MdEmail)`
+margin-right: 20px;
+color: white;
+`;
+
+const Map = styled(FaMapMarker)`
+margin-right: 20px;
+color: white;
+`;
+
+const FullStar = styled(RiStarSFill)`
+color: ${({ theme }) => theme.colors.primaryColor}
+`;
+
+const OutlineStar = styled(RiStarSLine)`
+color: ${({ theme }) => theme.colors.primaryColor}
+`;
+
+const IconsContainer = styled.div`
+margin-left: 30px;
 `;
 
 
@@ -57,6 +97,13 @@ const Details = () => {
         {hotel &&
           <FlexContainer>
             <H1 title={hotel.attributes.hotelName} uppercase />
+            <IconsContainer>
+              <FullStar size="3rem" />
+              <FullStar size="3rem" />
+              <FullStar size="3rem" />
+              <FullStar size="3rem" />
+              <OutlineStar size="3rem" />
+            </IconsContainer>
           </FlexContainer>
         }
       </Section>
@@ -64,9 +111,6 @@ const Details = () => {
         <Section>
           <GridContainer>
             <InfoText>
-              <P uppercase>
-                Welcome to {hotel.attributes.hotelName}
-              </P>
               <P >
                 {hotel.attributes.shortDescription}
               </P>
@@ -78,10 +122,22 @@ const Details = () => {
               {openEnquiryModal && <EnquiryModal closeModal={toggleModal} />}
             </InfoText>
             <StyledBox>
-              <H2 title="Contact us" uppercase lightColor />
-              <P paragraph={`Phone: ${hotel.attributes.phone}`} lightColor />
-              <P paragraph={`Mail: ${hotel.attributes.email}`} lightColor />
-              <P paragraph={`Adress: ${hotel.attributes.adress}`} lightColor />
+              <Div>
+                <H2 title="Contact us" uppercase lightColor />
+                <Flex>
+                  <Phone size="2rem" />
+                  <P paragraph={hotel.attributes.phone} lightColor />
+                </Flex>
+                <Flex>
+                  <Mail size="2rem" />
+                  <P paragraph={hotel.attributes.email} lightColor />
+                </Flex>
+                <Flex>
+                  <Map size="2rem" />
+                  <P paragraph={hotel.attributes.adress} lightColor />
+                </Flex>
+
+              </Div>
             </StyledBox>
           </GridContainer>
         </Section>
@@ -91,17 +147,17 @@ const Details = () => {
         <Grid>
           <div>
             <BackgroundImage img={"/images/standardRoom.webp"} height={"360px"} />
-            <P uppercase paragraph="Standard room" />
+            <H3 uppercase title="Standard room" />
             <P paragraph="Two single beds." />
           </div>
           <div>
             <BackgroundImage img={"/images/familyRoom.webp"} height={"360px"} />
-            <P uppercase paragraph="Family room" />
+            <H3 uppercase title="Family room" />
             <P paragraph="One dobbel bed and one bunk bed." />
           </div>
           <div>
             <BackgroundImage img={"/images/premiumRoom.webp"} height={"360px"} />
-            <P uppercase paragraph="Premium room" />
+            <H3 uppercase title="Premium room" />
             <P paragraph="King size dobble bed." />
           </div>
         </Grid>

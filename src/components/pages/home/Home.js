@@ -3,6 +3,26 @@ import SearchHotel from "./SearchHotel";
 import InfoBox from "../../common.styles/InfoBox";
 import FeaturedHotels from "./FeaturedHotels";
 import VisitBergen from "./VisitBergen";
+import BackgroundImage from "../../common.styles/BackgroundImage";
+import styled from "styled-components";
+
+const BackgroundImageSizes = styled(BackgroundImage)`
+    margin: 0 -10px 0 -10px;
+  
+  @media ${({ theme }) => theme.devices.tabletS} { 
+  margin: 0;
+    height: 460px ;
+  }
+
+  @media ${({ theme }) => theme.devices.laptopS} { 
+    height: 560px ;
+  }
+
+  @media ${({ theme }) => theme.devices.laptopL} { 
+    height: 660px ;
+   
+  }
+`;
 
 const Home = () => {
   return (
@@ -18,6 +38,9 @@ const Home = () => {
       </Section>
       <Section backgroundColorLight>
         <FeaturedHotels />
+      </Section>
+      <Section>
+        <BackgroundImageSizes img={"/images/exampleRoom.webp"} height={"360px"} />
       </Section>
     </main>
   )
