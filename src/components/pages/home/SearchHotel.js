@@ -67,6 +67,8 @@ const Welcome = () => {
     const style = {
       borderRadius: "3px",
       backgroundColor: theme.colors.backgroundColorDark,
+      fontFamily: "Open Sans",
+      hoverBackgroundColor: theme.colors.backgroundColorLight,
     };
 
 
