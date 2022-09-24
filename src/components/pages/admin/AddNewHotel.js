@@ -30,6 +30,10 @@ const Input = styled.input`
   margin-bottom: 20px;
 `;
 
+const FileInput = styled.input`
+  margin-bottom: 20px;
+`;
+
 const Textarea = styled.textarea`
   border-radius: 3px;
   border: 1px solid ${({ theme }) => theme.colors.primaryColor};
@@ -70,25 +74,25 @@ const schema = yup.object().shape({
   adress: yup.string().required("Please enter a hotel adress").min(1, "The hotel adress must be at least one character"),
   email: yup.string().required("Please enter a email adress").email("Must be a valid email"),
   phone: yup.string().required("Please enter a phone number").matches(phoneRegExp2, 'Phone number must contain only numbers and be exact 8 digits'),
-
+  image: yup
+    .mixed()
+    .required("Please add an image")
 });
 
 const AddNewHotel = () => {
-
   const [addNewSuccess, setAddNewSuccess] = useState(null);
   const [auth] = useContext(AuthContext);
-  const [image, setImage] = useState(null);
 
-  const { register, watch, setValue, handleSubmit, formState: { errors } } = useForm({
+  const { register, clearErrors, setValue, handleSubmit, formState: { errors } } = useForm({
     resolver: yupResolver(schema),
   });
 
   const onImage = (e) => {
-    console.log(e.target.files);
-    setImage(e.target.files[0]);
+    setValue("image", e.target.files[0]);
+    clearErrors("image");
   }
 
-  const onSubmit = async (data) => {
+  const onSubmit = async ({ image, ...data }) => {
     setAddNewSuccess(null);
 
     try {
@@ -143,7 +147,7 @@ const AddNewHotel = () => {
           {errors.phone && <Span>{errors.phone.message}</Span>}
 
           <Label htmlFor="image">Image</Label>
-          <input
+          <FileInput
             onChange={onImage}
             type="file"
           />
