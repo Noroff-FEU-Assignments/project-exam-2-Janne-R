@@ -3,6 +3,7 @@ import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import styled from "styled-components";
 import Button from "../../common.styles/Button";
+import postFormData from "../../../lib/postFormData";
 import postRequest from "../../../lib/postRequest";
 import { BASE_URL } from "../../../constants/api";
 import { SuccessMessage } from "../../common.styles/DisplayMessages";
@@ -69,16 +70,6 @@ const schema = yup.object().shape({
   adress: yup.string().required("Please enter a hotel adress").min(1, "The hotel adress must be at least one character"),
   email: yup.string().required("Please enter a email adress").email("Must be a valid email"),
   phone: yup.string().required("Please enter a phone number").matches(phoneRegExp2, 'Phone number must contain only numbers and be exact 8 digits'),
-  /*image: yup.mixed(value => {
-    console.log("god dag", value, value instanceof File);
-    return value instanceof File;
-  }).required("LOL"),*/
-  image: yup.mixed().nullable().required("FYFAEN")
-    .test("File type", "Please select a file", value => {
-      console.log("HOHOHHOH", value, value instanceof File);
-
-      return value instanceof File;
-    })
 
 });
 
@@ -86,19 +77,31 @@ const AddNewHotel = () => {
 
   const [addNewSuccess, setAddNewSuccess] = useState(null);
   const [auth] = useContext(AuthContext);
-
+  const [image, setImage] = useState(null);
 
   const { register, watch, setValue, handleSubmit, formState: { errors } } = useForm({
     resolver: yupResolver(schema),
   });
 
-
+  const onImage = (e) => {
+    console.log(e.target.files);
+    setImage(e.target.files[0]);
+  }
 
   const onSubmit = async (data) => {
     setAddNewSuccess(null);
+
     try {
       const addedHotel = await postRequest(`${BASE_URL}/api/hotels`, { data }, { Authorization: `Bearer ${auth.jwt}` });
-      console.log(addedHotel);
+
+      const formData = new FormData();
+      formData.append("files", image);
+      formData.append("ref", "api::hotel.hotel");
+      formData.append("refId", addedHotel.data.id);
+      formData.append("field", "coverImage");
+
+      await postFormData(`${BASE_URL}/api/upload`, formData, { Authorization: `Bearer ${auth.jwt}` });
+
       setAddNewSuccess("New hotel added")
     } catch (error) {
       console.log("error", error);
@@ -107,16 +110,8 @@ const AddNewHotel = () => {
   };
 
   return (
-
     <>
       <H2 title="Create new" uppercase />
-      <input
-        onChange={e => {
-          console.log("fikk de heheheh");
-          //setValue('image', e.target.files[0], { shouldValidate: true });
-        }}
-        type="file"
-      />
       <Form onSubmit={handleSubmit(onSubmit)}>
         <Flex>
           <Label htmlFor="hotelName">Hotel Name</Label>
@@ -149,11 +144,7 @@ const AddNewHotel = () => {
 
           <Label htmlFor="image">Image</Label>
           <input
-            {...register("image")}
-            onChange={e => {
-              console.log("fikk de heheheh", e.target.files[0], e.target.files[0] instanceof File);
-              setValue('image', e.target.files[0], { shouldValidate: true });
-            }}
+            onChange={onImage}
             type="file"
           />
           {errors.image && <Span>{errors.image.message}</Span>}
