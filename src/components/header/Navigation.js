@@ -6,19 +6,16 @@ import Section from "../common.styles/Section";
 import { useContext } from "react";
 import AuthContext from "../../context/AuthContext";
 
-const StickyNav = styled.div`
-    position: fixed;
-    width: 100%;
-    z-index: 1;
-`;
+
 const Flex = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin: -26px 10px -35px 10px;
 `;
 
 const BurgerMenu = styled(FiMenu)`
-  @media ${({ theme }) => theme.devices.tabletS} { 
+  @media ${({ theme }) => theme.devices.laptopS} { 
     display: none;
   }
 `;
@@ -45,7 +42,7 @@ const Ul = styled.ul`
     color: ${({ theme }) => theme.colors.textColorDark};
   }
 
-  @media ${({ theme }) => theme.devices.tabletS} { 
+  @media ${({ theme }) => theme.devices.laptopS} { 
     display: flex;
     flex-direction: row;
     position: unset;
@@ -83,7 +80,7 @@ const Navigation = () => {
     <Section>
       <Flex>
         <NavLink to="/">
-          Logo
+          <img src="/images/logo.png" alt="logo" width="200" aria-label="Go to home page" />
         </NavLink>
         <nav>
           <BurgerMenu aria-label="Open the menu" aria-hidden="true" color="black" size="2rem" onClick={() => setToogleShowMenu(!toogleShowMenu)} />

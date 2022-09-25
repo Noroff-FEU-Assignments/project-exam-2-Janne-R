@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useNavigate } from "react-router-dom";
 
 function useApi(url, defaultValue, headers) {
   const options = {
@@ -12,6 +13,8 @@ function useApi(url, defaultValue, headers) {
   const [isError, setIsError] = useState(false);
   const [data, setData] = useState(defaultValue);
 
+  const navigate = useNavigate();
+
   useEffect(() => {
     async function doFetch() {
       try {
@@ -20,12 +23,12 @@ function useApi(url, defaultValue, headers) {
 
         const fetchedData = await fetch(url, options);
         const json = await fetchedData.json();
-        console.log(json);
-
+        if (!fetchedData.ok && fetchedData.status === 401) {
+          navigate("/login");
+        }
         setData(json.data);
       } catch (error) {
         setIsError(true);
-        console.error(error);
       } finally {
         setIsLoading(false);
       }

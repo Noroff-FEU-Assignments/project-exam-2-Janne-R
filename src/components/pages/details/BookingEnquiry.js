@@ -6,7 +6,7 @@ import Button from "../../common.styles/Button";
 import postRequest from "../../../lib/postRequest";
 import { BASE_URL } from "../../../constants/api";
 import { SuccessMessage } from "../../common.styles/DisplayMessages";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
@@ -63,31 +63,36 @@ const schema = yup.object().shape({
   lastName: yup.string().required("Please enter your last name").min(1, "Your name must be at least one character"),
   email: yup.string().required("Please enter a email adress").email("Please enter a valid email address"),
   message: yup.string().required("Please enter your message").min(10, "The message must be at least 10 characters"),
-  startDate: yup.date().required(),
-  endDate: yup.date().required(),
+  startDate: yup.date().required("Please enter a start date"),
+  endDate: yup.date().required("Please enter an end date"),
 });
 
 const BookingEnquiry = () => {
   let { id } = useParams();
-  const [startDate, setStartDate] = useState(new Date())
-  const [endDate, setEndDate] = useState(new Date())
   const [enquirySuccess, setEnquirySuccess] = useState(null);
 
-  console.log("startDate:", startDate);
-  console.log("endDate:", endDate);
-
-
-  const { register, handleSubmit, control, formState: { errors } } = useForm({
+  const { register, handleSubmit, watch, getValues, clearErrors, setValue, formState: { errors } } = useForm({
     resolver: yupResolver(schema),
   });
 
-  const addNewEnquiry = async (data) => {
+  const updateStartDate = date => {
+    setValue("startDate", date);
+    clearErrors("startDate")
+  };
 
+  const updatendDate = date => {
+    setValue("endDate", date);
+    clearErrors("endDate")
+  };
+
+  console.log("startDate:", watch("startDate"));
+  console.log("endDate:", watch("endDate"));
+  const addNewEnquiry = async (data) => {
     const enquiryData = {
       ...data,
       hotel: id,
     };
-    console.log(enquiryData);
+    console.log("enq data", enquiryData);
 
 
     setEnquirySuccess(null);
@@ -102,6 +107,8 @@ const BookingEnquiry = () => {
     return false;
   };
 
+  const startDate = getValues("startDate");
+  const endDate = getValues("endDate");
 
   return (
     <>
@@ -129,13 +136,14 @@ const BookingEnquiry = () => {
 
 
           <Label htmlFor="startDate"> Start Date:</Label>
-          <Calendar name="startDate" {...register("startDate")} onChange={setStartDate} value={startDate} minDate={new Date()} />
-          <p>Current selected start date is: <b>{moment(startDate).format('MMMM Do YYYY')}</b></p>
+          <Calendar name="startDate" onChange={updateStartDate} minDate={new Date()} />
+          {startDate && <p>Current selected start date is: <b>{moment(startDate).format('MMMM Do YYYY')}</b></p>}
+          {errors.startDate && <Span>{errors.startDate.message}</Span>}
 
           <Label htmlFor="endDate"> End Date:</Label>
-          <Calendar name="endDate" {...register("endDate")} onChange={setEndDate} value={endDate} minDate={new Date()} />
-          <p>Current selected end date is: <b>{moment(endDate).format('MMMM Do YYYY')}</b></p>
-
+          <Calendar name="endDate" onChange={updatendDate} minDate={new Date()} />
+          {endDate && <p>Current selected end date is: <b>{moment(endDate).format('MMMM Do YYYY')}</b></p>}
+          {errors.endDate && <Span>{errors.endDate.message}</Span>}
 
           <Label htmlFor="message">Message</Label>
           <Textarea rows="7"{...register("message")} />
