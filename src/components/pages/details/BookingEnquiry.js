@@ -12,6 +12,10 @@ import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 import moment from 'moment';
 
+const MyCalandar = styled(Calendar)`
+margin-bottom: 20px;
+`;
+
 const Flex = styled.form`
   display: flex;
   flex-direction: column;
@@ -80,7 +84,7 @@ const BookingEnquiry = () => {
     clearErrors("startDate")
   };
 
-  const updatendDate = date => {
+  const updatEndDate = date => {
     setValue("endDate", date);
     clearErrors("endDate")
   };
@@ -136,12 +140,12 @@ const BookingEnquiry = () => {
 
 
           <Label htmlFor="startDate"> Start Date:</Label>
-          <Calendar name="startDate" onChange={updateStartDate} minDate={new Date()} />
+          <MyCalandar name="startDate" onChange={updateStartDate} minDate={new Date()} />
           {startDate && <p>Current selected start date is: <b>{moment(startDate).format('MMMM Do YYYY')}</b></p>}
           {errors.startDate && <Span>{errors.startDate.message}</Span>}
 
           <Label htmlFor="endDate"> End Date:</Label>
-          <Calendar name="endDate" onChange={updatendDate} minDate={new Date()} />
+          <MyCalandar name="endDate" onChange={updatEndDate} minDate={new Date(startDate)} />
           {endDate && <p>Current selected end date is: <b>{moment(endDate).format('MMMM Do YYYY')}</b></p>}
           {errors.endDate && <Span>{errors.endDate.message}</Span>}
 

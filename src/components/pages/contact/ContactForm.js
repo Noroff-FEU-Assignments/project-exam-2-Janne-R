@@ -7,7 +7,15 @@ import { useState } from "react";
 import postRequest from "../../../lib/postRequest";
 import { BASE_URL } from "../../../constants/api";
 import { SuccessMessage } from "../../common.styles/DisplayMessages";
+import ContactDetails from "./ContactDetails";
 
+const Grid = styled.div`
+@media ${({ theme }) => theme.devices.tabletS} { 
+ display: grid;
+grid-template-columns: 1fr 1fr;
+}
+
+`;
 const Form = styled.form`
 background-color:${({ theme }) => theme.colors.backgroundColorLight};
 padding:10px ;
@@ -82,7 +90,7 @@ const ContactForm = () => {
   console.log(errors);
 
   return (
-    <>
+    <Grid>
       <Form onSubmit={handleSubmit(addNewContact)}>
         <Flex>
           <Label htmlFor="firstName">First name</Label>
@@ -104,7 +112,8 @@ const ContactForm = () => {
         <StyledButton text="Send" />
         {contactSuccess && <SuccessMessage>{contactSuccess}</SuccessMessage>}
       </Form>
-    </>
+      <ContactDetails />
+    </Grid>
   )
 }
 

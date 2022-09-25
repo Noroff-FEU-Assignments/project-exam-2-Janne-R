@@ -29,6 +29,10 @@ margin-bottom: -70px;
 const InfoText = styled.div`
   grid-area: 2 / 1 / 12 / 8;
   margin-right: 20px;
+  margin-bottom:50px ;
+  @media ${({ theme }) => theme.devices.tabletS} { 
+  margin-bottom: 0;
+  }
   `;
 
 const FlexContainer = styled.div`
@@ -74,7 +78,9 @@ color: ${({ theme }) => theme.colors.primaryColor}
 `;
 
 const IconsContainer = styled.div`
-margin-left: 30px;
+    @media ${({ theme }) => theme.devices.tabletS} { 
+    margin-left: 30px;
+    }
 `;
 
 
@@ -98,11 +104,11 @@ const Details = () => {
           <FlexContainer>
             <H1 title={hotel.attributes.hotelName} uppercase />
             <IconsContainer>
-              <FullStar size="3rem" />
-              <FullStar size="3rem" />
-              <FullStar size="3rem" />
-              <FullStar size="3rem" />
-              <OutlineStar size="3rem" />
+              <FullStar size="2rem" />
+              <FullStar size="2rem" />
+              <FullStar size="2rem" />
+              <FullStar size="2rem" />
+              <OutlineStar size="2rem" />
             </IconsContainer>
           </FlexContainer>
         }
@@ -136,7 +142,6 @@ const Details = () => {
                   <Map size="2rem" />
                   <P paragraph={hotel.attributes.adress} lightColor />
                 </Flex>
-
               </Div>
             </StyledBox>
           </GridContainer>
