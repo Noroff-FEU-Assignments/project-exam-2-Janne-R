@@ -87,7 +87,6 @@ const LoginForm = () => {
     return false;
   };
 
-  console.log(errors);
   return (
     <>
       <Form onSubmit={handleSubmit(onSubmit)}>

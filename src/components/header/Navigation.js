@@ -5,6 +5,7 @@ import { FiMenu } from "react-icons/fi";
 import Section from "../common.styles/Section";
 import { useContext } from "react";
 import AuthContext from "../../context/AuthContext";
+import Button from "../common.styles/Button";
 
 const Flex = styled.div`
   display: flex;
@@ -59,8 +60,16 @@ const Ul = styled.ul`
 
 const StyledNavLink = styled(NavLink)`
   &.active {
-    border-top: 5px solid  ${({ theme }) => theme.colors.primaryColor};
+    border-top: 5px solid ${({ theme }) => theme.colors.primaryColor};
   }
+`;
+
+const LogoutButton = styled.button`
+  border: none;
+  font-size: 21px;
+  font-family: 'Open Sans', sans-serif;
+  cursor: pointer;
+  background-color: transparent;
 `;
 
 const Navigation = () => {
@@ -73,7 +82,7 @@ const Navigation = () => {
     const dologOut = window.confirm("Are you sure you want to logout?");
     if (dologOut) {
       setAuth(null);
-      navigate("/");
+      navigate("/login");
     }
   };
 
@@ -109,9 +118,7 @@ const Navigation = () => {
                   </StyledNavLink>
                 </li>
                 <li>
-                  <StyledNavLink to="/login" onClick={logout}>
-                    LOGOUT
-                  </StyledNavLink>
+                  <LogoutButton onClick={logout}>LOGOUT</LogoutButton>
                 </li>
               </>
             ) :
