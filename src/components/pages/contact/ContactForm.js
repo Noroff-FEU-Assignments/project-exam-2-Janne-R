@@ -14,7 +14,6 @@ const Grid = styled.div`
     display: grid;
     grid-template-columns: 1fr 1fr;
   }
-
 `;
 
 const Form = styled.form`
@@ -22,7 +21,7 @@ const Form = styled.form`
   padding:10px ;
 `;
 
-const Flex = styled.form`
+const Flex = styled.div`
   display: flex;
   flex-direction: column;
 `;

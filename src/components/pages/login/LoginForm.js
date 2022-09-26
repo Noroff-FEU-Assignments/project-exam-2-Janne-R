@@ -22,7 +22,7 @@ const Form = styled.form`
   }
 `;
 
-const Flex = styled.form`
+const Flex = styled.div`
   display: flex;
   flex-direction: column;
 `;
