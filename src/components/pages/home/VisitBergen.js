@@ -24,7 +24,7 @@ const ButtonLink = styled(Link)`
   font-size: 21px;
   border: none;
   border-radius: 3px;
-  padding: 15px;
+  padding: 10px;
   margin: 35px 0 15px 0;
   cursor: pointer;
   transition-duration: 0.4s;
