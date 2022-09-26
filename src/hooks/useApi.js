@@ -3,13 +3,6 @@ import { useNavigate } from "react-router-dom";
 import AuthContext from "../context/AuthContext";
 
 function useApi(url, defaultValue, headers) {
-  const options = {
-    headers: {
-      "Content-type": "application/json",
-      ...headers
-    }
-  };
-
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
   const [data, setData] = useState(defaultValue);
@@ -18,6 +11,13 @@ function useApi(url, defaultValue, headers) {
   const navigate = useNavigate();
 
   useEffect(() => {
+    const options = {
+      headers: {
+        "Content-type": "application/json",
+        ...headers
+      }
+    };
+
     async function doFetch() {
       try {
         setIsLoading(true);
@@ -37,7 +37,7 @@ function useApi(url, defaultValue, headers) {
       }
     }
     doFetch(url);
-  }, [url]);
+  }, [url, navigate, setAuth, headers]);
 
   return {
     isLoading,
