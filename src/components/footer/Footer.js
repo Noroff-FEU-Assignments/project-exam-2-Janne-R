@@ -83,15 +83,15 @@ const Footer = () => (
         <Ul>
           <Li>
             <PhoneIcon />
-            <P paragraph="+47 123 12 123" aria-label="Phone" />
+            <P paragraph="99999999" aria-label="Phone" />
           </Li>
           <Li>
             <MailIcon />
-            <P paragraph="post@codestack.com" aria-label="Email" />
+            <P paragraph="post@holidaze.com" aria-label="Email" />
           </Li>
           <Li>
             <MapIcon />
-            <P paragraph="123 Street, Norway" aria-label="Address" />
+            <P paragraph="123 Street, Bergen, Norway" aria-label="Address" />
           </Li>
         </Ul>
       </div>
