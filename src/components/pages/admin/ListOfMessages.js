@@ -16,7 +16,7 @@ const url = `${BASE_URL}/api/contacts`;
 const ListOfMessages = () => {
   const [auth] = useContext(AuthContext);
 
-  const { data: contactList, isLoading, isError } = useApi(url, [], { Authorization: `Bearer ${auth.jwt}` });
+  const { data: contactList, isLoading, isError } = useApi(url, [], { Authorization: `Bearer ${auth?.jwt}` });
 
   return (
     <>

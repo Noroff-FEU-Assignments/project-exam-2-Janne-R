@@ -1,5 +1,6 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { useNavigate } from "react-router-dom";
+import AuthContext from "../context/AuthContext";
 
 function useApi(url, defaultValue, headers) {
   const options = {
@@ -12,6 +13,7 @@ function useApi(url, defaultValue, headers) {
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
   const [data, setData] = useState(defaultValue);
+  const [, setAuth] = useContext(AuthContext);
 
   const navigate = useNavigate();
 
@@ -24,6 +26,7 @@ function useApi(url, defaultValue, headers) {
         const fetchedData = await fetch(url, options);
         const json = await fetchedData.json();
         if (!fetchedData.ok && fetchedData.status === 401) {
+          setAuth(null);
           navigate("/login");
         }
         setData(json.data);

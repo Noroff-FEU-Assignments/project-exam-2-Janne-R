@@ -7,6 +7,7 @@ import AuthContext from "../../../context/AuthContext";
 import { useContext } from "react";
 import styled from "styled-components";
 
+
 const Div = styled.div`
 border: 1px solid black;
 `;
@@ -16,7 +17,8 @@ const url = `${BASE_URL}/api/enquiries?populate=*`;
 const ListOfEnquires = () => {
 
   const [auth] = useContext(AuthContext);
-  const { data: enquiriesList, isLoading, isError } = useApi(url, [], { Authorization: `Bearer ${auth.jwt}` });
+  const { data: enquiriesList, isLoading, isError } = useApi(url, [], { Authorization: `Bearer ${auth?.jwt}` });
+
 
   return (
     <>
