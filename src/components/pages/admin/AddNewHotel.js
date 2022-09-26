@@ -123,31 +123,31 @@ const AddNewHotel = () => {
       <Form onSubmit={handleSubmit(onSubmit)}>
         <Flex>
           <Label htmlFor="hotelName">Hotel Name</Label>
-          <Input {...register("hotelName")} />
+          <Input {...register("hotelName")} placeholder="Hotel name" />
           {errors.hotelName && <Span>{errors.hotelName.message}</Span>}
 
           <Label htmlFor="shortDescription">Short description</Label>
-          <Textarea rows="6"{...register("shortDescription")} />
+          <Textarea rows="6"{...register("shortDescription")} placeholder="Short description" />
           {errors.shortDescription && <Span>{errors.shortDescription.message}</Span>}
 
           <Label htmlFor="longDescription">Long description</Label>
-          <Textarea rows="12"{...register("longDescription")} />
+          <Textarea rows="12"{...register("longDescription")} placeholder="Long description" />
           {errors.longDescription && <Span>{errors.longDescription.message}</Span>}
 
           <Label htmlFor="price">Price</Label>
-          <Input {...register("price")} />
+          <Input {...register("price")} placeholder="Price" />
           {errors.price && <Span>{errors.price.message}</Span>}
 
           <Label htmlFor="adress">Adress</Label>
-          <Input {...register("adress")} />
+          <Input {...register("adress")} placeholder="Adress" />
           {errors.adress && <Span>{errors.adress.message}</Span>}
 
           <Label htmlFor="email">Email</Label>
-          <Input {...register("email")} />
+          <Input {...register("email")} placeholder="Email" />
           {errors.email && <Span>{errors.email.message}</Span>}
 
           <Label htmlFor="phone">Phone</Label>
-          <Input {...register("phone")} />
+          <Input {...register("phone")} placeholder="Phone" />
           {errors.phone && <Span>{errors.phone.message}</Span>}
 
           <Label htmlFor="image">Image</Label>

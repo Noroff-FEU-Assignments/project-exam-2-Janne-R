@@ -36,7 +36,6 @@ const ListOfEnquires = () => {
           <P paragraph={`Start date: ${enquiry.attributes.startDate}`} />
           <P paragraph={`End date: ${enquiry.attributes.endDate}`} />
         </Div>
-
       ))}
     </div>
   )

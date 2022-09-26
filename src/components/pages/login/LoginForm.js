@@ -94,11 +94,11 @@ const LoginForm = () => {
           <Flex>
             {loginError && <ErrorMessage>{loginError}</ErrorMessage>}
             <Label htmlFor="identifier">Username/Email</Label>
-            <Input {...register("identifier")} />
+            <Input {...register("identifier")} placeholder="Username/Email" />
             {errors.identifier && <Span>{errors.identifier.message}</Span>}
 
             <Label htmlFor="password">Password</Label>
-            <Input {...register("password")} type="password" />
+            <Input {...register("password")} type="password" placeholder="Password" />
             {errors.password && <Span>{errors.password.message}</Span>}
 
           </Flex>

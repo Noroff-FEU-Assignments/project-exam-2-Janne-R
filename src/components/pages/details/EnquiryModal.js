@@ -16,7 +16,7 @@ const Overlay = styled.div`
 const ModalContent = styled.div`
   background-color: ${({ theme }) => theme.colors.backgroundColorLight};
   padding:10px;
-  margin: 15% auto; 
+  margin: 23% auto; 
   width: 80%; 
   max-width: 800px;
 `;

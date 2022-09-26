@@ -37,7 +37,7 @@ function useApi(url, defaultValue, headers) {
       }
     }
     doFetch(url);
-  }, [url, navigate, setAuth, headers]);
+  }, [url]);
 
   return {
     isLoading,

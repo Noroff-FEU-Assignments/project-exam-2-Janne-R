@@ -94,15 +94,15 @@ const ContactForm = () => {
           {errors.firstName && <Span>{errors.firstName.message}</Span>}
 
           <Label htmlFor="lastname">Last name</Label>
-          <Input {...register("lastName")} />
+          <Input {...register("lastName")} placeholder="Last name" />
           {errors.lastName && <Span>{errors.lastName.message}</Span>}
 
           <Label htmlFor="email"> Email</Label>
-          <Input {...register("email")} />
+          <Input {...register("email")} placeholder="Email" />
           {errors.email && <Span>{errors.email.message}</Span>}
 
           <Label htmlFor="message">Message</Label>
-          <Textarea rows="7"{...register("message")} />
+          <Textarea rows="7"{...register("message")} placeholder="Message" />
           {errors.message && <Span>{errors.message.message}</Span>}
         </Flex>
         <StyledButton text="Send" />
