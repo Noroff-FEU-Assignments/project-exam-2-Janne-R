@@ -24,7 +24,7 @@ const ListOfEnquires = () => {
 
 
   return (
-    <>
+    <div id="enquiries">
       <H2 title="All enquires" uppercase />
       {isLoading && <Loader />}
       {isError && <ErrorMessage>A error has occurred</ErrorMessage>}
@@ -41,7 +41,7 @@ const ListOfEnquires = () => {
         </Div>
 
       ))}
-    </>
+    </div>
   )
 }
 

@@ -21,7 +21,7 @@ const ListOfMessages = () => {
   const { data: contactList, isLoading, isError } = useApi(url, [], { Authorization: `Bearer ${auth?.jwt}` });
 
   return (
-    <>
+    <div id="messages">
       <H2 title="All messages" uppercase />
       {isLoading && <Loader />}
       {isError && <ErrorMessage>A error has occurred</ErrorMessage>}
@@ -33,7 +33,7 @@ const ListOfMessages = () => {
           <P paragraph={`Message: ${contact.attributes.message}`} />
         </Div>
       ))}
-    </>
+    </div>
   )
 }
 

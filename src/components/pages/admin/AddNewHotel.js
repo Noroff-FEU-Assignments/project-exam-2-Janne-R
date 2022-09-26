@@ -118,7 +118,7 @@ const AddNewHotel = () => {
   };
 
   return (
-    <>
+    <div id="addNew">
       <H2 title="Create new" uppercase />
       <Form onSubmit={handleSubmit(onSubmit)}>
         <Flex>
@@ -165,7 +165,7 @@ const AddNewHotel = () => {
         {isLoading && <Loader />}
         <StyledButton text="Send" />
       </Form>
-    </>
+    </div>
   )
 }
 

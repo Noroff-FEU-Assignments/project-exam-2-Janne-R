@@ -19,9 +19,9 @@ const ButtonStyle = styled.button`
 `;
 
 
-const NavButton = ({ text, onClick }) => {
+const NavButton = ({ text }) => {
   return (
-    <ButtonStyle onClick={onClick}>{text} </ButtonStyle>
+    <ButtonStyle>{text} </ButtonStyle>
   );
 };
 

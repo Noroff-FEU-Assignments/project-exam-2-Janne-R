@@ -1,4 +1,5 @@
 import { useContext, useEffect } from "react";
+import { HashLink } from 'react-router-hash-link';
 import AuthContext from "../../../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 import { H1, P } from "../../common.styles/DisplayText";
@@ -37,9 +38,18 @@ const Admin = () => {
       </Section>
       <Section >
         <Flex>
-          <NavButton text="Create new establishment" />
-          <NavButton text="List of enquires" />
-          <NavButton text="List of messages" />
+          <HashLink scroll={(el) => el.scrollIntoView({ behavior: 'smooth' })}
+            to="#addNew">
+            <NavButton text="Create new establishment" />
+          </HashLink>
+          <HashLink scroll={(el) => el.scrollIntoView({ behavior: 'smooth' })}
+            to="#enquiries">
+            <NavButton text="List of enquires" />
+          </HashLink>
+          <HashLink scroll={(el) => el.scrollIntoView({ behavior: 'smooth' })}
+            to="#messages">
+            <NavButton text="List of messages" />
+          </HashLink>
         </Flex>
         <AddNewHotel />
       </Section>
