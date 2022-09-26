@@ -4,6 +4,9 @@ import { NavLink } from "react-router-dom";
 import { H4, P } from "../common.styles/DisplayText";
 import { FaPhoneAlt, FaMapMarker } from 'react-icons/fa';
 import { MdEmail } from 'react-icons/md';
+import { HashLink } from 'react-router-hash-link';
+import { FaArrowAltCircleUp } from 'react-icons/fa';
+
 
 const FooterContainer = styled.footer`
   @media ${({ theme }) => theme.devices.tabletS} { 
@@ -48,6 +51,21 @@ const Li = styled.li`
 const Flex = styled.div`
 display: flex;
 align-items: center;
+`;
+
+const Arrow = styled(FaArrowAltCircleUp)`
+margin-left: 10px; 
+`;
+
+const StyledHashLink = styled(HashLink)`
+
+display: flex;
+    align-items: flex-end;
+    justify-content: end;
+
+margin-block-start: 1.33em;
+color: ${({ theme }) => theme.colors.textColorDark};
+    text-decoration-line: none;
 `;
 
 const Footer = () => (
@@ -95,7 +113,9 @@ const Footer = () => (
           </Li>
         </Ul>
       </div>
+
     </FooterContainer>
+    <StyledHashLink to="#top">To top of page <Arrow size="2rem" /></StyledHashLink>
   </Section>
 );
 
