@@ -8,7 +8,9 @@ import { ErrorMessage } from "../../common.styles/DisplayMessages";
 import styled from "styled-components";
 
 const Div = styled.div`
-border: 1px solid black;
+border: 1px solid ${({ theme }) => theme.colors.primaryColor};
+padding: 10px; 
+margin-bottom: 10px;
 `;
 
 const url = `${BASE_URL}/api/contacts`;
@@ -25,10 +27,10 @@ const ListOfMessages = () => {
       {isError && <ErrorMessage>A error has occurred</ErrorMessage>}
       {contactList.map((contact) => (
         <Div key={contact.id}>
-          <P paragraph={contact.attributes.firstName} />
-          <P paragraph={contact.attributes.lastName} />
-          <P paragraph={contact.attributes.email} />
-          <P paragraph={contact.attributes.message} />
+          <P paragraph={`First Name: ${contact.attributes.firstName}`} />
+          <P paragraph={`Last Name: ${contact.attributes.lastName}`} />
+          <P paragraph={`Email: ${contact.attributes.email}`} />
+          <P paragraph={`Message: ${contact.attributes.message}`} />
         </Div>
       ))}
     </>

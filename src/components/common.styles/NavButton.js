@@ -21,7 +21,7 @@ const ButtonStyle = styled.button`
 
 const NavButton = ({ text, onClick }) => {
   return (
-    <ButtonStyle >{text} </ButtonStyle>
+    <ButtonStyle onClick={onClick}>{text} </ButtonStyle>
   );
 };
 
