@@ -11,6 +11,7 @@ import { useState } from "react";
 import AuthContext from "../../../context/AuthContext";
 import { useContext } from "react";
 import { H2 } from "../../common.styles/DisplayText";
+import Loader from "../../common.styles/Loader";
 
 const Form = styled.form`
 background-color:${({ theme }) => theme.colors.backgroundColorLight};
@@ -82,6 +83,7 @@ const schema = yup.object().shape({
 const AddNewHotel = () => {
   const [addNewSuccess, setAddNewSuccess] = useState(null);
   const [auth] = useContext(AuthContext);
+  const [isLoading, setIsLoading] = useState(null);
 
   const { register, clearErrors, setValue, handleSubmit, formState: { errors } } = useForm({
     resolver: yupResolver(schema),
@@ -94,6 +96,7 @@ const AddNewHotel = () => {
 
   const onSubmit = async ({ image, ...data }) => {
     setAddNewSuccess(null);
+    setIsLoading(true);
 
     try {
       const addedHotel = await postRequest(`${BASE_URL}/api/hotels`, { data }, { Authorization: `Bearer ${auth.jwt}` });
@@ -107,6 +110,7 @@ const AddNewHotel = () => {
       await postFormData(`${BASE_URL}/api/upload`, formData, { Authorization: `Bearer ${auth.jwt}` });
 
       setAddNewSuccess("New hotel added")
+      setIsLoading(false);
     } catch (error) {
       console.log("error", error);
     }
@@ -158,6 +162,7 @@ const AddNewHotel = () => {
 
         </Flex>
         {addNewSuccess && <SuccessMessage>{addNewSuccess}</SuccessMessage>}
+        {isLoading && <Loader />}
         <StyledButton text="Send" />
       </Form>
     </>

@@ -9,6 +9,7 @@ import AuthContext from "../../../context/AuthContext";
 import { ErrorMessage } from "../../common.styles/DisplayMessages";
 import { useNavigate } from "react-router-dom";
 import { useState, useContext } from 'react';
+import Loader from "../../common.styles/Loader";
 import Star from "../../common.styles/Star";
 
 const Form = styled.form`
@@ -71,6 +72,7 @@ const schema = yup.object().shape({
 
 const LoginForm = () => {
   const [loginError, setLoginError] = useState(null);
+  const [isLoading, setIsLoading] = useState(null);
   const navigate = useNavigate();
 
   const { register, handleSubmit, formState: { errors } } = useForm({
@@ -81,13 +83,16 @@ const LoginForm = () => {
 
   const onSubmit = async (data) => {
     setLoginError(null);
+    setIsLoading(true);
     try {
       const response = await postRequest(`${BASE_URL}/api/auth/local`, data);
       console.log("heisann", response);
       setAuth(response);
       navigate("/admin");
+      setIsLoading(false);
     } catch (error) {
       setLoginError("Wrong username or password!");
+      setIsLoading(false);
     }
     return false;
   };
@@ -96,6 +101,7 @@ const LoginForm = () => {
   return (
     <>
       <Form onSubmit={handleSubmit(onSubmit)}>
+        {isLoading && <Loader />}
         <Div>
           <Flex>
             {loginError && <ErrorMessage>{loginError}</ErrorMessage>}
