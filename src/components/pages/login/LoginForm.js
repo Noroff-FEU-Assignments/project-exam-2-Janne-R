@@ -9,10 +9,15 @@ import AuthContext from "../../../context/AuthContext";
 import { ErrorMessage } from "../../common.styles/DisplayMessages";
 import { useNavigate } from "react-router-dom";
 import { useState, useContext } from 'react';
+import Star from "../../common.styles/Star";
 
 const Form = styled.form`
 background-color:${({ theme }) => theme.colors.backgroundColorLight};
 padding:10px ;
+@media ${({ theme }) => theme.devices.tabletS} { 
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+}
 `;
 
 const Flex = styled.form`
@@ -36,6 +41,11 @@ const Textarea = styled.textarea`
   margin-bottom: 20px;
 `;
 
+const Div = styled.div`
+@media ${({ theme }) => theme.devices.tabletS} { 
+margin-right: 30px; 
+}
+`;
 
 const Label = styled.label`
    margin-top: 10px;
@@ -86,18 +96,21 @@ const LoginForm = () => {
   return (
     <>
       <Form onSubmit={handleSubmit(onSubmit)}>
-        <Flex>
-          {loginError && <ErrorMessage>{loginError}</ErrorMessage>}
-          <Label htmlFor="identifier">Username/Email</Label>
-          <Input {...register("identifier")} />
-          {errors.identifier && <Span>{errors.identifier.message}</Span>}
+        <Div>
+          <Flex>
+            {loginError && <ErrorMessage>{loginError}</ErrorMessage>}
+            <Label htmlFor="identifier">Username/Email</Label>
+            <Input {...register("identifier")} />
+            {errors.identifier && <Span>{errors.identifier.message}</Span>}
 
-          <Label htmlFor="password">Password</Label>
-          <Input {...register("password")} type="password" />
-          {errors.password && <Span>{errors.password.message}</Span>}
+            <Label htmlFor="password">Password</Label>
+            <Input {...register("password")} type="password" />
+            {errors.password && <Span>{errors.password.message}</Span>}
 
-        </Flex>
-        <StyledButton text="Send" />
+          </Flex>
+          <StyledButton text="Send" />
+        </Div>
+        <Star size="15rem" />
       </Form>
     </>
   )

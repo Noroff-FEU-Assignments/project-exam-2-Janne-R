@@ -2,8 +2,7 @@ import { H2, P } from "../../common.styles/DisplayText";
 import styled from "styled-components";
 import { FaPhoneAlt, FaMapMarker } from 'react-icons/fa';
 import { MdEmail } from 'react-icons/md';
-import { FaStarOfLife } from 'react-icons/fa';
-
+import Star from "../../common.styles/Star";
 
 const Div = styled.div`
 display: flex;
@@ -38,16 +37,7 @@ const Flex = styled.div`
   justify-content:center;
 `;
 
-const Star = styled(FaStarOfLife)`
-display:none;
-@media ${({ theme }) => theme.devices.tabletS} { 
-display:flex ;
-color: ${({ theme }) => theme.colors.primaryColor};
-opacity: 0.3;
-transform: rotate(33deg);
-margin-top: 20px;
-}
-`;
+
 
 const ContactDetails = () => {
   return (

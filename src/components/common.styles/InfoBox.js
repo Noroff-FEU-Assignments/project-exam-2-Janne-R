@@ -51,10 +51,10 @@ const InfoBox = ({ title, paragraph, liste, img }) => {
         <H2 title={title} lightColor uppercase />
         <P lightColor paragraph={paragraph} />
         <Ul>
-          {liste.map((item) => (
-            <Flex key={item.id}>
+          {liste.map((item, index) => (
+            <Flex key={index}>
               <StarIcon size="1.5rem" color="white" />
-              <li>{item}</li>
+              <li >{item}</li>
             </Flex>
           ))}
         </Ul>

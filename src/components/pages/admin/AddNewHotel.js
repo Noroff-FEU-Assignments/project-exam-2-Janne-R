@@ -17,7 +17,7 @@ background-color:${({ theme }) => theme.colors.backgroundColorLight};
 padding:10px ;
 `;
 
-const Flex = styled.form`
+const Flex = styled.div`
   display: flex;
   flex-direction: column;
 `;

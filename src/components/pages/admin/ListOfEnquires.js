@@ -17,15 +17,14 @@ const ListOfEnquires = () => {
 
   const [auth] = useContext(AuthContext);
   const { data: enquiriesList, isLoading, isError } = useApi(url, [], { Authorization: `Bearer ${auth.jwt}` });
-  console.log(enquiriesList);
-  console.log(isError);
+
   return (
     <>
       <H2 title="All enquires" uppercase />
       {isLoading && <Loader />}
       {isError && <ErrorMessage>A error has occurred</ErrorMessage>}
       {enquiriesList.map((enquiry) => (
-        <Div>
+        <Div key={enquiry.id}>
           <H3 title={`Hotel: ${enquiry.attributes.hotel?.data.attributes.hotelName}`} />
           <P paragraph={enquiry.attributes.firstName} />
           <P paragraph={enquiry.attributes.lastName} />
@@ -41,4 +40,4 @@ const ListOfEnquires = () => {
   )
 }
 
-export default ListOfEnquires
+export default ListOfEnquires;

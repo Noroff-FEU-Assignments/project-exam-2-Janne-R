@@ -21,7 +21,7 @@ const Login = () => {
       <Section>
         <Div>
           <FaLock color="white" size="3rem" />
-          <H2 lightColor title="Welcome back" />
+          <P lightColor paragraph="Welcome back" uppercase />
           <P lightColor paragraph="Please login to your 
 account to lorem ipusm.  "/>
         </Div>
