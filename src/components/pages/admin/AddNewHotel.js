@@ -161,9 +161,9 @@ const AddNewHotel = () => {
           <Checkbox type="checkbox" {...register("isFeatured")} />
 
         </Flex>
+        <StyledButton text="Send" />
         {addNewSuccess && <SuccessMessage>{addNewSuccess}</SuccessMessage>}
         {isLoading && <Loader />}
-        <StyledButton text="Send" />
       </Form>
     </div>
   )

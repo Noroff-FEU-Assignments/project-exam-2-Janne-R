@@ -91,7 +91,6 @@ const LoginForm = () => {
   return (
     <>
       <Form onSubmit={handleSubmit(onSubmit)}>
-        {isLoading && <Loader />}
         <Div>
           <Flex>
             {loginError && <ErrorMessage>{loginError}</ErrorMessage>}
@@ -108,6 +107,7 @@ const LoginForm = () => {
         </Div>
         <Star size="15rem" />
       </Form>
+      {isLoading && <Loader />}
     </>
   )
 }
