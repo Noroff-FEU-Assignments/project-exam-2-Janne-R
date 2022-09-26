@@ -17,7 +17,7 @@ const StyledLink = styled(Link)`
 `;
 
 const Div = styled.div`
-    margin-top:auto;
+  margin-top:auto;
 `;
 
 const url = `${BASE_URL}/api/hotels?populate=*`;
@@ -31,7 +31,6 @@ const FeaturedHotels = () => {
     }
     return false;
   });
-
 
   return (
     <>

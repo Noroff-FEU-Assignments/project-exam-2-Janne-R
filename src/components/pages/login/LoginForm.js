@@ -13,12 +13,13 @@ import Loader from "../../common.styles/Loader";
 import Star from "../../common.styles/Star";
 
 const Form = styled.form`
-background-color:${({ theme }) => theme.colors.backgroundColorLight};
-padding:10px ;
-@media ${({ theme }) => theme.devices.tabletS} { 
-  display: grid;
-  grid-template-columns: 2fr 1fr;
-}
+  background-color:${({ theme }) => theme.colors.backgroundColorLight};
+  padding:10px ;
+  
+  @media ${({ theme }) => theme.devices.tabletS} { 
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+  }
 `;
 
 const Flex = styled.form`
@@ -34,22 +35,14 @@ const Input = styled.input`
   margin-bottom: 20px;
 `;
 
-const Textarea = styled.textarea`
-  border-radius: 3px;
-  border: 1px solid ${({ theme }) => theme.colors.primaryColor};
-  background-color: ${({ theme }) => theme.colors.backgroundColorDark}; ;
-  padding: 10px;
-  margin-bottom: 20px;
-`;
-
 const Div = styled.div`
-@media ${({ theme }) => theme.devices.tabletS} { 
-margin-right: 30px; 
-}
+  @media ${({ theme }) => theme.devices.tabletS} { 
+  margin-right: 30px; 
+  }
 `;
 
 const Label = styled.label`
-   margin-top: 10px;
+  margin-top: 10px;
   margin-bottom: 10px;
 `;
 
@@ -68,8 +61,6 @@ const schema = yup.object().shape({
   password: yup.string().required("Please enter your password"),
 });
 
-
-
 const LoginForm = () => {
   const [loginError, setLoginError] = useState(null);
   const [isLoading, setIsLoading] = useState(null);
@@ -86,7 +77,6 @@ const LoginForm = () => {
     setIsLoading(true);
     try {
       const response = await postRequest(`${BASE_URL}/api/auth/local`, data);
-      console.log("heisann", response);
       setAuth(response);
       navigate("/admin");
       setIsLoading(false);

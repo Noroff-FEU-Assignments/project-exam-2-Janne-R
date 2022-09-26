@@ -6,7 +6,6 @@ import Section from "../common.styles/Section";
 import { useContext } from "react";
 import AuthContext from "../../context/AuthContext";
 
-
 const Flex = styled.div`
   display: flex;
   justify-content: space-between;
@@ -46,13 +45,15 @@ const Ul = styled.ul`
     display: flex;
     flex-direction: row;
     position: unset;
-    li:not(:last-child) {
-    margin-right: 50px;
-    }
-    li {
-    margin-bottom:0;
-    margin-top:0;
-  }
+    
+      li:not(:last-child) {
+        margin-right: 50px;
+      }
+      
+      li {
+        margin-bottom:0;
+        margin-top:0;
+      }
   }
 `;
 

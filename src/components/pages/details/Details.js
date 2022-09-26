@@ -20,76 +20,77 @@ import { MdEmail } from 'react-icons/md';
 import { FaMapMarker } from 'react-icons/fa';
 
 const StyledBox = styled(Box)`
- @media ${({ theme }) => theme.devices.tabletS} { 
-margin-top: -70px;
-margin-bottom: -70px;
- }
+  @media ${({ theme }) => theme.devices.tabletS} { 
+    margin-top: -70px;
+    margin-bottom: -70px;
+  }
 `;
 
 const InfoText = styled.div`
   grid-area: 2 / 1 / 12 / 8;
   margin-right: 20px;
   margin-bottom:50px ;
+  
   @media ${({ theme }) => theme.devices.tabletS} { 
-  margin-bottom: 0;
+    margin-bottom: 0;
   }
-  `;
+`;
 
 const FlexContainer = styled.div`
-@media ${({ theme }) => theme.devices.tabletS} { 
-  display: flex;
-  align-items:center;
-}
+  @media ${({ theme }) => theme.devices.tabletS} { 
+    display: flex;
+    align-items:center;
+  }
 `;
 
 const Div = styled.div`
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    margin-left: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-left: 30px;
 `;
 
 const Flex = styled.div`
-display: flex;
-align-items: center;
+  display: flex;
+  align-items: center;
 `;
 
 const Phone = styled(AiTwotonePhone)`
-margin-right: 20px;
-color: white;
+  margin-right: 20px;
+  color: white;
 `;
 
 const Mail = styled(MdEmail)`
-margin-right: 20px;
-color: white;
+  margin-right: 20px;
+  color: white;
 `;
 
 const Map = styled(FaMapMarker)`
-margin-right: 20px;
-color: white;
+  margin-right: 20px;
+  color: white;
 `;
 
 const FullStar = styled(RiStarSFill)`
-color: ${({ theme }) => theme.colors.primaryColor}
+  color: ${({ theme }) => theme.colors.primaryColor}
 `;
 
 const OutlineStar = styled(RiStarSLine)`
-color: ${({ theme }) => theme.colors.primaryColor}
+  color: ${({ theme }) => theme.colors.primaryColor}
 `;
 
 const IconsContainer = styled.div`
-    @media ${({ theme }) => theme.devices.tabletS} { 
+  @media ${({ theme }) => theme.devices.tabletS} { 
     margin-left: 30px;
-    }
+  }
 `;
-
 
 const Details = () => {
   let { id } = useParams();
+
   const url = `${BASE_URL}/api/hotels/${id}?populate=*`;
+
   const [openEnquiryModal, setOpenEnquiryModal] = useState(false);
   const { data: hotel, isLoading, isError } = useApi(url, null);
-  console.log(hotel);
 
   const toggleModal = () => {
     setOpenEnquiryModal(!openEnquiryModal);
@@ -175,4 +176,5 @@ const Details = () => {
     </main>
   );
 };
+
 export default Details;

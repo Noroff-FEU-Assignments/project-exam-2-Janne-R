@@ -28,6 +28,7 @@ const ButtonLink = styled(Link)`
   margin: 35px 0 15px 0;
   cursor: pointer;
   transition-duration: 0.4s;
+  
   :hover{
     background-color: ${({ theme }) => theme.colors.highlightColor};
     color: ${({ theme }) => theme.colors.textColorDark};
@@ -35,9 +36,8 @@ const ButtonLink = styled(Link)`
 `;
 
 const Arrow = styled(MdKeyboardArrowRight)`
-margin-left:20px;
+  margin-left:20px;
 `;
-
 
 const VisitBergen = () => {
 

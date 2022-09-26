@@ -19,20 +19,18 @@ const StyledH2 = styled.h2`
 `;
 
 const StyledH3 = styled.h3`
-
-  
   color: ${({ lightColor, theme }) => lightColor ? theme.colors.textColorLight : theme.colors.textColorDark};
   text-transform: ${props => props.uppercase ? "uppercase" : "initial"};
 `;
 
 const StyledH4 = styled.h4`
- color: ${({ lightColor, theme }) => lightColor ? theme.colors.textColorLight : theme.colors.textColorDark};
+  color: ${({ lightColor, theme }) => lightColor ? theme.colors.textColorLight : theme.colors.textColorDark};
   text-transform: ${props => props.uppercase ? "uppercase" : "initial"};
 `;
 
 const StyledP = styled.p`
-color: ${({ lightColor, theme }) => lightColor ? theme.colors.textColorLight : theme.colors.textColorDark};
-text-transform: ${props => props.uppercase ? "uppercase" : "initial"};
+  color: ${({ lightColor, theme }) => lightColor ? theme.colors.textColorLight : theme.colors.textColorDark};
+  text-transform: ${props => props.uppercase ? "uppercase" : "initial"};
 `;
 
 export const H1 = ({ title, lightColor, uppercase }) => {

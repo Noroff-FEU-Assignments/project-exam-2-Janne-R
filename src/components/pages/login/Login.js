@@ -5,10 +5,10 @@ import { FaLock } from 'react-icons/fa';
 import LoginForm from "./LoginForm";
 
 const Div = styled.div`
-background-color: ${({ theme }) => theme.colors.primaryColor};
-margin: 0 -10px 0 -10px;
-padding:40px 10px;
-text-align:center;
+  background-color: ${({ theme }) => theme.colors.primaryColor};
+  margin: 0 -10px 0 -10px;
+  padding:40px 10px;
+  text-align:center;
 `;
 
 const Login = () => {
@@ -22,8 +22,7 @@ const Login = () => {
         <Div>
           <FaLock color="white" size="3rem" />
           <P lightColor paragraph="Welcome back" uppercase />
-          <P lightColor paragraph="Please login to your 
-account to lorem ipusm.  "/>
+          <P lightColor paragraph="Please login to your account to lorem ipusm." />
         </Div>
       </Section>
       <Section>

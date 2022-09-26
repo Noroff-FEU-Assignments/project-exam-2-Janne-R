@@ -7,11 +7,10 @@ import { MdEmail } from 'react-icons/md';
 import { HashLink } from 'react-router-hash-link';
 import { FaArrowAltCircleUp } from 'react-icons/fa';
 
-
 const FooterContainer = styled.footer`
   @media ${({ theme }) => theme.devices.tabletS} { 
-display:flex ;
-justify-content: space-between;
+    display:flex ;
+    justify-content: space-between;
   }
 `;
 
@@ -28,16 +27,17 @@ const MapIcon = styled(FaMapMarker)`
 `;
 
 const Ul = styled.ul`
-list-style-type: none;
-padding:0 ;
+  list-style-type: none;
+  padding:0 ;
 
-li {
+  li {
     margin-bottom:20px;
     margin-top:10px;
-    a {
-      text-decoration: none;
-      color: ${({ theme }) => theme.colors.textColorDark};
-    }
+      
+      a {
+        text-decoration: none;
+        color: ${({ theme }) => theme.colors.textColorDark};
+      }
   }
 `;
 
@@ -47,25 +47,17 @@ const Li = styled.li`
   height: 25px;
 `;
 
-
-const Flex = styled.div`
-display: flex;
-align-items: center;
-`;
-
 const Arrow = styled(FaArrowAltCircleUp)`
-margin-left: 10px; 
+  margin-left: 10px; 
 `;
 
-const StyledHashLink = styled(HashLink)`
-
-display: flex;
-    align-items: flex-end;
-    justify-content: end;
-
-margin-block-start: 1.33em;
-color: ${({ theme }) => theme.colors.textColorDark};
-    text-decoration-line: none;
+const StyledHashLink = styled(HashLink)`  
+  display: flex;
+  align-items: flex-end;
+  justify-content: end;
+  margin-block-start: 1.33em;
+  color: ${({ theme }) => theme.colors.textColorDark};
+  text-decoration-line: none;
 `;
 
 const Footer = () => (

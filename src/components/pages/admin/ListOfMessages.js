@@ -8,9 +8,9 @@ import { ErrorMessage } from "../../common.styles/DisplayMessages";
 import styled from "styled-components";
 
 const Div = styled.div`
-border: 1px solid ${({ theme }) => theme.colors.primaryColor};
-padding: 10px; 
-margin-bottom: 10px;
+  border: 1px solid ${({ theme }) => theme.colors.primaryColor};
+  padding: 10px; 
+  margin-bottom: 10px;
 `;
 
 const url = `${BASE_URL}/api/contacts`;

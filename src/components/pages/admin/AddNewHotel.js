@@ -14,8 +14,8 @@ import { H2 } from "../../common.styles/DisplayText";
 import Loader from "../../common.styles/Loader";
 
 const Form = styled.form`
-background-color:${({ theme }) => theme.colors.backgroundColorLight};
-padding:10px ;
+  background-color:${({ theme }) => theme.colors.backgroundColorLight};
+  padding:10px ;
 `;
 
 const Flex = styled.div`

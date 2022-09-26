@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 const ButtonStyle = styled.button`
- 
   text-transform: uppercase;
   background-color: ${({ theme }) => theme.colors.backgroundColorLight};
   color: ${({ theme }) => theme.colors.textColorDark};
@@ -12,12 +11,12 @@ const ButtonStyle = styled.button`
   margin: 35px 0 15px 0;
   cursor: pointer;
   transition-duration: 0.4s;
+  
   :focus{
     background-color: ${({ theme }) => theme.colors.buttonColor};
     color: ${({ theme }) => theme.colors.textColorLight};
   }
 `;
-
 
 const NavButton = ({ text }) => {
   return (

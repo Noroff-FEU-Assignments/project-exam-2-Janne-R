@@ -11,13 +11,13 @@ import ListOfEnquires from "./ListOfEnquires";
 import ListOfMessages from "./ListOfMessages";
 
 const Flex = styled.div`
-display: flex;
-flex-direction: column;
+  display: flex;
+  flex-direction: column;
 
-@media ${({ theme }) => theme.devices.laptopS} { 
-  flex-direction: row;
-  justify-content: space-between;
-}
+  @media ${({ theme }) => theme.devices.laptopS} { 
+    flex-direction: row;
+    justify-content: space-between;
+  }
 `;
 
 const Admin = () => {

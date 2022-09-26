@@ -16,8 +16,8 @@ const Flex = styled.div`
   padding: 20px;
   margin: -65px -10px 0 -10px;
   border-radius: 3px;
+  
   @media ${({ theme }) => theme.devices.laptopS} { 
-
     margin: -65px 30px 0 30px;
   }
 `;
@@ -29,11 +29,13 @@ const Div = styled.div`
 
 const SearchContainer = styled.div`
   width: 100%;
+  
   @media ${({ theme }) => theme.devices.mobileL} { 
     width:80% ;
   }
+  
   @media ${({ theme }) => theme.devices.laptopS} { 
-  width:50%;
+    width:50%;
   }
 `;
 
@@ -70,7 +72,6 @@ const Welcome = () => {
       fontFamily: "Open Sans",
       hoverBackgroundColor: theme.colors.backgroundColorLight,
     };
-
 
     return (
       <Flex>

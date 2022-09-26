@@ -13,7 +13,7 @@ import 'react-calendar/dist/Calendar.css';
 import moment from 'moment';
 
 const MyCalandar = styled(Calendar)`
-margin-bottom: 20px;
+  margin-bottom: 20px;
 `;
 
 const Flex = styled.form`
@@ -30,7 +30,7 @@ const Input = styled.input`
 `;
 
 const Select = styled.select`
- border-radius: 3px;
+  border-radius: 3px;
   border: 1px solid ${({ theme }) => theme.colors.primaryColor};
   background-color: ${({ theme }) => theme.colors.backgroundColorDark}; ;
   padding: 10px;
@@ -45,9 +45,8 @@ const Textarea = styled.textarea`
   margin-bottom: 20px;
 `;
 
-
 const Label = styled.label`
-   margin-top: 10px;
+  margin-top: 10px;
   margin-bottom: 10px;
 `;
 
@@ -62,7 +61,6 @@ const Span = styled.span`
 `;
 
 const schema = yup.object().shape({
-
   firstName: yup.string().required("Please enter your first name").min(1, "Your name must be at least one character"),
   lastName: yup.string().required("Please enter your last name").min(1, "Your name must be at least one character"),
   email: yup.string().required("Please enter a email adress").email("Please enter a valid email address"),
@@ -89,20 +87,15 @@ const BookingEnquiry = () => {
     clearErrors("endDate")
   };
 
-  console.log("startDate:", watch("startDate"));
-  console.log("endDate:", watch("endDate"));
   const addNewEnquiry = async (data) => {
     const enquiryData = {
       ...data,
       hotel: id,
     };
-    console.log("enq data", enquiryData);
-
 
     setEnquirySuccess(null);
     try {
       const addedEnqury = await postRequest(`${BASE_URL}/api/enquiries`, { data: enquiryData });
-      console.log(addedEnqury);
       setEnquirySuccess("Enquiry successfully sent!");
 
     } catch (error) {

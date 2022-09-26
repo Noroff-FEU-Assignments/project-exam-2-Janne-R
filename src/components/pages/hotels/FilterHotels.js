@@ -1,13 +1,12 @@
 import styled from "styled-components";
 import { BiSearchAlt2 } from 'react-icons/bi';
 
-
 const Form = styled.form`
   margin-top: 40px;
   margin-bottom: 20px;
   display: flex;
-
   align-items: center;  
+  
   @media ${({ theme }) => theme.devices.tabletS} { 
     width: 60%;
     margin-bottom: 0;
@@ -26,7 +25,7 @@ const SearchIcon = styled(BiSearchAlt2)`
   margin-left: -30px;
   fill: grey;
   width: 20px;
-    height: 20px;
+  height: 20px;
 `;
 
 const FilterHotels = ({ filterList, filterResultUpdated }) => {

@@ -10,15 +10,16 @@ import { SuccessMessage } from "../../common.styles/DisplayMessages";
 import ContactDetails from "./ContactDetails";
 
 const Grid = styled.div`
-@media ${({ theme }) => theme.devices.tabletS} { 
- display: grid;
-grid-template-columns: 1fr 1fr;
-}
+  @media ${({ theme }) => theme.devices.tabletS} { 
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
 
 `;
+
 const Form = styled.form`
-background-color:${({ theme }) => theme.colors.backgroundColorLight};
-padding:10px ;
+  background-color:${({ theme }) => theme.colors.backgroundColorLight};
+  padding:10px ;
 `;
 
 const Flex = styled.form`
@@ -42,9 +43,8 @@ const Textarea = styled.textarea`
   margin-bottom: 20px;
 `;
 
-
 const Label = styled.label`
-   margin-top: 10px;
+  margin-top: 10px;
   margin-bottom: 10px;
 `;
 
@@ -57,7 +57,6 @@ const Span = styled.span`
   margin-bottom: 20px;
   margin-top: -20px;
 `;
-
 
 const schema = yup.object().shape({
 
@@ -86,8 +85,6 @@ const ContactForm = () => {
     }
     return false;
   };
-
-  console.log(errors);
 
   return (
     <Grid>

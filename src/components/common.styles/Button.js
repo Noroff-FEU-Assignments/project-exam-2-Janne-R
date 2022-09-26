@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { MdKeyboardArrowRight } from 'react-icons/md';
 
 const ButtonStyle = styled.button`
- width: fit-content;
+  width: fit-content;
   display: flex;
   align-items: center;
   text-transform: uppercase;
@@ -15,14 +15,15 @@ const ButtonStyle = styled.button`
   margin: 35px 0 15px 0;
   cursor: pointer;
   transition-duration: 0.4s;
-  :hover{
+  
+  :hover {
     background-color: ${({ theme }) => theme.colors.highlightColor};
     color: ${({ theme }) => theme.colors.textColorDark};
   }
 `;
 
 const Arrow = styled(MdKeyboardArrowRight)`
-margin-left:20px;
+  margin-left:20px;
 `;
 
 const Button = ({ text, onClick }) => {

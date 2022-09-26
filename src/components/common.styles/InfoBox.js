@@ -20,7 +20,6 @@ const BackgroundImageBleed = styled(BackgroundImage)`
 
   @media ${({ theme }) => theme.devices.laptopL} { 
     height: 660px ;
-   
   }
 `;
 

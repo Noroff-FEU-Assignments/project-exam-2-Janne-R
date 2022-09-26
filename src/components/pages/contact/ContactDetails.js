@@ -5,16 +5,17 @@ import { MdEmail } from 'react-icons/md';
 import Star from "../../common.styles/Star";
 
 const Div = styled.div`
-display: flex;
-flex-direction: column;
-align-items:center;
-background-color: ${({ theme }) => theme.colors.backgroundColorDark};
-margin: 50px -10px 0 -10px;
-@media ${({ theme }) => theme.devices.tabletS} { 
-  background-color: ${({ theme }) => theme.colors.backgroundColorLight};
-  margin:0 ;
-  padding-top: 50px;
-}
+  display: flex;
+  flex-direction: column;
+  align-items:center;
+  background-color: ${({ theme }) => theme.colors.backgroundColorDark};
+  margin: 50px -10px 0 -10px;
+  
+  @media ${({ theme }) => theme.devices.tabletS} { 
+    background-color: ${({ theme }) => theme.colors.backgroundColorLight};
+    margin:0 ;
+    padding-top: 50px;
+  }
 `;
 
 const PhoneIcon = styled(FaPhoneAlt)`
@@ -36,8 +37,6 @@ const Flex = styled.div`
   margin-bottom: 20px;
   justify-content:center;
 `;
-
-
 
 const ContactDetails = () => {
   return (

@@ -7,10 +7,10 @@ import BackgroundImage from "../../common.styles/BackgroundImage";
 import styled from "styled-components";
 
 const BackgroundImageSizes = styled(BackgroundImage)`
-    margin: 0 -10px 0 -10px;
+  margin: 0 -10px 0 -10px;
   
   @media ${({ theme }) => theme.devices.tabletS} { 
-  margin: 0;
+    margin: 0;
     height: 460px ;
   }
 
@@ -20,7 +20,6 @@ const BackgroundImageSizes = styled(BackgroundImage)`
 
   @media ${({ theme }) => theme.devices.laptopL} { 
     height: 660px ;
-   
   }
 `;
 

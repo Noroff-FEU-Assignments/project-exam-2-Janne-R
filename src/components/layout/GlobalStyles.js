@@ -24,6 +24,7 @@ h1, h2, h3, h4 {
 
 h1 {
   font-size: 28px;
+  
   @media ${({ theme }) => theme.devices.tabletS} { 
     font-size: 36px;
   }
@@ -31,6 +32,7 @@ h1 {
 
 h2 {
   font-size: 24px;
+  
   @media ${({ theme }) => theme.devices.tabletS} { 
     font-size: 28px;
   }
@@ -38,6 +40,7 @@ h2 {
 
 h3 {
   font-size: 21px;
+  
   @media ${({ theme }) => theme.devices.tabletS} { 
     font-size: 24px;
   }
@@ -45,6 +48,7 @@ h3 {
 
 h4 {
   font-size: 18px;
+  
   @media ${({ theme }) => theme.devices.tabletS} { 
     font-size: 21px;
   }
@@ -52,6 +56,7 @@ h4 {
 
 p {  
   font-size: 18px;
+  
   @media ${({ theme }) => theme.devices.tabletS} { 
     font-size: 21px;
   }
@@ -60,6 +65,7 @@ p {
 span{
   font-family: 'Open Sans', sans-serif;
   font-size: 16px;
+  
   @media ${({ theme }) => theme.devices.tabletS} { 
     font-size: 18px;
   }
@@ -68,6 +74,7 @@ span{
 label{
   font-family: 'Open Sans', sans-serif;
   font-size: 18px;
+  
   @media ${({ theme }) => theme.devices.tabletS} { 
     font-size: 21px;
   }
@@ -75,6 +82,7 @@ label{
 
 li{
   font-size: 18px;
+    
   @media ${({ theme }) => theme.devices.tabletS} { 
     font-size: 21px;
   }
@@ -82,6 +90,7 @@ li{
 
 a {  
   font-size: 18px;
+  
   @media ${({ theme }) => theme.devices.tabletS} { 
     font-size: 21px;
   }

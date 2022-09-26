@@ -3,9 +3,9 @@ import Navigation from "./Navigation";
 import HeroImage from "./HeroImage";
 
 const StickyNav = styled.div`
-    position: fixed;
-    width: 100%;
-    z-index: 1;
+  position: fixed;
+  width: 100%;
+  z-index: 1;
 `;
 
 const Header = () => {

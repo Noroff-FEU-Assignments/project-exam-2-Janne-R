@@ -8,9 +8,9 @@ const Contact = () => {
       <Section backgroundColorLight>
         <H1 title="Contact us" />
         <P paragraph="If you have any questions or want to be 
-a part of our Holidaze family please 
-get in touch with us. Use our contact 
-form on this page or send us an email."/>
+                      a part of our Holidaze family please 
+                      get in touch with us. Use our contact 
+                      form on this page or send us an email."/>
       </Section>
       <Section>
         <ContactForm />

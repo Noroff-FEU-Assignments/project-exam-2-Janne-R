@@ -19,7 +19,7 @@ const StyledLink = styled(Link)`
 `;
 
 const Div = styled.div`
-    margin-top:auto;
+  margin-top:auto;
 `;
 
 const url = `${BASE_URL}/api/hotels?populate=*`;
@@ -29,7 +29,6 @@ const Hotels = () => {
   const [filterResult, setFilterResult] = useState(null);
 
   const hotelsToPresent = filterResult ? filterResult : hotelList;
-  console.log(hotelsToPresent);
 
   return (
     <main>
