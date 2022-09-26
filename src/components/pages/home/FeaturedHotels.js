@@ -1,4 +1,3 @@
-import Section from "../../common.styles/Section";
 import { H2, H3, P } from "../../common.styles/DisplayText";
 import BackgroundImage from "../../common.styles/BackgroundImage";
 import Button from "../../common.styles/Button.js";

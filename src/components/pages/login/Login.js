@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { H1, H2, P } from "../../common.styles/DisplayText";
+import { H1, P } from "../../common.styles/DisplayText";
 import Section from "../../common.styles/Section";
 import { FaLock } from 'react-icons/fa';
 import LoginForm from "./LoginForm";

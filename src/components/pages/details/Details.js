@@ -9,7 +9,6 @@ import Section from "../../common.styles/Section";
 import Button from "../../common.styles/Button";
 import EnquiryModal from "./EnquiryModal";
 import { useState } from "react";
-import InfoBox from "../../common.styles/InfoBox";
 import Grid from "../../common.styles/Grid";
 import BackgroundImage from "../../common.styles/BackgroundImage";
 import { RiStarSFill, RiStarSLine } from 'react-icons/ri';

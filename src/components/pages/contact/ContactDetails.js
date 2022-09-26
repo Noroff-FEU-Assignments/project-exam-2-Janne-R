@@ -1,4 +1,4 @@
-import { H2, P } from "../../common.styles/DisplayText";
+import { P } from "../../common.styles/DisplayText";
 import styled from "styled-components";
 import { FaPhoneAlt, FaMapMarker } from 'react-icons/fa';
 import { MdEmail } from 'react-icons/md';

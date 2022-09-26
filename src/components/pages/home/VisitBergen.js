@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { H1, H2, P } from "../../common.styles/DisplayText";
+import { H1, P } from "../../common.styles/DisplayText";
 import BackgroundImage from "../../common.styles/BackgroundImage";
 import { Link } from "react-router-dom";
 import Grid from "../../common.styles/Grid";
@@ -73,7 +73,7 @@ const VisitBergen = () => {
         <Arrow size="2rem" />
       </ButtonLink>
     </>
-  )
+  );
 }
 
 export default VisitBergen;

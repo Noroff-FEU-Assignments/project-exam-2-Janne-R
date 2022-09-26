@@ -1,4 +1,4 @@
-import { useForm, Controller } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import styled from "styled-components";
@@ -6,7 +6,7 @@ import Button from "../../common.styles/Button";
 import postRequest from "../../../lib/postRequest";
 import { BASE_URL } from "../../../constants/api";
 import { SuccessMessage } from "../../common.styles/DisplayMessages";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useParams } from "react-router-dom";
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
@@ -73,7 +73,7 @@ const BookingEnquiry = () => {
   let { id } = useParams();
   const [enquirySuccess, setEnquirySuccess] = useState(null);
 
-  const { register, handleSubmit, watch, getValues, clearErrors, setValue, formState: { errors } } = useForm({
+  const { register, handleSubmit, getValues, clearErrors, setValue, formState: { errors } } = useForm({
     resolver: yupResolver(schema),
   });
 
@@ -95,7 +95,7 @@ const BookingEnquiry = () => {
 
     setEnquirySuccess(null);
     try {
-      const addedEnqury = await postRequest(`${BASE_URL}/api/enquiries`, { data: enquiryData });
+      await postRequest(`${BASE_URL}/api/enquiries`, { data: enquiryData });
       setEnquirySuccess("Enquiry successfully sent!");
 
     } catch (error) {

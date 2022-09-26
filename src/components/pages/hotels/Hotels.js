@@ -1,5 +1,5 @@
 import Section from "../../common.styles/Section";
-import { H1, H2, H3, P } from "../../common.styles/DisplayText";
+import { H1, H3, P } from "../../common.styles/DisplayText";
 import FilterHotels from "./FilterHotels";
 import styled from "styled-components";
 import BackgroundImage from "../../common.styles/BackgroundImage";

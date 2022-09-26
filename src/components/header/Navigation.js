@@ -5,7 +5,6 @@ import { FiMenu } from "react-icons/fi";
 import Section from "../common.styles/Section";
 import { useContext } from "react";
 import AuthContext from "../../context/AuthContext";
-import Button from "../common.styles/Button";
 
 const Flex = styled.div`
   display: flex;
