@@ -27,7 +27,7 @@ const StyledBox = styled(Box)`
 `;
 
 const InfoText = styled.div`
-  grid-area: 2 / 1 / 12 / 8;
+  grid-area: 1 / 1 / 12 / 8;
   margin-right: 20px;
   margin-bottom:50px ;
   

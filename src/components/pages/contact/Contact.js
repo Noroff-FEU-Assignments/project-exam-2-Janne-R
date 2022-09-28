@@ -4,7 +4,6 @@ import Section from "../../common.styles/Section";
 import SEO from "../../SEO";
 
 const Contact = () => {
-
   return (
     <>
       <SEO

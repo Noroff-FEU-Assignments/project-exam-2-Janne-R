@@ -15,6 +15,7 @@ import Login from "./components/pages/login/Login";
 import Admin from "./components/pages/admin/Admin";
 import Footer from "./components/footer/Footer";
 import { AuthProvider } from "./context/AuthContext";
+import ScrollToTop from "./components/helpers/ScrollToTop";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
       <ThemeProvider theme={theme}>
         <GlobalStyle />
         <Router>
+          <ScrollToTop />
           <Header />
           <Routes>
             <Route path="/" exact element={<Home />} />
