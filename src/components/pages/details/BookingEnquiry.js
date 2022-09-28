@@ -5,7 +5,7 @@ import styled from "styled-components";
 import Button from "../../common.styles/Button";
 import postRequest from "../../../lib/postRequest";
 import { BASE_URL } from "../../../constants/api";
-import { SuccessMessage } from "../../common.styles/DisplayMessages";
+import { SuccessMessage, ErrorMessage } from "../../common.styles/DisplayMessages";
 import { useState } from "react";
 import { useParams } from "react-router-dom";
 import Calendar from 'react-calendar';
@@ -72,6 +72,7 @@ const schema = yup.object().shape({
 const BookingEnquiry = () => {
   let { id } = useParams();
   const [enquirySuccess, setEnquirySuccess] = useState(null);
+  const [isError, setIsError] = useState(null);
 
   const { register, handleSubmit, getValues, clearErrors, setValue, formState: { errors } } = useForm({
     resolver: yupResolver(schema),
@@ -94,12 +95,14 @@ const BookingEnquiry = () => {
     };
 
     setEnquirySuccess(null);
+    setIsError(false);
     try {
       await postRequest(`${BASE_URL}/api/enquiries`, { data: enquiryData });
       setEnquirySuccess("Enquiry successfully sent!");
 
     } catch (error) {
       console.log("error", error);
+      setIsError("Sorry, there was an error!")
     }
     return false;
   };
@@ -149,6 +152,7 @@ const BookingEnquiry = () => {
         </Flex>
         <StyledButton text="Send" />
         {enquirySuccess && <SuccessMessage>{enquirySuccess}</SuccessMessage>}
+        {isError && <ErrorMessage>{isError}</ErrorMessage>}
       </form>
     </>
   )

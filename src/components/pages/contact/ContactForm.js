@@ -6,7 +6,7 @@ import Button from "../../common.styles/Button";
 import { useState } from "react";
 import postRequest from "../../../lib/postRequest";
 import { BASE_URL } from "../../../constants/api";
-import { SuccessMessage } from "../../common.styles/DisplayMessages";
+import { SuccessMessage, ErrorMessage } from "../../common.styles/DisplayMessages";
 import ContactDetails from "./ContactDetails";
 
 const Grid = styled.div`
@@ -67,6 +67,7 @@ const schema = yup.object().shape({
 
 const ContactForm = () => {
   const [contactSuccess, setContactSuccess] = useState(null);
+  const [isError, setIsError] = useState(null);
 
   const { register, handleSubmit, formState: { errors } } = useForm({
     resolver: yupResolver(schema),
@@ -74,6 +75,7 @@ const ContactForm = () => {
 
   const addNewContact = async (data) => {
     setContactSuccess(null);
+    setIsError(false);
     try {
       const addedContact = await postRequest(`${BASE_URL}/api/contacts`, { data });
       console.log(addedContact);
@@ -81,6 +83,7 @@ const ContactForm = () => {
 
     } catch (error) {
       console.log("error", error);
+      setIsError("Sorry, there was an error!")
     }
     return false;
   };
@@ -107,6 +110,7 @@ const ContactForm = () => {
         </Flex>
         <StyledButton text="Send" />
         {contactSuccess && <SuccessMessage>{contactSuccess}</SuccessMessage>}
+        {isError && <ErrorMessage>{isError}</ErrorMessage>}
       </Form>
       <ContactDetails />
     </Grid>

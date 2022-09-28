@@ -6,7 +6,7 @@ import Button from "../../common.styles/Button";
 import postFormData from "../../../lib/postFormData";
 import postRequest from "../../../lib/postRequest";
 import { BASE_URL } from "../../../constants/api";
-import { SuccessMessage } from "../../common.styles/DisplayMessages";
+import { SuccessMessage, ErrorMessage } from "../../common.styles/DisplayMessages";
 import { useState } from "react";
 import AuthContext from "../../../context/AuthContext";
 import { useContext } from "react";
@@ -84,6 +84,7 @@ const AddNewHotel = () => {
   const [addNewSuccess, setAddNewSuccess] = useState(null);
   const [auth] = useContext(AuthContext);
   const [isLoading, setIsLoading] = useState(null);
+  const [isError, setIsError] = useState(null);
 
   const { register, clearErrors, setValue, handleSubmit, formState: { errors } } = useForm({
     resolver: yupResolver(schema),
@@ -97,6 +98,7 @@ const AddNewHotel = () => {
   const onSubmit = async ({ image, ...data }) => {
     setAddNewSuccess(null);
     setIsLoading(true);
+    setIsError(false);
 
     try {
       const addedHotel = await postRequest(`${BASE_URL}/api/hotels`, { data }, { Authorization: `Bearer ${auth.jwt}` });
@@ -112,7 +114,8 @@ const AddNewHotel = () => {
       setAddNewSuccess("New hotel added")
       setIsLoading(false);
     } catch (error) {
-      console.log("error", error);
+      setIsError("Sorry, there was an error!");
+      setIsLoading(false);
     }
     return false;
   };
@@ -164,6 +167,7 @@ const AddNewHotel = () => {
         <StyledButton text="Send" />
         {addNewSuccess && <SuccessMessage>{addNewSuccess}</SuccessMessage>}
         {isLoading && <Loader />}
+        {isError && <ErrorMessage>{isError}</ErrorMessage>}
       </Form>
     </div>
   )
