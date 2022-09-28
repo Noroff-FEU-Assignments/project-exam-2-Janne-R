@@ -3,6 +3,7 @@ import { H1, P } from "../../common.styles/DisplayText";
 import Section from "../../common.styles/Section";
 import { FaLock } from 'react-icons/fa';
 import LoginForm from "./LoginForm";
+import useDocumentTitle from "../../../hooks/useDocumentTitle";
 
 const Div = styled.div`
   background-color: ${({ theme }) => theme.colors.primaryColor};
@@ -12,6 +13,8 @@ const Div = styled.div`
 `;
 
 const Login = () => {
+  useDocumentTitle('Holidaze | Login');
+
   return (
     <main>
       <Section backgroundColorLight>

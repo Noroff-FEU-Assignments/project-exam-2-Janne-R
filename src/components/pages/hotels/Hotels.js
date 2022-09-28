@@ -11,6 +11,7 @@ import { ErrorMessage } from "../../common.styles/DisplayMessages";
 import Loader from "../../common.styles/Loader";
 import { useState } from "react";
 import Grid from "../../common.styles/Grid";
+import SEO from "../../SEO";
 
 const StyledLink = styled(Link)`
   text-decoration: none;
@@ -25,38 +26,45 @@ const Div = styled.div`
 const url = `${BASE_URL}/api/hotels?populate=*`;
 
 const Hotels = () => {
+
   const { data: hotelList, isLoading, isError } = useApi(url, []);
   const [filterResult, setFilterResult] = useState(null);
 
   const hotelsToPresent = filterResult ? filterResult : hotelList;
 
   return (
-    <main>
-      <Section backgroundColorLight>
-        {isLoading && <Loader />}
-        {isError && <ErrorMessage>A error has occurred</ErrorMessage>}
-        <H1 title="All hotels" uppercase />
-        <FilterHotels filterList={hotelList} filterResultUpdated={setFilterResult} />
-      </Section>
-      <Section>
-        <Grid>
-          {hotelsToPresent.map((hotel) => (
-            <StyledLink key={hotel.id} to={`/details/${hotel.id}`}>
-              <BackgroundImage img={hotel.attributes.coverImage.data?.attributes.formats.small?.url} height={"360px"} />
-              <H3 title={hotel.attributes.hotelName} uppercase />
-              <P paragraph={hotel.attributes.shortDescription} />
-              <P paragraph={`Price: $${hotel.attributes.price} per/night`} />
-              <Div>
-                <Button text="View" />
-              </Div>
-            </StyledLink>
-          ))}
-        </Grid>
+    <>
+      <SEO
+        title="Hotels"
+        description="All our hotels in Bergen"
+        keywords="bergen, hotel, hotels" />
+      <main>
+        <Section backgroundColorLight>
+          {isLoading && <Loader />}
+          {isError && <ErrorMessage>A error has occurred</ErrorMessage>}
+          <H1 title="All hotels" uppercase />
+          <FilterHotels filterList={hotelList} filterResultUpdated={setFilterResult} />
+        </Section>
+        <Section>
+          <Grid>
+            {hotelsToPresent.map((hotel) => (
+              <StyledLink key={hotel.id} to={`/details/${hotel.id}`}>
+                <BackgroundImage img={hotel.attributes.coverImage.data?.attributes.formats.small?.url} height={"360px"} />
+                <H3 title={hotel.attributes.hotelName} uppercase />
+                <P paragraph={hotel.attributes.shortDescription} />
+                <P paragraph={`Price: $${hotel.attributes.price} per/night`} />
+                <Div>
+                  <Button text="View" />
+                </Div>
+              </StyledLink>
+            ))}
+          </Grid>
 
-        {filterResult && filterResult.length === 0 && hotelList.length > 0 && <ErrorMessage>No hotels matching your search</ErrorMessage>}
-        {hotelList.length === 0 && !isLoading && <ErrorMessage>Sorry we have no hotels</ErrorMessage>}
-      </Section>
-    </main>
+          {filterResult && filterResult.length === 0 && hotelList.length > 0 && <ErrorMessage>No hotels matching your search</ErrorMessage>}
+          {hotelList.length === 0 && !isLoading && <ErrorMessage>Sorry we have no hotels</ErrorMessage>}
+        </Section>
+      </main>
+    </>
   )
 }
 

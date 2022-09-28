@@ -9,6 +9,7 @@ import styled from "styled-components";
 import AddNewHotel from "./AddNewHotel";
 import ListOfEnquires from "./ListOfEnquires";
 import ListOfMessages from "./ListOfMessages";
+import SEO from "../../SEO";
 
 const Flex = styled.div`
   display: flex;
@@ -31,35 +32,41 @@ const Admin = () => {
   }, [auth, navigate]);
 
   return (
-    <main>
-      <Section backgroundColorLight>
-        <H1 title="Admin" uppercase />
-        <P paragraph="Welcome to your admin page" />
-      </Section>
-      <Section >
-        <Flex>
-          <HashLink scroll={(el) => el.scrollIntoView({ behavior: 'smooth' })}
-            to="#addNew">
-            <NavButton text="Create new establishment" />
-          </HashLink>
-          <HashLink scroll={(el) => el.scrollIntoView({ behavior: 'smooth' })}
-            to="#enquiries">
-            <NavButton text="List of enquires" />
-          </HashLink>
-          <HashLink scroll={(el) => el.scrollIntoView({ behavior: 'smooth' })}
-            to="#messages">
-            <NavButton text="List of messages" />
-          </HashLink>
-        </Flex>
-        <AddNewHotel />
-      </Section>
-      <Section backgroundColorLight>
-        <ListOfEnquires />
-      </Section>
-      <Section>
-        <ListOfMessages />
-      </Section>
-    </main>
+    <>
+      <SEO
+        title="Admin"
+        description="Admin page for Holidaze administration"
+        keywords="bergen, hotel, adminpage" />
+      <main>
+        <Section backgroundColorLight>
+          <H1 title="Admin" uppercase />
+          <P paragraph="Welcome to your admin page" />
+        </Section>
+        <Section >
+          <Flex>
+            <HashLink scroll={(el) => el.scrollIntoView({ behavior: 'smooth' })}
+              to="#addNew">
+              <NavButton text="Create new establishment" />
+            </HashLink>
+            <HashLink scroll={(el) => el.scrollIntoView({ behavior: 'smooth' })}
+              to="#enquiries">
+              <NavButton text="List of enquires" />
+            </HashLink>
+            <HashLink scroll={(el) => el.scrollIntoView({ behavior: 'smooth' })}
+              to="#messages">
+              <NavButton text="List of messages" />
+            </HashLink>
+          </Flex>
+          <AddNewHotel />
+        </Section>
+        <Section backgroundColorLight>
+          <ListOfEnquires />
+        </Section>
+        <Section>
+          <ListOfMessages />
+        </Section>
+      </main>
+    </>
   )
 }
 

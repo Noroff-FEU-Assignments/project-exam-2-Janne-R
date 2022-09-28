@@ -17,6 +17,7 @@ import GridContainer from "../../common.styles/GridContainer";
 import { AiTwotonePhone } from 'react-icons/ai';
 import { MdEmail } from 'react-icons/md';
 import { FaMapMarker } from 'react-icons/fa';
+import SEO from "../../SEO";
 
 const StyledBox = styled(Box)`
   @media ${({ theme }) => theme.devices.tabletS} { 
@@ -83,6 +84,8 @@ const IconsContainer = styled.div`
   }
 `;
 
+
+
 const Details = () => {
   let { id } = useParams();
 
@@ -95,84 +98,92 @@ const Details = () => {
     setOpenEnquiryModal(!openEnquiryModal);
   };
 
+
   return (
-    <main>
-      <Section backgroundColorLight>
-        {isLoading && <Loader />}
-        {isError && <ErrorMessage>A error has occurred</ErrorMessage>}
-        {hotel &&
-          <FlexContainer>
-            <H1 title={hotel.attributes.hotelName} uppercase />
-            <IconsContainer>
-              <FullStar size="2rem" />
-              <FullStar size="2rem" />
-              <FullStar size="2rem" />
-              <FullStar size="2rem" />
-              <OutlineStar size="2rem" />
-            </IconsContainer>
-          </FlexContainer>
-        }
-      </Section>
+    <>
       {hotel &&
-        <Section>
-          <GridContainer>
-            <InfoText>
-              <P >
-                {hotel.attributes.shortDescription}
-              </P>
-              <P >
-                {hotel.attributes.longDescription}
-              </P>
-              <P paragraph={`Price: $${hotel.attributes.price} per/night`} />
-              <Button text="Booking" onClick={toggleModal} />
-              {openEnquiryModal && <EnquiryModal closeModal={toggleModal} />}
-            </InfoText>
-            <StyledBox>
-              <Div>
-                <H2 title="Contact us" uppercase lightColor />
-                <Flex>
-                  <Phone size="2rem" />
-                  <P paragraph={hotel.attributes.phone} lightColor />
-                </Flex>
-                <Flex>
-                  <Mail size="2rem" />
-                  <P paragraph={hotel.attributes.email} lightColor />
-                </Flex>
-                <Flex>
-                  <Map size="2rem" />
-                  <P paragraph={hotel.attributes.adress} lightColor />
-                </Flex>
-              </Div>
-            </StyledBox>
-          </GridContainer>
+        <SEO
+          title={hotel.attributes.hotelName}
+          description={`Hotel page for ${hotel.attributes.hotelName}`}
+          keywords="bergen, hotel" />}
+      <main>
+        <Section backgroundColorLight>
+          {isLoading && <Loader />}
+          {isError && <ErrorMessage>A error has occurred</ErrorMessage>}
+          {hotel &&
+            <FlexContainer>
+              <H1 title={hotel.attributes.hotelName} uppercase />
+              <IconsContainer>
+                <FullStar size="2rem" />
+                <FullStar size="2rem" />
+                <FullStar size="2rem" />
+                <FullStar size="2rem" />
+                <OutlineStar size="2rem" />
+              </IconsContainer>
+            </FlexContainer>
+          }
         </Section>
-      }
-      <Section backgroundColorLight>
-        <H2 title="Our rooms" uppercase />
-        <Grid>
-          <div>
-            <BackgroundImage img={"/images/standardRoom.webp"} height={"360px"} />
-            <H3 uppercase title="Standard room" />
-            <P paragraph="Two single beds." />
-          </div>
-          <div>
-            <BackgroundImage img={"/images/familyRoom.webp"} height={"360px"} />
-            <H3 uppercase title="Family room" />
-            <P paragraph="One dobbel bed and one bunk bed." />
-          </div>
-          <div>
-            <BackgroundImage img={"/images/premiumRoom.webp"} height={"360px"} />
-            <H3 uppercase title="Premium room" />
-            <P paragraph="King size dobble bed." />
-          </div>
-        </Grid>
-      </Section>
-      <Section >
         {hotel &&
-          <BackgroundImage img={hotel.attributes.coverImage.data?.attributes.formats.large?.url} height={"560px"} />
+          <Section>
+            <GridContainer>
+              <InfoText>
+                <P >
+                  {hotel.attributes.shortDescription}
+                </P>
+                <P >
+                  {hotel.attributes.longDescription}
+                </P>
+                <P paragraph={`Price: $${hotel.attributes.price} per/night`} />
+                <Button text="Booking" onClick={toggleModal} />
+                {openEnquiryModal && <EnquiryModal closeModal={toggleModal} />}
+              </InfoText>
+              <StyledBox>
+                <Div>
+                  <H2 title="Contact us" uppercase lightColor />
+                  <Flex>
+                    <Phone size="2rem" />
+                    <P paragraph={hotel.attributes.phone} lightColor />
+                  </Flex>
+                  <Flex>
+                    <Mail size="2rem" />
+                    <P paragraph={hotel.attributes.email} lightColor />
+                  </Flex>
+                  <Flex>
+                    <Map size="2rem" />
+                    <P paragraph={hotel.attributes.adress} lightColor />
+                  </Flex>
+                </Div>
+              </StyledBox>
+            </GridContainer>
+          </Section>
         }
-      </Section>
-    </main>
+        <Section backgroundColorLight>
+          <H2 title="Our rooms" uppercase />
+          <Grid>
+            <div>
+              <BackgroundImage img={"/images/standardRoom.webp"} height={"360px"} />
+              <H3 uppercase title="Standard room" />
+              <P paragraph="Two single beds." />
+            </div>
+            <div>
+              <BackgroundImage img={"/images/familyRoom.webp"} height={"360px"} />
+              <H3 uppercase title="Family room" />
+              <P paragraph="One dobbel bed and one bunk bed." />
+            </div>
+            <div>
+              <BackgroundImage img={"/images/premiumRoom.webp"} height={"360px"} />
+              <H3 uppercase title="Premium room" />
+              <P paragraph="King size dobble bed." />
+            </div>
+          </Grid>
+        </Section>
+        <Section >
+          {hotel &&
+            <BackgroundImage img={hotel.attributes.coverImage.data?.attributes.formats.large?.url} height={"560px"} />
+          }
+        </Section>
+      </main>
+    </>
   );
 };
 
