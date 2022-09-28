@@ -78,6 +78,20 @@ const schema = yup.object().shape({
   image: yup
     .mixed()
     .required("Please add an image")
+    .test(
+      "type",
+      "Only the following formats are accepted: .jpeg, .jpg, .bmp, .webp and .png",
+      (value) => {
+        console.log(value);
+        return (
+          value &&
+          (value.type === "image/jpeg" ||
+            value.type === "image/bmp" ||
+            value.type === "image/jpg" ||
+            value.type === "image/webp" ||
+            value.type === "image/png")
+        );
+      })
 });
 
 const AddNewHotel = () => {
