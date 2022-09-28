@@ -16,6 +16,7 @@ import Admin from "./components/pages/admin/Admin";
 import Footer from "./components/footer/Footer";
 import { AuthProvider } from "./context/AuthContext";
 import ScrollToTop from "./components/helpers/ScrollToTop";
+import Wrapper from "./components/common.styles/Wrapper";
 
 function App() {
   return (
@@ -25,14 +26,16 @@ function App() {
         <Router>
           <ScrollToTop />
           <Header />
-          <Routes>
-            <Route path="/" exact element={<Home />} />
-            <Route path="/hotels" exact element={<Hotels />} />
-            <Route path="/details/:id" exact element={<Details />} />
-            <Route path="/contact" exact element={<Contact />} />
-            <Route path="/login" exact element={<Login />} />
-            <Route path="/admin" exact element={<Admin />} />
-          </Routes>
+          <Wrapper>
+            <Routes>
+              <Route path="/" exact element={<Home />} />
+              <Route path="/hotels" exact element={<Hotels />} />
+              <Route path="/details/:id" exact element={<Details />} />
+              <Route path="/contact" exact element={<Contact />} />
+              <Route path="/login" exact element={<Login />} />
+              <Route path="/admin" exact element={<Admin />} />
+            </Routes>
+          </Wrapper>
           <Footer />
         </Router>
       </ThemeProvider>
