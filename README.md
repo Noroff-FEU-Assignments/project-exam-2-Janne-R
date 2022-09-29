@@ -1,7 +1,7 @@
 # Login details
 
-Username: adminUser
-Email: adminuser@admin.com
+Username: adminUser \
+Email: adminuser@admin.com \
 Password: adminUser12345!
 
 # Getting Started with Create React App
