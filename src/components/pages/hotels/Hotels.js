@@ -11,7 +11,7 @@ import { ErrorMessage } from "../../common.styles/DisplayMessages";
 import Loader from "../../common.styles/Loader";
 import { useState } from "react";
 import Grid from "../../common.styles/Grid";
-import SEO from "../../SEO";
+import SEO from "../../helpers/SEO";
 
 const StyledLink = styled(Link)`
   text-decoration: none;

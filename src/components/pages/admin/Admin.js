@@ -9,7 +9,7 @@ import styled from "styled-components";
 import AddNewHotel from "./AddNewHotel";
 import ListOfEnquires from "./ListOfEnquires";
 import ListOfMessages from "./ListOfMessages";
-import SEO from "../../SEO";
+import SEO from "../../helpers/SEO";
 
 const Flex = styled.div`
   display: flex;

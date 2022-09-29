@@ -1,7 +1,7 @@
 import ContactForm from "./ContactForm";
 import { H1, P } from "../../common.styles/DisplayText";
 import Section from "../../common.styles/Section";
-import SEO from "../../SEO";
+import SEO from "../../helpers/SEO";
 
 const Contact = () => {
   return (

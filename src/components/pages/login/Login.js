@@ -3,7 +3,7 @@ import { H1, P } from "../../common.styles/DisplayText";
 import Section from "../../common.styles/Section";
 import { FaLock } from 'react-icons/fa';
 import LoginForm from "./LoginForm";
-import SEO from "../../SEO";
+import SEO from "../../helpers/SEO";
 
 const Div = styled.div`
   background-color: ${({ theme }) => theme.colors.primaryColor};

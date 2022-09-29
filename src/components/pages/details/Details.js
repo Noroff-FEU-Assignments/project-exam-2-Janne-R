@@ -17,7 +17,7 @@ import GridContainer from "../../common.styles/GridContainer";
 import { AiTwotonePhone } from 'react-icons/ai';
 import { MdEmail } from 'react-icons/md';
 import { FaMapMarker } from 'react-icons/fa';
-import SEO from "../../SEO";
+import SEO from "../../helpers/SEO";
 
 const StyledBox = styled(Box)`
   @media ${({ theme }) => theme.devices.tabletS} { 

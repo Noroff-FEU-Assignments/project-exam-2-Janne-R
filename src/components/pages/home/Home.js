@@ -5,7 +5,7 @@ import FeaturedHotels from "./FeaturedHotels";
 import VisitBergen from "./VisitBergen";
 import BackgroundImage from "../../common.styles/BackgroundImage";
 import styled from "styled-components";
-import SEO from "../../SEO";
+import SEO from "../../helpers/SEO";
 
 const BackgroundImageSizes = styled(BackgroundImage)`
   margin: 0 -10px 0 -10px;
