@@ -7,9 +7,8 @@ import postFormData from "../../../lib/postFormData";
 import postRequest from "../../../lib/postRequest";
 import { BASE_URL } from "../../../constants/api";
 import { SuccessMessage, ErrorMessage } from "../../common.styles/DisplayMessages";
-import { useState } from "react";
+import { useState, useEffect, useContext } from "react";
 import AuthContext from "../../../context/AuthContext";
-import { useContext } from "react";
 import { H2 } from "../../common.styles/DisplayText";
 import Loader from "../../common.styles/Loader";
 
@@ -100,7 +99,7 @@ const AddNewHotel = () => {
   const [isLoading, setIsLoading] = useState(null);
   const [isError, setIsError] = useState(null);
 
-  const { register, clearErrors, setValue, handleSubmit, formState: { errors } } = useForm({
+  const { register, clearErrors, setValue, handleSubmit, reset, formState: { errors, isSubmitSuccessful } } = useForm({
     resolver: yupResolver(schema),
   });
 
@@ -133,6 +132,12 @@ const AddNewHotel = () => {
     }
     return false;
   };
+
+  useEffect(() => {
+    if (isSubmitSuccessful) {
+      reset();
+    }
+  }, [isSubmitSuccessful, reset]);
 
   return (
     <div id="addNew">

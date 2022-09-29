@@ -3,7 +3,7 @@ import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import styled from "styled-components";
 import Button from "../../common.styles/Button";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import postRequest from "../../../lib/postRequest";
 import { BASE_URL } from "../../../constants/api";
 import { SuccessMessage, ErrorMessage } from "../../common.styles/DisplayMessages";
@@ -69,7 +69,7 @@ const ContactForm = () => {
   const [contactSuccess, setContactSuccess] = useState(null);
   const [isError, setIsError] = useState(null);
 
-  const { register, handleSubmit, formState: { errors } } = useForm({
+  const { register, handleSubmit, reset, formState: { errors, isSubmitSuccessful } } = useForm({
     resolver: yupResolver(schema),
   });
 
@@ -77,16 +77,21 @@ const ContactForm = () => {
     setContactSuccess(null);
     setIsError(false);
     try {
-      const addedContact = await postRequest(`${BASE_URL}/api/contacts`, { data });
-      console.log(addedContact);
+      await postRequest(`${BASE_URL}/api/contacts`, { data });
       setContactSuccess("Contact form successfully sent!");
 
     } catch (error) {
-      console.log("error", error);
       setIsError("Sorry, there was an error!")
     }
     return false;
   };
+
+  useEffect(() => {
+    if (isSubmitSuccessful) {
+      reset();
+    }
+  }, [isSubmitSuccessful, reset]);
+
 
   return (
     <Grid>
