@@ -6,7 +6,7 @@ import Button from "../../common.styles/Button";
 import postRequest from "../../../lib/postRequest";
 import { BASE_URL } from "../../../constants/api";
 import { SuccessMessage, ErrorMessage } from "../../common.styles/DisplayMessages";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
@@ -74,7 +74,7 @@ const BookingEnquiry = () => {
   const [enquirySuccess, setEnquirySuccess] = useState(null);
   const [isError, setIsError] = useState(null);
 
-  const { register, handleSubmit, getValues, clearErrors, setValue, formState: { errors } } = useForm({
+  const { register, handleSubmit, getValues, clearErrors, setValue, reset, formState: { errors, isSubmitSuccessful } } = useForm({
     resolver: yupResolver(schema),
   });
 
@@ -109,6 +109,12 @@ const BookingEnquiry = () => {
 
   const startDate = getValues("startDate");
   const endDate = getValues("endDate");
+
+  useEffect(() => {
+    if (isSubmitSuccessful) {
+      reset();
+    }
+  }, [isSubmitSuccessful, reset]);
 
   return (
     <>
