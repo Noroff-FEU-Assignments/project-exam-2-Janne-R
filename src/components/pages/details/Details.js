@@ -84,7 +84,10 @@ const IconsContainer = styled.div`
   }
 `;
 
-
+const getImageUrl = (imageAttributes) => {
+  const url = `https://res.cloudinary.com/dxbcnekub/image/upload/c_fill,w_1920,h_768/${imageAttributes.hash}${imageAttributes.ext}`;
+  return url;
+};
 
 const Details = () => {
   let { id } = useParams();
@@ -98,6 +101,7 @@ const Details = () => {
     setOpenEnquiryModal(!openEnquiryModal);
   };
 
+  console.log(hotel);
 
   return (
     <>
@@ -179,8 +183,7 @@ const Details = () => {
         </Section>
         <Section >
           {hotel &&
-            <BackgroundImage img={hotel.attributes.coverImage.data?.attributes.formats.large?.url} height={"560px"} />
-          }
+            <BackgroundImage img={getImageUrl(hotel.attributes.coverImage.data?.attributes)} height={"768px"} />}
         </Section>
       </main>
     </>
