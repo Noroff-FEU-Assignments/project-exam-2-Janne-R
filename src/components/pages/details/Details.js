@@ -173,7 +173,7 @@ const Details = () => {
             <div>
               <BackgroundImage img={"/images/familyRoom.webp"} height={"360px"} />
               <H3 uppercase title="Family room" />
-              <P paragraph="One dobbel bed and one bunk bed." />
+              <P paragraph="One double bed and one bunk bed." />
             </div>
             <div>
               <BackgroundImage img={"/images/premiumRoom.webp"} height={"360px"} />
