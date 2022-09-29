@@ -85,7 +85,8 @@ const IconsContainer = styled.div`
 `;
 
 const getImageUrl = (imageAttributes) => {
-  const url = `https://res.cloudinary.com/dxbcnekub/image/upload/c_fill,w_1920,h_768/${imageAttributes.hash}${imageAttributes.ext}`;
+  const imageOptions = "f_auto,q_auto"
+  const url = `https://res.cloudinary.com/dxbcnekub/image/upload/c_fill,w_1920,h_768/${imageOptions}/${imageAttributes.hash}${imageAttributes.ext}`;
   return url;
 };
 

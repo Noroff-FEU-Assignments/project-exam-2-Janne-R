@@ -53,7 +53,7 @@ const InfoBox = ({ title, paragraph, liste, img }) => {
           {liste.map((item, index) => (
             <Flex key={index}>
               <StarIcon size="1.5rem" color="white" />
-              <li >{item}</li>
+              <li>{item}</li>
             </Flex>
           ))}
         </Ul>
