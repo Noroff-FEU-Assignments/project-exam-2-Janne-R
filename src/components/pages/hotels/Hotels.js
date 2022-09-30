@@ -49,7 +49,7 @@ const Hotels = () => {
           <Grid>
             {hotelsToPresent.map((hotel) => (
               <StyledLink key={hotel.id} to={`/details/${hotel.id}`}>
-                <BackgroundImage img={hotel.attributes.coverImage.data?.attributes.formats.small?.url} height={"360px"} />
+                <BackgroundImage img={hotel.attributes.coverImage.data?.attributes.formats.small?.url} alt="Hotel image" height={"360px"} />
                 <H3 title={hotel.attributes.hotelName} uppercase />
                 <P paragraph={hotel.attributes.shortDescription} />
                 <P paragraph={`Price: $${hotel.attributes.price} per/night`} />

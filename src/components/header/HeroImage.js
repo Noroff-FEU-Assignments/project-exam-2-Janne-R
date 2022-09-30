@@ -19,7 +19,7 @@ const HeaderImage = styled(BackgroundImage)`
 
 const HeroImage = () => {
   return (
-    <HeaderImage img={"/images/hero.webp"} height={"460px"} />
+    <HeaderImage img={"/images/hero.webp"} alt="Bryggen in Bergen" height={"460px"} />
   );
 };
 

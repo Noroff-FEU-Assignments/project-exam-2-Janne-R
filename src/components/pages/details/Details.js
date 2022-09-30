@@ -166,17 +166,17 @@ const Details = () => {
           <H2 title="Our rooms" uppercase />
           <Grid>
             <div>
-              <BackgroundImage img={"/images/standardRoom.webp"} height={"360px"} />
+              <BackgroundImage img={"/images/standardRoom.webp"} alt="Hotel room image" height={"360px"} />
               <H3 uppercase title="Standard room" />
               <P paragraph="Two single beds." />
             </div>
             <div>
-              <BackgroundImage img={"/images/familyRoom.webp"} height={"360px"} />
+              <BackgroundImage img={"/images/familyRoom.webp"} alt="Hotel room image" height={"360px"} />
               <H3 uppercase title="Family room" />
               <P paragraph="One double bed and one bunk bed." />
             </div>
             <div>
-              <BackgroundImage img={"/images/premiumRoom.webp"} height={"360px"} />
+              <BackgroundImage img={"/images/premiumRoom.webp"} alt="Hotel room image" height={"360px"} />
               <H3 uppercase title="Premium room" />
               <P paragraph="King size dobble bed." />
             </div>
@@ -184,7 +184,7 @@ const Details = () => {
         </Section>
         <Section >
           {hotel &&
-            <BackgroundImage img={getImageUrl(hotel.attributes.coverImage.data?.attributes)} height={"768px"} />}
+            <BackgroundImage img={getImageUrl(hotel.attributes.coverImage.data?.attributes)} alt="Hotel image" height={"768px"} />}
         </Section>
       </main>
     </>
