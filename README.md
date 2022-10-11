@@ -4,9 +4,42 @@ Username: adminUser \
 Email: adminuser@admin.com \
 Password: adminUser12345!
 
-# Getting Started with Create React App
+# Project exam 2
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project is part of my education at Noroff and was my second year project exam. 
+
+## Description
+
+This project is a hotel website for a fictional company located in Bergen. It contains:
+
+- a home page with search functionality 
+- a hotel listing page with filter functionality and booking enquires
+- a login page for administration 
+- a admin page for adding new hotels and reading messages/enquires 
+- a contact page for sending messages
+
+## Built with
+
+This project is build with Create React App [Create React App](https://github.com/facebook/create-react-app).
+
+- React.js
+- Styled components
+
+## Getting Started
+
+### Installing
+
+1. Clone the repo:
+
+```bash
+git clone https://github.com/Janne-R/semester-project-2-new.git
+```
+
+2. Install the dependencies:
+
+```
+npm install
+```
 
 ## Available Scripts
 
@@ -74,3 +107,10 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+
+## Contact
+
+If you want to contact me, use my LinkedIn page:
+
+[My LinkedIn page](https://www.linkedin.com/in/janneringdal/)
