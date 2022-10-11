@@ -32,7 +32,7 @@ This project is build with Create React App [Create React App](https://github.co
 1. Clone the repo:
 
 ```bash
-git clone https://github.com/Janne-R/semester-project-2-new.git
+git clone https://github.com/Noroff-FEU-Assignments/project-exam-2-Janne-R.git
 ```
 
 2. Install the dependencies:
